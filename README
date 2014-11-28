@@ -1,0 +1,35 @@
+* README MIS A JOUR
+* AU 10 AOUT 2013. 
+CE LOGICIEL EST FOURNI TEL QUEL.
+
+ne contient pas de code malicieux a ma connaissance.
+
+Il est disponible en telechargement sur :
+http://www.ibiiztera.be/
+
+Les sources actualisees regulierement 
+mises a jour sont sur: 
+http://codeplex.com/emptycanvas/
+
+Il est place sous licence GNU GPL
+telle que fournie par la fondation GNU :
+http://gnu.org
+
+et 
+
+sous licence Microsoft Public Licence
+
+LE LOGICIEL A ETE TESTE 
+AVEC SUCCES SUR PLATEFORME 
+WINDOWS 32 BITS WINDOWS 64 BITS 
+ET LINUX 32 BITS avec le jdk qui va bien.
+
+Les jars ne sont pas signes, ce serait trop 
+me demander!
+
+
+La bibliotheque MonteMedia d'une tierce
+partie est incluse
+et est sous licence Creative Commons
+http://www.randelshofer.ch/monte/
+
