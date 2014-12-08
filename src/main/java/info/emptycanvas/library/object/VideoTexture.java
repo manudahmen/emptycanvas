@@ -45,7 +45,7 @@ public class VideoTexture extends MediaListenerAdapter implements ITexture {
         }*/
 
     // create a new mr. decode and capture frames
-        new DecodeAndCaptureFrames("D:\\Bibliothèque\\Films\\Cinema anglais"+"\\"+"Sailor.Et.Lula.1990.FRENCH.BRRiP.XViD.AC3-HuSh.avi");
+        new VideoTexture("D:\\Bibliothèque\\Films\\Cinema anglais"+"\\"+"Sailor.Et.Lula.1990.FRENCH.BRRiP.XViD.AC3-HuSh.avi");
     }
 
     /**
@@ -55,8 +55,10 @@ public class VideoTexture extends MediaListenerAdapter implements ITexture {
      * @param filename the name of the media file to read
      */
     public VideoTexture(String filename) {
-        // create a media reader for processing video
+        e = null;
 
+        // create a media reader for processing video
+        
         IMediaReader reader = ToolFactory.makeReader(filename);
 
         // stipulate that we want BufferedImages created in BGR 24bit color space
@@ -76,6 +78,8 @@ public class VideoTexture extends MediaListenerAdapter implements ITexture {
             do {
             } while (false);
         }
+        
+        bufferImages = new ArrayList<BufferedImage>();
     }
 
     @Override
@@ -100,8 +104,15 @@ public class VideoTexture extends MediaListenerAdapter implements ITexture {
         {
             ex.printStackTrace();
         }
-        
-      bufferImages.add(event.getImage());
+      if(event!=null)
+          try
+          {
+            bufferImages.add(event.getImage());
+          }
+          catch(NullPointerException ex)
+          {
+              
+          }
 
     }
 
