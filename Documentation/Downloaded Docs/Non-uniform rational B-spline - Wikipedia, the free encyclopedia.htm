@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html dir="ltr" class="client-js ve-not-available" lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<title>Non-uniform rational B-spline - Wikipedia, the free encyclopedia</title>
+<meta name="generator" content="MediaWiki 1.24wmf7">
+<link rel="alternate" href="android-app://org.wikipedia/http/en.m.wikipedia.org/wiki/Non-uniform_rational_B-spline">
+<link rel="alternate" type="application/x-wiki" title="Edit this page" href="https://en.wikipedia.org/w/index.php?title=Non-uniform_rational_B-spline&amp;action=edit">
+<link rel="edit" title="Edit this page" href="https://en.wikipedia.org/w/index.php?title=Non-uniform_rational_B-spline&amp;action=edit">
+<link rel="apple-touch-icon" href="https://bits.wikimedia.org/apple-touch/wikipedia.png">
+<link rel="shortcut icon" href="https://bits.wikimedia.org/favicon/wikipedia.ico">
+<link rel="search" type="application/opensearchdescription+xml" href="https://en.wikipedia.org/w/opensearch_desc.php" title="Wikipedia (en)">
+<link rel="EditURI" type="application/rsd+xml" href="https://en.wikipedia.org/w/api.php?action=rsd">
+<link rel="copyright" href="https://creativecommons.org/licenses/by-sa/3.0/">
+<link rel="alternate" type="application/atom+xml" title="Wikipedia Atom feed" href="https://en.wikipedia.org/w/index.php?title=Special:RecentChanges&amp;feed=atom">
+<link rel="canonical" href="http://en.wikipedia.org/wiki/Non-uniform_rational_B-spline">
+<link rel="stylesheet" href="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/load_002.css">
+<style>
+@-webkit-keyframes centralAuthPPersonalAnimation{0%{opacity:0;-webkit-transform:translateY(-20px)}100%{opacity:1;-webkit-transform:translateY(0)}}@-moz-keyframes centralAuthPPersonalAnimation{0%{opacity:0;-moz-transform:translateY(-20px)}100%{opacity:1;-moz-transform:translateY(0)}}@-o-keyframes centralAuthPPersonalAnimation{0%{opacity:0;-o-transform:translateY(-20px)}100%{opacity:1;-o-transform:translateY(0)}}@keyframes centralAuthPPersonalAnimation{0%{opacity:0;transform:translateY(-20px)}100%{opacity:1;transform:translateY(0)}}.centralAuthPPersonalAnimation{-webkit-animation-duration:1s;-moz-animation-duration:1s;-o-animation-duration:1s;animation-duration:1s;-webkit-animation-fill-mode:both;-moz-animation-fill-mode:both;-o-animation-fill-mode:both;animation-fill-mode:both;-webkit-animation-name:centralAuthPPersonalAnimation;-moz-animation-name:centralAuthPPersonalAnimation;-o-animation-name:centralAuthPPersonalAnimation;animation-name:centralAuthPPersonalAnimation}
+/* cache key: enwiki:resourceloader:filter:minify-css:7:0dcacc990dd02e7db9669ab3090b80f1 */
+.mw-editsection{white-space:nowrap; unicode-bidi:-moz-isolate;unicode-bidi:-webkit-isolate;unicode-bidi:isolate}.mw-editsection-divider{color:#555}.ve-tabmessage-appendix{font-size:0.7em;vertical-align:top;line-height:1.43em;padding-left:0.5em; background-image:none !important;display:inline !important}
+/* cache key: enwiki:resourceloader:filter:minify-css:7:50c6a67a11952da7c9e5053046d794ee */
+.uls-menu a{cursor:pointer}.uls-menu.callout .caret-before{border-top:20px solid transparent;border-right:20px solid #C9C9C9;border-bottom:20px solid transparent;display:inline-block;left:-21px;top:30px;position:absolute}.uls-menu.callout .caret-after{border-top:20px solid transparent;border-right:20px solid #FCFCFC;border-bottom:20px solid transparent;display:inline-block;left:-20px;top:30px;position:absolute}.uls-ui-languages button{width:23%;text-overflow:ellipsis;margin-right:4%}button.uls-more-languages{width:auto}.settings-title{font-size:11pt}.settings-text{color:#555555;font-size:9pt}div.display-settings-block:hover .settings-text{color:#252525}
+/* cache key: enwiki:resourceloader:filter:minify-css:7:22d1681fa868b4ff4fbcb1ec1e58a9ea */
+.tipsy{padding:5px;position:absolute;z-index:100000;cursor:default}.tipsy-inner{padding:5px 8px 4px 8px; background-color:#ffffff;border:solid 1px #a7d7f9;color:black;max-width:15em;border-radius:4px; }.tipsy-arrow{position:absolute;background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALAgMAAADUwp+1AAAACVBMVEX5+fmn1/n///9s6BFKAAAAAXRSTlMAQObYZgAAACpJREFUCB1jZBD4wMiQMoeRcUU4I9uSaYxSE54xZjn8AtMgPkgcJA9UBwAeDw1Qrb3pVAAAAABJRU5ErkJggg==) no-repeat top left;background:url(//bits.wikimedia.org/static-1.24wmf7/resources/src/jquery.tipsy/images/tipsy.png?2014-05-29T15:05:00Z) no-repeat top left!ie;width:11px;height:6px} .tipsy-n .tipsy-arrow{top:0px;left:50%;margin-left:-5px} .tipsy-nw .tipsy-arrow{top:1px;left:10px} .tipsy-ne .tipsy-arrow{top:1px;right:10px} .tipsy-s .tipsy-arrow{bottom:0px;left:50%;margin-left:-5px;background-position:bottom left} .tipsy-sw .tipsy-arrow{bottom:0px;left:10px;background-position:bottom left} .tipsy-se .tipsy-arrow{bottom:0px;right:10px;background-position:bottom left} .tipsy-e .tipsy-arrow{top:50%;margin-top:-5px;right:1px;width:5px;height:11px;background-position:top right} .tipsy-w .tipsy-arrow{top:50%;margin-top:-5px;left:0px;width:6px;height:11px}
+/* cache key: enwiki:resourceloader:filter:minify-css:7:6d3b0668ba20a341d787085a7f65c043 */
+@media print{#centralNotice{display:none}}
+/* cache key: enwiki:resourceloader:filter:minify-css:7:ddb0c98a055632ae8e349c9cf48ac703 */
+.postedit-container{margin:0 auto;position:fixed;top:0;height:0;left:50%;z-index:1000;font-size:13px}.postedit-container:hover{cursor:pointer}.postedit{position:relative;top:0.6em;left:-50%;padding:.6em 3.6em .6em 1.1em;line-height:1.5625em;color:#626465;background-color:#f4f4f4;border:1px solid #dcd9d9;text-shadow:0 0.0625em 0 rgba(255,255,255,0.5);border-radius:5px;box-shadow:0 2px 5px 0 #ccc;-webkit-transition:all 0.25s ease-in-out;-moz-transition:all 0.25s ease-in-out;-ms-transition:all 0.25s ease-in-out;-o-transition:all 0.25s ease-in-out;transition:all 0.25s ease-in-out}.skin-monobook .postedit{top:6em !important}.postedit-faded{opacity:0}.postedit-icon{padding-left:41px;  line-height:25px;background-repeat:no-repeat;background-position:8px 50%}.postedit-icon-checkmark{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAABblBMVEUAAAD///////9PfTf///80aRdTgjn///9Feij///////////9Rfzf///////////9PfjZRgDh1o1xOfTb///////+bwYqLtnj///////9PfTa82K////9WhT6YxIL///9QgDdTgzr////////j7uDl7eLq8efi693k7OH///////9UhjuBr2rp9uRUhjr///9YljVKgir///9WiTlYjT3////9/v57vFlbkT5PjC9dlD/5/fhuq09stUTs9uhxuElctCpfnT1huDFloEZloUZmpENmvDZpvDxpvTxqvjxrvT5rvT9rwTxsqktswD5uwkBvuUdxw0NztFBztU9ztVBzwkp0tlJ1xkd2t1R3uVR4w1F4xk54x014yE15uVZ5v1R5xVB6v1R7yFJ8wVh9xVl9yFR9yVd9ylN+xVh+yFd/x1l/yFeAylmEx1+Ny2uY0Hqe04Wj1Ymv3Ze33qLD47TJ5L3O6cPU7Mrq9eb2+/Q4j37OAAAAQHRSTlMAAQIEBAUFBQwPFB4fJCUoKiosQEhJS01RUlZZXmdydXaChYuSlJSWmJmoq6uur8LExcvM19fg5ejt8fX2+Pr7SljgewAAAKpJREFUGBkFwQNCAwAAAMDLtl3LtrG4rWXbtvX77gAgZ6grFwC0bhwNVgKgdPZx8b0dgLi+s7Wn0VoAqpfOI9+BNADZI7fLrz2pSEwGHZuH+78lSK8ZLkLezF3ooyUG3VPXq2USei9WngeyoG195yBYWDF3E/2pAhl1e9Gr8bGT+bfOFCC2fnvh4X7rcqIAQNNu+HT6sxkAjceTL/2ZAIhv+PorBwBJxfkA//dFHSCBy/UTAAAAAElFTkSuQmCC);background-image:url(//bits.wikimedia.org/static-1.24wmf7/resources/src/mediawiki.action/images/green-checkmark.png?2014-05-29T15:05:00Z)!ie;background-position:left}.postedit-close{position:absolute;padding:0 .8em;right:0;top:0;font-size:1.25em;font-weight:bold;line-height:2.3em;color:black;text-shadow:0 0.0625em 0 white;text-decoration:none;opacity:0.2;filter:alpha(opacity=20)}.postedit-close:hover{color:black;text-decoration:none;opacity:0.4;filter:alpha(opacity=40)}
+/* cache key: enwiki:resourceloader:filter:minify-css:7:5f598e5ec19275aa6d4e8a1f968b7784 */
+.mw-collapsible-toggle{float:right;-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;user-select:none}.mw-customtoggle,.mw-collapsible-toggle{cursor:pointer} caption .mw-collapsible-toggle{float:none} li .mw-collapsible-toggle{float:none} .mw-collapsible-toggle-li{list-style:none}
+/* cache key: enwiki:resourceloader:filter:minify-css:7:869aa9133c31e6040d4830b259da96a8 */
+.suggestions{overflow:hidden;position:absolute;top:0;left:0;width:0;border:none;z-index:1099;padding:0;margin:-1px -1px 0 0} html > body .suggestions{margin:-1px 0 0 0}.suggestions-special{position:relative;background-color:white;cursor:pointer;border:solid 1px #aaaaaa;padding:0;margin:0;margin-top:-2px;display:none;padding:0.25em 0.25em;line-height:1.25em}.suggestions-results{background-color:white;cursor:pointer;border:solid 1px #aaaaaa;padding:0;margin:0}.suggestions-result{color:black;margin:0;line-height:1.5em;padding:0.01em 0.25em;text-align:left; overflow:hidden;-o-text-overflow:ellipsis; text-overflow:ellipsis;white-space:nowrap}.suggestions-result-current{background-color:#4C59A6;color:white}.suggestions-special .special-label{color:gray;text-align:left}.suggestions-special .special-query{color:black;font-style:italic;text-align:left}.suggestions-special .special-hover{background-color:silver}.suggestions-result-current .special-label,.suggestions-result-current .special-query{color:white}.highlight{font-weight:bold}
+/* cache key: enwiki:resourceloader:filter:minify-css:7:9f9511aa4ef920d34591113e825e6a1e */
+.wp-teahouse-question-form{position:absolute;margin-left:auto;margin-right:auto;background-color:#f4f3f0;border:1px solid #a7d7f9;padding:1em}#wp-th-question-ask{float:right}.wp-teahouse-ask a.external{background-image:none !important}.wp-teahouse-respond-form{position:absolute;margin-left:auto;margin-right:auto;background-color:#f4f3f0;border:1px solid #a7d7f9;padding:1em}.wp-th-respond{float:right}.wp-teahouse-respond a.external{background-image:none !important}
+/* cache key: enwiki:resourceloader:filter:minify-css:7:8614dfa7ef847fc9bfcc2d1c9f720197 */
+.referencetooltip{position:absolute;list-style:none;list-style-image:none;opacity:0;font-size:10px;margin:0;z-index:5;padding:0}.referencetooltip li{border:#080086 2px solid;max-width:260px;padding:10px 8px 13px 8px;margin:0px;background-color:#F7F7F7;box-shadow:2px 4px 2px rgba(0,0,0,0.3);-moz-box-shadow:2px 4px 2px rgba(0,0,0,0.3);-webkit-box-shadow:2px 4px 2px rgba(0,0,0,0.3)}.referencetooltip li+li{margin-left:7px;margin-top:-2px;border:0;padding:0;height:3px;width:0px;background-color:transparent;box-shadow:none;-moz-box-shadow:none;-webkit-box-shadow:none;border-top:12px #080086 solid;border-right:7px transparent solid;border-left:7px transparent solid}.referencetooltip>li+li::after{content:'';border-top:8px #F7F7F7 solid;border-right:5px transparent solid;border-left:5px transparent solid;margin-top:-12px;margin-left:-5px;z-index:1;height:0px;width:0px;display:block}.client-js body .referencetooltip li li{border:none;box-shadow:none;-moz-box-shadow:none;-webkit-box-shadow:none;height:auto;width:auto;margin:auto;padding:0;position:static}.RTflipped{padding-top:13px}.referencetooltip.RTflipped li+li{position:absolute;top:2px;border-top:0;border-bottom:12px #080086 solid}.referencetooltip.RTflipped li+li::after{border-top:0;border-bottom:8px #F7F7F7 solid;position:absolute;margin-top:7px}.RTsettings{float:right;height:16px;width:16px;cursor:pointer;background-image:url(//upload.wikimedia.org/wikipedia/commons/e/ed/Cog.png);margin-top:-9px;margin-right:-7px;-webkit-transition:opacity 0.15s;-moz-transition:opacity 0.15s;-o-transition:opacity 0.15s;-ms-transition:opacity 0.15s;transition:opacity 0.15s;opacity:0.6;filter:alpha(opacity=60)}.RTsettings:hover{opacity:1;filter:alpha(opacity=100)}.RTTarget{border:#080086 2px solid}
+/* cache key: enwiki:resourceloader:filter:minify-css:7:0f4d07a31beacf248a470098a9070e70 */
+#container{position:relative;min-height:100%}#container,video{width:100%;height:100%}#playerContainer{overflow:hidden;position:relative;height:100%;background:#000}#videoHolder{position:relative;overflow:hidden}.fullscreen #playerContainer{position:absolute !important;width:100% !important;height:100%! important;z-index:9999;min-height:100%;top:0;left:0;margin:0}.mwEmbedPlayer{width:100%;height:100%;overflow:hidden;position:absolute;top:0;left:0}.modal_editor{ left:10px;top:10px;right:10px;bottom:10px;position:fixed;z-index:100}.displayHTML a:visited{color:white}.loadingSpinner{width:32px;height:32px;display:block;padding:0px;background-image:url(//bits.wikimedia.org/static-1.24wmf7/extensions/MwEmbedSupport/MwEmbedModules/MwEmbedSupport/skins/common/images/loading_ani.gif?2014-05-29T15:08:20Z)}.mw-imported-resource{border:thin solid black}.kaltura-icon{background-image:url(//bits.wikimedia.org/static-1.24wmf7/extensions/MwEmbedSupport/MwEmbedModules/MwEmbedSupport/skins/common/images/kaltura_logo_sm_transparent.png?2014-05-29T15:08:20Z) !important;background-repeat:no-repeat;display:block;height:12px;width:12px;margin-top:2px !important;margin-left:3px !important}.mw-fullscreen-overlay{background:rgb(0,0,0) none repeat scroll 0% 0%;position:fixed;top:0pt;left:0pt;width:100%;height:100%;-moz-background-clip:border;-moz-background-origin:padding;-moz-background-inline-policy:continuous} .play-btn-large{width:70px;height:53px;background :url(//bits.wikimedia.org/static-1.24wmf7/extensions/MwEmbedSupport/MwEmbedModules/MwEmbedSupport/skins/common/images/player_big_play_button.png?2014-05-29T15:08:20Z);position :absolute;cursor :pointer;border :none !important;z-index :1}.play-btn-large:hover{background :url(//bits.wikimedia.org/static-1.24wmf7/extensions/MwEmbedSupport/MwEmbedModules/MwEmbedSupport/skins/common/images/player_big_play_button_hover.png?2014-05-29T15:08:20Z)}.carouselContainer{position :absolute;width :100%;z-index :2}.carouselVideoTitle{position :absolute;top :0px;left :0px;width :100%;background :rgba(0,0,0,0.8);color :white;font-size :small;font-weight :bold;z-index :2}.carouselVideoTitleText{display :block;padding :10px 10px 10px 20px}.carouselTitleDuration{position :absolute;top :0px;right :0px;padding :2px;background-color :#5A5A5A;color :#D9D9D9;font-size :smaller;z-index :2}.carouselImgTitle{position :absolute;width :100%;text-align :center;color :white;font-size :small;background :rgba(0,0,0,0.4)}.carouselImgDuration{position :absolute;top :2px;left :2px;background :rgba( 0,0,0,0.7 );color :white;padding :1px 6px;font-size :small}.carouselPrevButton,.carouselNextButton{display :block;position :absolute;bottom:23px}.carouselPrevButton{left :5px}.carouselNextButton{right:6px}.alert-container{-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;background-image:linear-gradient(bottom,rgb(215,215,215) 4%,rgb(230,230,230) 55%,rgb(255,255,255) 100%);background-image:-o-linear-gradient(bottom,rgb(215,215,215) 4%,rgb(230,230,230) 55%,rgb(255,255,255) 100%);background-image:-moz-linear-gradient(bottom,rgb(215,215,215) 4%,rgb(230,230,230) 55%,rgb(255,255,255) 100%);background-image:-webkit-linear-gradient(bottom,rgb(215,215,215) 4%,rgb(230,230,230) 55%,rgb(255,255,255) 100%);background-image:-ms-linear-gradient(bottom,rgb(215,215,215) 4%,rgb(230,230,230) 55%,rgb(255,255,255) 100%);background-image:-webkit-gradient(linear,left bottom,left top,color-stop(0.04,rgb(215,215,215)),color-stop(0.55,rgb(230,230,230)),color-stop(1,rgb(255,255,255)));margin:auto;position:absolute;top:0;left:0;right:0;bottom:0;max-width:80%;max-height:30%}.alert-title{background-color :#E6E6E6;padding :5px;border-bottom :1px solid #D1D1D1;font-weight :normal !important;font-size:14px !important;-webkit-border-top-left-radius:3px;-moz-border-radius-topleft:3px;border-top-left-radius:3px;-webkit-border-top-right-radius:3px;-moz-border-radius-topright:3px;border-top-right-radius:3px }.alert-message{padding :5px;font-weight :normal !important;text-align:center;font-size:14px !important}.alert-buttons-container{text-align:center;padding-bottom:5px}.alert-button{background-color:#474747;color:white;-webkit-border-radius:.5em;-moz-border-radius:.5em;border-radius:.5em;padding:2px 10px;background-image:linear-gradient(bottom,rgb(25,25,25) 4%,rgb(47,47,47) 55%,rgb(71,71,71) 68%);background-image:-o-linear-gradient(bottom,rgb(25,25,25) 4%,rgb(47,47,47) 55%,rgb(71,71,71) 68%);background-image:-moz-linear-gradient(bottom,rgb(25,25,25) 4%,rgb(47,47,47) 55%,rgb(71,71,71) 68%);background-image:-webkit-linear-gradient(bottom,rgb(25,25,25) 4%,rgb(47,47,47) 55%,rgb(71,71,71) 68%);background-image:-ms-linear-gradient(bottom,rgb(25,25,25) 4%,rgb(47,47,47) 55%,rgb(71,71,71) 68%);background-image:-webkit-gradient( linear,left bottom,left top,color-stop(0.04,rgb(25,25,25)),color-stop(0.55,rgb(47,47,47)),color-stop(0.68,rgb(71,71,71)) )}.alert-text{color :black !important}
+/* cache key: enwiki:resourceloader:filter:minify-css:7:136bae7a304c5ffb1c52e6408fed49a8 */
+.mw-mmv-overlay{position:fixed;top:0px;left:0px;right:0px;bottom:0px;z-index:1000;background-color:#000000}body.mw-mmv-lightbox-open{overflow-y:auto}body.mw-mmv-lightbox-open #mw-page-base,body.mw-mmv-lightbox-open #mw-head-base,body.mw-mmv-lightbox-open #mw-navigation,body.mw-mmv-lightbox-open #mw-footer,body.mw-mmv-lightbox-open #content{ display:none}body.mw-mmv-lightbox-open > :not(.mw-mmv-overlay,.mw-mmv-wrapper){ display:none}.mw-mmv-view-expanded{display:inline-block;border:1px solid #dddddd;padding:5px;padding-left:34px;background-image:url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjwhLS0gQ3JlYXRlZCB3aXRoIElua3NjYXBlIChodHRwOi8vd3d3Lmlua3NjYXBlLm9yZy8pIC0tPgoKPHN2ZwogICB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iCiAgIHhtbG5zOmNjPSJodHRwOi8vY3JlYXRpdmVjb21tb25zLm9yZy9ucyMiCiAgIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyIKICAgeG1sbnM6c3ZnPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogICB2ZXJzaW9uPSIxLjEiCiAgIHdpZHRoPSIxMDAlIgogICBoZWlnaHQ9IjEwMCUiCiAgIHZpZXdCb3g9IjAgMCAyOSAyNCIKICAgaWQ9IkxheWVyXzEiCiAgIHhtbDpzcGFjZT0icHJlc2VydmUiPjxtZXRhZGF0YQogICBpZD0ibWV0YWRhdGExMyI+PHJkZjpSREY+PGNjOldvcmsKICAgICAgIHJkZjphYm91dD0iIj48ZGM6Zm9ybWF0PmltYWdlL3N2Zyt4bWw8L2RjOmZvcm1hdD48ZGM6dHlwZQogICAgICAgICByZGY6cmVzb3VyY2U9Imh0dHA6Ly9wdXJsLm9yZy9kYy9kY21pdHlwZS9TdGlsbEltYWdlIiAvPjxkYzp0aXRsZT48L2RjOnRpdGxlPjwvY2M6V29yaz48L3JkZjpSREY+PC9tZXRhZGF0YT48ZGVmcwogICBpZD0iZGVmczExIiAvPgo8ZwogICBpZD0iZzMiPgoJPHBhdGgKICAgZD0iTSA4LDUuNiBWIDE2LjcgSCAyMi41IFYgNS42IEwgOCw1LjYgeiBtIDEyLjksOC44IEggOS41IGwgMy40LC00LjQgMC41LC0wLjIgMy4yLDMuNCAxLjcsLTEgMi42LDIuMiAwLDAgeiIKICAgaWQ9InBhdGg1IgogICBzdHlsZT0iZmlsbDojNzc3Nzc3IiAvPgoJPHBvbHlnb24KICAgcG9pbnRzPSI2LjUsNy4yIDYuNSwxOC40IDIyLjEsMTguNCAyMi4xLDE3LjYgNy4zLDE3LjYgNy4zLDcuMiAiCiAgIGlkPSJwb2x5Z29uNyIKICAgc3R5bGU9ImZpbGw6Izc3Nzc3NyIgLz4KPC9nPgo8L3N2Zz4=);background-image:url(//bits.wikimedia.org/static-1.24wmf7/extensions/MultimediaViewer/resources/mmv/img/expand.svg?2014-05-29T15:08:20Z)!ie;background-position:left;background-repeat:no-repeat}
+/* cache key: enwiki:resourceloader:filter:minify-css:7:56389f2116de40de68259c5a45822a17 */
+#p-lang .uls-settings-trigger{background:transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAgCAMAAAAVMLmlAAAAA3NCSVQICAjb4U/gAAAACXBIWXMAAA3XAAAN1wFCKJt4AAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAALpQTFRF////W1tbgICAWVlZgICAUVFRgICAWVlZhYWFUlJShYWFVFRUgYGBVVVVgYGBVVVVgICAVFRUVVVVVlZWgYGBgICAVFRUgYGBVFRUgICAgYGBVVVVVVVVgYGBVlZWgYGBVFRUgICAVFRUgICAVVVVgICAVlZWgICAVFRUgICAVVVVgICAVFRUgICAVlZWgICAVVVVgICAVVVVgICAVVVVgICAVVVVgICAVVVVgICAVVVVgICAVVVVgICA9Fa9bgAAADx0Uk5TAA4OFBQWFhcXGRlJSUtLWlpbXV9fYGFhZGRlZmlpa2twcIiIioqPj5GRn5+goKGh6+vv7/Dw+fn8/P7+YuRUVgAAAOlJREFUGBmNwcdWAgEURMFLFCUaAcWAEhQYHBRmCN3//1u+BYcVC6s4p2U3OLrrVxN7Xn7uELoH5w65Dx1g6JNnoLazfz++VnZehkZir4pQ3NjzBg5TwtgBhzFh6kDr294UobiykxZc7ezVdLyx8yrw6pM+8GjnDjsf7gj3/WpiJ7Vhl6OW3eC/mlKdo5teZSHNSoM24XqvTCHTvg0MdDIASpn08/6ZSlkJ6jMpLUBhLc3qKEwIIwUURoSJAs2ltC5AIZUWTbjcSulktJayCvCikx7wJG0VttrfEp5eLpfS4uLtgaOmVOeMP8BAM9RClMO9AAAAAElFTkSuQmCC) no-repeat right top;background:transparent url(//bits.wikimedia.org/static-1.24wmf7/extensions/UniversalLanguageSelector/resources/css/../images/cog-sprite.png?2014-05-29T15:10:00Z) no-repeat right top!ie;background-image:-webkit-linear-gradient(transparent,transparent),url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHdpZHRoPSIxNCIgaGVpZ2h0PSIzMiI+PGRlZnM+PHBhdGggZD0iTTEzLjU4MiA2LjYzMmgtMS4wNjRjLS4xMzMtLjUzOC0uMzU0LTEuMDY1LS42NDUtMS41NTJsLjc1LS43NWMuMTY0LS4xNjQuMTY0LS40MjkgMC0uNTkzbC0xLjM1OS0xLjM2Yy0uMTY0LS4xNjQtLjQzLS4xNjQtLjU5NCAwbC0uNzUuNzVjLS40OS0uMjk0LTEuMDEyLS41MTItMS41NTEtLjY0NXYtMS4wNjRjMC0uMjMxLS4xODctLjQxOC0uNDE5LS40MThoLTEuOTE4Yy0uMjMxIDAtLjQxOC4xODctLjQxOC40MTh2MS4wNjNjLS41NDEuMTM1LTEuMDYyLjM1Mi0xLjU1Mi42NDZsLS43NS0uNzVjLS4xNjQtLjE2NC0uNDI5LS4xNjQtLjU5MyAwbC0xLjM2IDEuMzZjLS4xNjQuMTY0LS4xNjQuNDI5IDAgLjU5M2wuNzUuNzVjLS4yOTIuNDg4LS40OTQgMS4wMTUtLjYyNyAxLjU1MWgtMS4wNjRjLS4yMzEgMC0uNDE4LjE4Ny0uNDE4LjQxOXYxLjkxOGMwIC4yMzEuMTg3LjQxOC40MTguNDE4aDEuMDQ2Yy4xMzQuNTQyLjM1MSAxLjA2Mi42NDUgMS41NTFsLS43NS43NWMtLjE2NC4xNjQtLjE2NC40MjkgMCAuNTkzbDEuMzYgMS4zNmMuMTY0LjE2NC40MjkuMTY0LjU5MyAwbC43NS0uNzVjLjQ5MS4yOTYgMS4wMS40OTMgMS41NTEuNjI3djEuMDYzYy4wMDEuMjMzLjE4OC40Mi40MTkuNDJoMS45MThjLjIzMSAwIC40MTktLjE4Ny40MTktLjQxOHYtMS4wNjNjLjU0Mi0uMTM0IDEuMDYxLS4zMzMgMS41NTEtLjYyN2wuNzUuNzVjLjE2NC4xNjQuNDMuMTY0LjU5NCAwbDEuMzU5LTEuMzZjLjE2NC0uMTY0LjE2NC0uNDI5IDAtLjU5M2wtLjc1LS43NWMuMjk1LS40ODkuNTEtMS4wMTMuNjQ1LTEuNTUxaDEuMDY0Yy4yMy0uMDAyLjQxOC0uMTg5LjQxOC0uNDJ2LTEuOTE4YzAtLjIzMi0uMTg4LS40MTgtLjQxOC0uNDE4em0tNi41ODIgNC4wMTJjLTEuNDYxIDAtMi42NDUtMS4xODQtMi42NDUtMi42NDRzMS4xODQtMi42NDQgMi42NDUtMi42NDQgMi42NDUgMS4xODQgMi42NDUgMi42NDQtMS4xODQgMi42NDQtMi42NDUgMi42NDR6IiBpZD0iYSIvPjwvZGVmcz48dXNlIHhsaW5rOmhyZWY9IiNhIiBmaWxsPSIjODA4MDgwIi8+PHVzZSB4bGluazpocmVmPSIjYSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAxNikiIGZpbGw9IiM1NTUiLz48L3N2Zz4=);background-image:-webkit-linear-gradient(transparent,transparent),url(//bits.wikimedia.org/static-1.24wmf7/extensions/UniversalLanguageSelector/resources/css/../images/cog-sprite.svg?2014-05-29T15:10:00Z)!ie;background-image:linear-gradient(transparent,transparent),url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHdpZHRoPSIxNCIgaGVpZ2h0PSIzMiI+PGRlZnM+PHBhdGggZD0iTTEzLjU4MiA2LjYzMmgtMS4wNjRjLS4xMzMtLjUzOC0uMzU0LTEuMDY1LS42NDUtMS41NTJsLjc1LS43NWMuMTY0LS4xNjQuMTY0LS40MjkgMC0uNTkzbC0xLjM1OS0xLjM2Yy0uMTY0LS4xNjQtLjQzLS4xNjQtLjU5NCAwbC0uNzUuNzVjLS40OS0uMjk0LTEuMDEyLS41MTItMS41NTEtLjY0NXYtMS4wNjRjMC0uMjMxLS4xODctLjQxOC0uNDE5LS40MThoLTEuOTE4Yy0uMjMxIDAtLjQxOC4xODctLjQxOC40MTh2MS4wNjNjLS41NDEuMTM1LTEuMDYyLjM1Mi0xLjU1Mi42NDZsLS43NS0uNzVjLS4xNjQtLjE2NC0uNDI5LS4xNjQtLjU5MyAwbC0xLjM2IDEuMzZjLS4xNjQuMTY0LS4xNjQuNDI5IDAgLjU5M2wuNzUuNzVjLS4yOTIuNDg4LS40OTQgMS4wMTUtLjYyNyAxLjU1MWgtMS4wNjRjLS4yMzEgMC0uNDE4LjE4Ny0uNDE4LjQxOXYxLjkxOGMwIC4yMzEuMTg3LjQxOC40MTguNDE4aDEuMDQ2Yy4xMzQuNTQyLjM1MSAxLjA2Mi42NDUgMS41NTFsLS43NS43NWMtLjE2NC4xNjQtLjE2NC40MjkgMCAuNTkzbDEuMzYgMS4zNmMuMTY0LjE2NC40MjkuMTY0LjU5MyAwbC43NS0uNzVjLjQ5MS4yOTYgMS4wMS40OTMgMS41NTEuNjI3djEuMDYzYy4wMDEuMjMzLjE4OC40Mi40MTkuNDJoMS45MThjLjIzMSAwIC40MTktLjE4Ny40MTktLjQxOHYtMS4wNjNjLjU0Mi0uMTM0IDEuMDYxLS4zMzMgMS41NTEtLjYyN2wuNzUuNzVjLjE2NC4xNjQuNDMuMTY0LjU5NCAwbDEuMzU5LTEuMzZjLjE2NC0uMTY0LjE2NC0uNDI5IDAtLjU5M2wtLjc1LS43NWMuMjk1LS40ODkuNTEtMS4wMTMuNjQ1LTEuNTUxaDEuMDY0Yy4yMy0uMDAyLjQxOC0uMTg5LjQxOC0uNDJ2LTEuOTE4YzAtLjIzMi0uMTg4LS40MTgtLjQxOC0uNDE4em0tNi41ODIgNC4wMTJjLTEuNDYxIDAtMi42NDUtMS4xODQtMi42NDUtMi42NDRzMS4xODQtMi42NDQgMi42NDUtMi42NDQgMi42NDUgMS4xODQgMi42NDUgMi42NDQtMS4xODQgMi42NDQtMi42NDUgMi42NDR6IiBpZD0iYSIvPjwvZGVmcz48dXNlIHhsaW5rOmhyZWY9IiNhIiBmaWxsPSIjODA4MDgwIi8+PHVzZSB4bGluazpocmVmPSIjYSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAxNikiIGZpbGw9IiM1NTUiLz48L3N2Zz4=);background-image:linear-gradient(transparent,transparent),url(//bits.wikimedia.org/static-1.24wmf7/extensions/UniversalLanguageSelector/resources/css/../images/cog-sprite.svg?2014-05-29T15:10:00Z)!ie;height:16px;width:14px;float:right;cursor:pointer}.skin-vector #p-lang .uls-settings-trigger{ margin-top:3px}#p-lang .uls-settings-trigger:hover{background-position:right -16px}
+/* cache key: enwiki:resourceloader:filter:minify-css:7:154f5c3055164d8255cf00d5b6553fbd */</style><style>
+.suggestions a.mw-searchSuggest-link,.suggestions a.mw-searchSuggest-link:hover,.suggestions a.mw-searchSuggest-link:active,.suggestions a.mw-searchSuggest-link:focus{color:black;text-decoration:none}.suggestions-result-current a.mw-searchSuggest-link,.suggestions-result-current a.mw-searchSuggest-link:hover,.suggestions-result-current a.mw-searchSuggest-link:active,.suggestions-result-current a.mw-searchSuggest-link:focus{color:white}.suggestions a.mw-searchSuggest-link .special-query{ overflow:hidden;-o-text-overflow:ellipsis; text-overflow:ellipsis;white-space:nowrap}
+/* cache key: enwiki:resourceloader:filter:minify-css:7:ae3fa4570b5ac0c6cf7b3776c8ae4d6f */</style><style>
+.cite-accessibility-label{position:absolute !important; top:-99999px;clip:rect(1px 1px 1px 1px); clip:rect(1px,1px,1px,1px);padding:0 !important;border:0 !important;height:1px !important;width:1px !important;overflow:hidden}.mw-cite-backlink,.cite-accessibility-label{-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;user-select:none}
+/* cache key: enwiki:resourceloader:filter:minify-css:7:a59b70abe6ecaa39388bb79ebc509cb0 */</style><meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/load.css">
+<style>a:lang(ar),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}
+/* cache key: enwiki:resourceloader:filter:minify-css:7:3904d24a08aa08f6a68dc338f9be277e */</style>
+<script src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/load_002.php"></script><script src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/load_003.php"></script><style title="spinjs"></style>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Non-uniform_rational_B-spline","wgTitle":"Non-uniform rational B-spline","wgCurRevisionId":606671679,"wgRevisionId":606671679,"wgArticleId":308474,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Articles lacking in-text citations from April 2009","All articles lacking in-text citations","Computer-aided design","Splines","3D computer graphics","Interpolation","Multivariate interpolation"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Non-uniform_rational_B-spline","wgIsProbablyEditable":true,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgRedirectedFrom":"Nurbs","wgWikiEditorEnabledModules":{"toolbar":true,"dialogs":true,"hidesig":true,"preview":false,"previewDialog":false,"publish":false},"wgBetaFeaturesFeatures":[],"wgMediaViewerOnClick":true,"wgVisualEditor":{"isPageWatched":false,"magnifyClipIconURL":"//bits.wikimedia.org/static-1.24wmf7/skins/common/images/magnify-clip.png","pageLanguageCode":"en","pageLanguageDir":"ltr","svgMaxSize":2048},"wikilove-recipient":"","wikilove-anon":0,"wgGuidedTourHelpGuiderUrl":"Help:Guided tours/guider","wgFlowTermsOfUseEdit":"By saving changes, you agree to our \u003Ca class=\"external text\" href=\"//wikimediafoundation.org/wiki/Terms_of_use\"\u003ETerms of Use\u003C/a\u003E and agree to irrevocably release your text under the \u003Ca rel=\"nofollow\" class=\"external text\" href=\"//creativecommons.org/licenses/by-sa/3.0\"\u003ECC BY-SA 3.0 License\u003C/a\u003E and \u003Ca class=\"external text\" href=\"//en.wikipedia.org/wiki/Wikipedia:Text_of_the_GNU_Free_Documentation_License\"\u003EGFDL\u003C/a\u003E","wgFlowTermsOfUseSummarize":"By clicking \"Summarize\", you agree to the terms of use for this wiki.","wgFlowTermsOfUseCloseTopic":"By clicking \"Close topic\", you agree to the terms of use for this wiki.","wgFlowTermsOfUseReopenTopic":"By clicking \"Reopen topic\", you agree to the terms of use for this wiki.","wgULSAcceptLanguageList":["fr","fr-fr","en-us","en"],"wgULSCurrentAutonym":"English","wgFlaggedRevsParams":{"tags":{"status":{"levels":1,"quality":2,"pristine":3}}},"wgStableRevisionId":null,"wgCategoryTreePageCategoryOptions":"{\"mode\":0,\"hideprefix\":20,\"showcount\":true,\"namespaces\":false}","wgNoticeProject":"wikipedia","wgWikibaseItemId":"Q734737"});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function($,jQuery){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"editfont":"default","editondblclick":0,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"math":0,"minordefault":0,"newpageshidepatrolled":0,"nickname":"","norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"rcdays":7,"rclimit":50,"rows":25,"showhiddencats":false,"shownumberswatching":1,"showtoolbar":1,"skin":"vector","stubthreshold":0,"thumbsize":4,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":1,"watchdefault":0,"watchdeletion":0,"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,
+"useeditwarning":1,"prefershttps":1,"flaggedrevssimpleui":1,"flaggedrevsstable":0,"flaggedrevseditdiffs":true,"flaggedrevsviewdiffs":false,"usebetatoolbar":1,"usebetatoolbar-cgd":1,"multimediaviewer-enable":true,"visualeditor-enable":0,"visualeditor-betatempdisable":0,"visualeditor-enable-experimental":0,"visualeditor-enable-language":0,"visualeditor-hidebetawelcome":0,"wikilove-enabled":1,"mathJax":false,"echo-subscriptions-web-page-review":true,"echo-subscriptions-email-page-review":false,"ep_showtoplink":false,"ep_bulkdelorgs":false,"ep_bulkdelcourses":true,"ep_showdyk":true,"echo-subscriptions-web-education-program":true,"echo-subscriptions-email-education-program":false,"echo-notify-show-link":true,"echo-show-alert":true,"echo-email-frequency":0,"echo-email-format":"html","echo-subscriptions-email-system":true,"echo-subscriptions-web-system":true,"echo-subscriptions-email-other":false,"echo-subscriptions-web-other":true,"echo-subscriptions-email-edit-user-talk":false,
+"echo-subscriptions-web-edit-user-talk":true,"echo-subscriptions-email-reverted":false,"echo-subscriptions-web-reverted":true,"echo-subscriptions-email-article-linked":false,"echo-subscriptions-web-article-linked":false,"echo-subscriptions-email-mention":false,"echo-subscriptions-web-mention":true,"echo-subscriptions-web-edit-thank":true,"echo-subscriptions-email-edit-thank":false,"echo-subscriptions-web-flow-discussion":true,"echo-subscriptions-email-flow-discussion":false,"gettingstarted-task-toolbar-show-intro":true,"uls-preferences":"","language":"en","variant-gan":"gan","variant-iu":"iu","variant-kk":"kk","variant-ku":"ku","variant-shi":"shi","variant-sr":"sr","variant-tg":"tg","variant-uz":"uz","variant-zh":"zh","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":
+false,"searchNs15":false,"searchNs100":false,"searchNs101":false,"searchNs108":false,"searchNs109":false,"searchNs118":false,"searchNs119":false,"searchNs446":false,"searchNs447":false,"searchNs710":false,"searchNs711":false,"searchNs828":false,"searchNs829":false,"gadget-teahouse":1,"gadget-ReferenceTooltips":1,"gadget-DRN-wizard":1,"gadget-charinsert":1,"gadget-refToolbar":1,"gadget-mySandbox":1,"variant":"en"});},{},{});mw.loader.implement("user.tokens",function($,jQuery){mw.user.tokens.set({"editToken":"+\\","patrolToken":false,"watchToken":false});},{},{});
+/* cache key: enwiki:resourceloader:filter:minify-js:7:369915ab579125627842c0da1e18ba20 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax","ext.centralauth.centralautologin","mmv.head","ext.visualEditor.viewPageTarget.init","ext.uls.init","ext.uls.interface","ext.centralNotice.bannerController","skins.vector.js"]);
+}</script>
+<link rel="dns-prefetch" href="https://meta.wikimedia.org/"><!--[if lt IE 7]><style type="text/css">body{behavior:url("/w/static-1.24wmf7/skins/vector/csshover.min.htc")}</style><![endif]--><script type="text/javascript" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/index.php"></script><script>try {  for(var lastpass_iter=0; lastpass_iter < document.forms.length; lastpass_iter++){    var lastpass_f = document.forms[lastpass_iter];    if(typeof(lastpass_f.lpsubmitorig)=="undefined"){      if (typeof(lastpass_f.submit) == "function") {        lastpass_f.lpsubmitorig = lastpass_f.submit;        lastpass_f.submit = function(){          var form = this;          try {            if (document.documentElement && 'createEvent' in document)            {              var forms = document.getElementsByTagName('form');              for (var i=0 ; i<forms.length ; ++i)                if (forms[i]==form)                {                  var element = document.createElement('lpformsubmitdataelement');                  element.setAttribute('formnum',i);                  element.setAttribute('from','submithook');                  document.documentElement.appendChild(element);                  var evt = document.createEvent('Events');                  evt.initEvent('lpformsubmit',true,false);                  element.dispatchEvent(evt);                  break;                }            }          } catch (e) {}          try {            form.lpsubmitorig();          } catch (e) {}        }      }    }  }} catch (e) {}</script></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-Non-uniform_rational_B-spline skin-vector action-view vector-animateLayout">
+		<div id="mw-page-base" class="noprint"></div>
+		<div id="mw-head-base" class="noprint"></div>
+		<div id="content" class="mw-body" role="main">
+			<a id="top"></a>
+
+			<div id="mw-js-message" style="display:none;"></div>
+							<div id="siteNotice"><div id="centralNotice"></div><!-- CentralNotice --></div>
+						<h1 id="firstHeading" class="firstHeading" lang="en"><span dir="auto">Non-uniform rational B-spline</span></h1>
+						<div id="bodyContent" class="mw-body-content">
+									<div id="siteSub">From Wikipedia, the free encyclopedia</div>
+								<div id="contentSub">&nbsp;&nbsp;(Redirected from <a href="https://en.wikipedia.org/w/index.php?title=Nurbs&amp;redirect=no" title="Nurbs">Nurbs</a>)</div>
+												<div id="jump-to-nav" class="mw-jump">
+					Jump to:					<a href="#mw-navigation">navigation</a>, 					<a href="#p-search">search</a>
+				</div>
+				<div id="mw-content-text" dir="ltr" class="mw-content-ltr" lang="en"><div class="thumb tright">
+<div class="thumbinner" style="width:402px;"><a href="https://en.wikipedia.org/wiki/File:NURBS_3-D_surface.gif" class="image"><img alt="" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/NURBS_3-D_surface.gif" class="thumbimage" data-file-width="400" data-file-height="280" height="280" width="400"></a>
+<div class="thumbcaption">
+<div class="magnify"><a href="https://en.wikipedia.org/wiki/File:NURBS_3-D_surface.gif" class="internal" title="Enlarge"><img src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/magnify-clip.png" alt="" height="11" width="15"></a></div>
+Three-dimensional NURBS surfaces can have complex, organic shapes. 
+Control points influence the directions the surface takes. The outermost
+ square below delineates the X/Y extents of the surface.</div>
+</div>
+</div>
+<div class="thumb tright">
+<div class="thumbinner" style="width:222px;"><a href="https://en.wikipedia.org/wiki/File:NURBstatic.svg" class="image"><img alt="" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/220px-NURBstatic.png" class="thumbimage" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/8/81/NURBstatic.svg/330px-NURBstatic.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/8/81/NURBstatic.svg/440px-NURBstatic.svg.png 2x" data-file-width="343" data-file-height="126" height="81" width="220"></a>
+<div class="thumbcaption">
+<div class="magnify"><a href="https://en.wikipedia.org/wiki/File:NURBstatic.svg" class="internal" title="Enlarge"><img src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/magnify-clip.png" alt="" height="11" width="15"></a></div>
+A NURBS curve.<br>
+<a href="https://en.wikipedia.org/wiki/File:Spline01.gif" title="File:Spline01.gif">Animated version</a></div>
+</div>
+</div>
+<p><b>Non-uniform rational <a href="https://en.wikipedia.org/wiki/B-spline" title="B-spline">basis spline</a></b> (<b>NURBS</b>) is a mathematical model commonly used in <a href="https://en.wikipedia.org/wiki/Computer_graphics" title="Computer graphics">computer graphics</a> for generating and representing curves and surfaces. It offers great flexibility and precision for handling both analytic (<a href="https://en.wikipedia.org/wiki/Surface" title="Surface">surfaces</a> defined by common mathematical <a href="https://en.wikipedia.org/wiki/Formula" title="Formula">formulae</a>) and <a href="https://en.wikipedia.org/wiki/3D_modeling" title="3D modeling">modeled</a> shapes.</p>
+<p></p>
+<div id="toc" class="toc">
+<div id="toctitle">
+<h2>Contents</h2>
+<span class="toctoggle">&nbsp;[<a href="#" class="internal" id="togglelink">hide</a>]&nbsp;</span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#History"><span class="tocnumber">1</span> <span class="toctext">History</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Use"><span class="tocnumber">2</span> <span class="toctext">Use</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Continuity"><span class="tocnumber">3</span> <span class="toctext">Continuity</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Technical_specifications"><span class="tocnumber">4</span> <span class="toctext">Technical specifications</span></a>
+<ul>
+<li class="toclevel-2 tocsection-5"><a href="#Control_points"><span class="tocnumber">4.1</span> <span class="toctext">Control points</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="#Knot_vector"><span class="tocnumber">4.2</span> <span class="toctext">Knot vector</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="#Comparison_of_Knots_and_Control_Points"><span class="tocnumber">4.3</span> <span class="toctext">Comparison of Knots and Control Points</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="#Order"><span class="tocnumber">4.4</span> <span class="toctext">Order</span></a></li>
+<li class="toclevel-2 tocsection-9"><a href="#Construction_of_the_basis_functions"><span class="tocnumber">4.5</span> <span class="toctext">Construction of the basis functions</span></a></li>
+<li class="toclevel-2 tocsection-10"><a href="#General_form_of_a_NURBS_curve"><span class="tocnumber">4.6</span> <span class="toctext">General form of a NURBS curve</span></a></li>
+<li class="toclevel-2 tocsection-11"><a href="#General_form_of_a_NURBS_surface"><span class="tocnumber">4.7</span> <span class="toctext">General form of a NURBS surface</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-12"><a href="#Manipulating_NURBS_objects"><span class="tocnumber">5</span> <span class="toctext">Manipulating NURBS objects</span></a>
+<ul>
+<li class="toclevel-2 tocsection-13"><a href="#Knot_insertion"><span class="tocnumber">5.1</span> <span class="toctext">Knot insertion</span></a></li>
+<li class="toclevel-2 tocsection-14"><a href="#Knot_removal"><span class="tocnumber">5.2</span> <span class="toctext">Knot removal</span></a></li>
+<li class="toclevel-2 tocsection-15"><a href="#Degree_elevation"><span class="tocnumber">5.3</span> <span class="toctext">Degree elevation</span></a></li>
+<li class="toclevel-2 tocsection-16"><a href="#Curvature"><span class="tocnumber">5.4</span> <span class="toctext">Curvature</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-17"><a href="#Example:_a_circle"><span class="tocnumber">6</span> <span class="toctext">Example: a circle</span></a></li>
+<li class="toclevel-1 tocsection-18"><a href="#See_also"><span class="tocnumber">7</span> <span class="toctext">See also</span></a></li>
+<li class="toclevel-1 tocsection-19"><a href="#References"><span class="tocnumber">8</span> <span class="toctext">References</span></a></li>
+<li class="toclevel-1 tocsection-20"><a href="#Notes"><span class="tocnumber">9</span> <span class="toctext">Notes</span></a></li>
+<li class="toclevel-1 tocsection-21"><a href="#External_links"><span class="tocnumber">10</span> <span class="toctext">External links</span></a></li>
+</ul>
+</div>
+<p></p>
+<h2><span class="mw-headline" id="History">History</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="https://en.wikipedia.org/w/index.php?title=Non-uniform_rational_B-spline&amp;action=edit&amp;section=1" title="Edit section: History">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>Development of NURBS began in the 1950s by engineers who were in need of a mathematically precise representation of <a href="https://en.wikipedia.org/wiki/Freeform_surface" title="Freeform surface" class="mw-redirect">freeform surfaces</a>
+ like those used for ship hulls, aerospace exterior surfaces, and car 
+bodies, which could be exactly reproduced whenever technically needed. 
+Prior representations of this kind of surface only existed as a single 
+physical model created by a <a href="https://en.wikipedia.org/wiki/Designer" title="Designer">designer</a>.</p>
+<p>The pioneers of this development were <a href="https://en.wikipedia.org/wiki/Pierre_B%C3%A9zier" title="Pierre Bézier">Pierre Bézier</a> who worked as an engineer at <a href="https://en.wikipedia.org/wiki/Renault" title="Renault">Renault</a>, and <a href="https://en.wikipedia.org/wiki/Paul_de_Casteljau" title="Paul de Casteljau">Paul de Casteljau</a> who worked at <a href="https://en.wikipedia.org/wiki/Citro%C3%ABn" title="Citroën">Citroën</a>, both in <a href="https://en.wikipedia.org/wiki/France" title="France">France</a>.
+ Bézier worked nearly parallel to de Casteljau, neither knowing about 
+the work of the other. But because Bézier published the results of his 
+work, the average <a href="https://en.wikipedia.org/wiki/Computer_graphics" title="Computer graphics">computer graphics</a> user today recognizes <a href="https://en.wikipedia.org/wiki/Spline_%28mathematics%29" title="Spline (mathematics)">splines</a> — which are represented with control points lying off the curve itself — as <a href="https://en.wikipedia.org/wiki/B%C3%A9zier_spline" title="Bézier spline">Bézier splines</a>, while de Casteljau’s name is only known and used for the algorithms he developed to evaluate <a href="https://en.wikipedia.org/wiki/Parametric_surface" title="Parametric surface">parametric surfaces</a>. In the 1960s it became clear that non-uniform, rational B-splines are a <a href="https://en.wikipedia.org/wiki/Generalization" title="Generalization">generalization</a> of Bézier splines, which can be regarded as uniform, non-rational B-splines.</p>
+<p>At first NURBS were only used in the proprietary <a href="https://en.wikipedia.org/wiki/Computer_aided_design" title="Computer aided design" class="mw-redirect">CAD</a> packages of car companies. Later they became part of standard computer graphics packages.</p>
+<p>Real-time, interactive rendering of NURBS curves and surfaces was first made commercially available on <a href="https://en.wikipedia.org/wiki/Silicon_Graphics" title="Silicon Graphics">Silicon Graphics</a>
+ workstations in 1989. In 1993, the first interactive NURBS modeller for
+ PCs, called NöRBS, was developed by CAS Berlin, a small startup company
+ cooperating with the Technical University of Berlin. Today most 
+professional computer graphics applications available for desktop use 
+offer NURBS technology, which is most often realized by integrating a 
+NURBS engine from a specialized company.</p>
+<h2><span class="mw-headline" id="Use">Use</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="https://en.wikipedia.org/w/index.php?title=Non-uniform_rational_B-spline&amp;action=edit&amp;section=2" title="Edit section: Use">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<div class="thumb tright">
+<div class="thumbinner" style="width:252px;"><a href="https://en.wikipedia.org/wiki/File:Motoryacht_design_i.png" class="image"><img alt="" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/250px-Motoryacht_design_i.png" class="thumbimage" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/3/39/Motoryacht_design_i.png/375px-Motoryacht_design_i.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/3/39/Motoryacht_design_i.png/500px-Motoryacht_design_i.png 2x" data-file-width="565" data-file-height="348" height="154" width="250"></a>
+<div class="thumbcaption">
+<div class="magnify"><a href="https://en.wikipedia.org/wiki/File:Motoryacht_design_i.png" class="internal" title="Enlarge"><img src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/magnify-clip.png" alt="" height="11" width="15"></a></div>
+Motoryacht design.</div>
+</div>
+</div>
+<p>NURBS are commonly used in computer-aided design (<a href="https://en.wikipedia.org/wiki/CAD" title="CAD" class="mw-redirect">CAD</a>), manufacturing (<a href="https://en.wikipedia.org/wiki/Computer-aided_manufacturing" title="Computer-aided manufacturing">CAM</a>), and engineering (<a href="https://en.wikipedia.org/wiki/Computer-aided_engineering" title="Computer-aided engineering">CAE</a>) and are part of numerous industry wide standards, such as <a href="https://en.wikipedia.org/wiki/IGES" title="IGES">IGES</a>, <a href="https://en.wikipedia.org/wiki/ISO_10303" title="ISO 10303">STEP</a>, <a href="https://en.wikipedia.org/wiki/ACIS" title="ACIS">ACIS</a>, and <a href="https://en.wikipedia.org/wiki/PHIGS" title="PHIGS">PHIGS</a>. NURBS tools are also found in various <a href="https://en.wikipedia.org/wiki/3D_computer_graphics_software" title="3D computer graphics software">3D modelling</a> and <a href="https://en.wikipedia.org/wiki/Animation" title="Animation">animation</a> software packages.</p>
+<p>They can be efficiently handled by the computer programs and yet 
+allow for easy human interaction. NURBS surfaces are functions of two 
+parameters mapping to a surface in three-dimensional space. The shape of
+ the surface is determined by control points. NURBS surfaces can 
+represent simple geometrical shapes in a compact form. <a href="https://en.wikipedia.org/wiki/T-Spline_%28mathematics%29" title="T-Spline (mathematics)" class="mw-redirect">T-splines</a> and <a href="https://en.wikipedia.org/wiki/Subdivision_surfaces" title="Subdivision surfaces" class="mw-redirect">subdivision surfaces</a>
+ are more suitable for complex organic shapes because they reduce the 
+number of control points twofold in comparison with the NURBS surfaces.</p>
+<p>In general, editing NURBS curves and surfaces is highly intuitive and
+ predictable. Control points are always either connected directly to the
+ curve/surface, or act as if they were connected by a rubber band. 
+Depending on the type of user interface, editing can be realized via an 
+element’s control points, which are most obvious and common for <a href="https://en.wikipedia.org/wiki/B%C3%A9zier_curve" title="Bézier curve">Bézier curves</a>, or via higher level tools such as spline modeling or hierarchical editing.</p>
+<h2><span class="mw-headline" id="Continuity">Continuity</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="https://en.wikipedia.org/w/index.php?title=Non-uniform_rational_B-spline&amp;action=edit&amp;section=3" title="Edit section: Continuity">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<div class="hatnote relarticle mainarticle">Main article: <a href="https://en.wikipedia.org/wiki/Smooth_function" title="Smooth function">Smooth function</a></div>
+<p>A surface under construction, e.g. the hull of a motor yacht, is usually composed of several NURBS surfaces known as <i>patches</i>.
+ These patches should be fitted together in such a way that the 
+boundaries are invisible. This is mathematically expressed by the 
+concept of <a href="https://en.wikipedia.org/wiki/Geometric_continuity" title="Geometric continuity" class="mw-redirect">geometric continuity</a>.</p>
+<p>Higher-level tools exist which benefit from the ability of NURBS to 
+create and establish geometric continuity of different levels:</p>
+<dl>
+<dt>Positional continuity (G0)</dt>
+<dd>holds whenever the end positions of two curves or surfaces are 
+coincidental. The curves or surfaces may still meet at an angle, giving 
+rise to a sharp corner or edge and causing broken highlights.</dd>
+<dt>Tangential continuity (G1)</dt>
+<dd>requires the end vectors of the curves or surfaces to be parallel 
+and pointing the same way, ruling out sharp edges. Because highlights 
+falling on a tangentially continuous edge are always continuous and thus
+ look natural, this level of continuity can often be sufficient.</dd>
+<dt>Curvature continuity (G2)</dt>
+<dd>further requires the end vectors to be of the same length and rate 
+of length change. Highlights falling on a curvature-continuous edge do 
+not display any change, causing the two surfaces to appear as one. This 
+can be visually recognized as “perfectly smooth”. This level of 
+continuity is very useful in the creation of models that require many <a href="https://en.wikipedia.org/wiki/Bi-cubic" title="Bi-cubic" class="mw-redirect">bi-cubic</a> patches composing one continuous surface.</dd>
+</dl>
+<p>Geometric continuity mainly refers to the shape of the resulting 
+surface; since NURBS surfaces are functions, it is also possible to 
+discuss the derivatives of the surface with respect to the parameters. 
+This is known as <a href="https://en.wikipedia.org/wiki/Parametric_continuity" title="Parametric continuity" class="mw-redirect">parametric continuity</a>. Parametric continuity of a given degree implies geometric continuity of that degree.</p>
+<p>First- and second-level parametric continuity (C0 and C1) are for 
+practical purposes identical to positional and tangential (G0 and G1) 
+continuity. Third-level parametric continuity (C2), however, differs 
+from curvature continuity in that its parameterization is also 
+continuous. In practice, C2 continuity is easier to achieve if uniform 
+B-splines are used.</p>
+<p>The definition of the continuity 'C<i>n'</i> requires that the <i>n</i><sup>th</sup> derivative of the curve/surface (<img class="mwe-math-fallback-png-inline tex" alt="d^n C(u)/du^n" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/80371d2baa80c2c9f6d97dd1f37394a2.png">) are equal at a joint.<sup id="cite_ref-1" class="reference"><a href="#cite_note-1"><span>[</span>1<span>]</span></a></sup>
+ Note that the (partial) derivatives of curves and surfaces are vectors 
+that have a direction and a magnitude. Both should be equal.</p>
+<p>Highlights and reflections can reveal the perfect smoothing, which is
+ otherwise practically impossible to achieve without NURBS surfaces that
+ have at least G2 continuity. This same principle is used as one of the 
+surface evaluation methods whereby a <a href="https://en.wikipedia.org/wiki/Ray_tracing_%28graphics%29" title="Ray tracing (graphics)">ray-traced</a> or <a href="https://en.wikipedia.org/wiki/Reflection_mapping" title="Reflection mapping">reflection-mapped</a>
+ image of a surface with white stripes reflecting on it will show even 
+the smallest deviations on a surface or set of surfaces. This method is 
+derived from car prototyping wherein surface quality is inspected by 
+checking the quality of reflections of a neon-light ceiling on the car 
+surface. This method is also known as "Zebra analysis".</p>
+<h2><span class="mw-headline" id="Technical_specifications">Technical specifications</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="https://en.wikipedia.org/w/index.php?title=Non-uniform_rational_B-spline&amp;action=edit&amp;section=4" title="Edit section: Technical specifications">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>A <b>NURBS curve</b> is defined by its <i>order</i>, a set of weighted <i>control points</i>, and a <i>knot vector</i><sup id="cite_ref-2" class="reference"><a href="#cite_note-2"><span>[</span>2<span>]</span></a></sup> . NURBS curves and surfaces are generalizations of both <a href="https://en.wikipedia.org/wiki/B-spline" title="B-spline">B-splines</a> and <a href="https://en.wikipedia.org/wiki/B%C3%A9zier_curve" title="Bézier curve">Bézier curves</a> and surfaces, the primary difference being the weighting of the control points which makes NURBS curves <i>rational</i>
+ (non-rational B-splines are a special case of rational B-splines). 
+Whereas Bézier curves evolve into only one parametric direction, usually
+ called <i>s</i> or <i>u</i>, NURBS surfaces evolve into two parametric directions, called <i>s</i> and <i>t</i> or <i>u</i> and <i>v</i>.</p>
+<div class="floatright"><a href="https://en.wikipedia.org/wiki/File:Surface_modelling.svg" class="image"><img alt="Surface modelling.svg" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/400px-Surface_modelling.png" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/8/88/Surface_modelling.svg/600px-Surface_modelling.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/8/88/Surface_modelling.svg/800px-Surface_modelling.svg.png 2x" data-file-width="361" data-file-height="235" height="260" width="400"></a></div>
+<p>By evaluating a Bézier or a NURBS curve at various values of the 
+parameter, the curve can be represented in Cartesian two- or 
+three-dimensional space. Likewise, by evaluating a NURBS surface at 
+various values of the two parameters, the surface can be represented in 
+Cartesian space.</p>
+<p>NURBS curves and surfaces are useful for a number of reasons:</p>
+<ul>
+<li>They are <a href="https://en.wikipedia.org/wiki/Invariant_%28mathematics%29" title="Invariant (mathematics)">invariant</a> under <a href="https://en.wikipedia.org/wiki/Affine_transformation" title="Affine transformation">affine</a> transformations:<sup id="cite_ref-3" class="reference"><a href="#cite_note-3"><span>[</span>3<span>]</span></a></sup>
+ operations like rotations and translations can be applied to NURBS 
+curves and surfaces by applying them to their control points.</li>
+<li>They offer one common mathematical form for both standard analytical shapes (e.g., <a href="https://en.wikipedia.org/wiki/Conics" title="Conics" class="mw-redirect">conics</a>) and free-form shapes.</li>
+<li>They provide the flexibility to design a large variety of shapes.</li>
+<li>They reduce the memory consumption when storing shapes (compared to simpler methods).</li>
+<li>They can be evaluated reasonably quickly by <a href="https://en.wikipedia.org/wiki/Numerically_stable" title="Numerically stable" class="mw-redirect">numerically stable</a> and accurate <a href="https://en.wikipedia.org/wiki/Algorithm" title="Algorithm">algorithms</a>.</li>
+</ul>
+<p>In the next sections, NURBS is discussed in one dimension (curves). 
+It should be noted that all of it can be generalized to two or even more
+ dimensions.</p>
+<h3><span class="mw-headline" id="Control_points">Control points</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="https://en.wikipedia.org/w/index.php?title=Non-uniform_rational_B-spline&amp;action=edit&amp;section=5" title="Edit section: Control points">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>The control points determine the shape of the curve.<sup id="cite_ref-4" class="reference"><a href="#cite_note-4"><span>[</span>4<span>]</span></a></sup> Typically, each point of the curve is computed by taking a <a href="https://en.wikipedia.org/wiki/Weighted" title="Weighted" class="mw-redirect">weighted</a>
+ sum of a number of control points. The weight of each point varies 
+according to the governing parameter. For a curve of degree d, the 
+weight of any control point is only nonzero in d+1 intervals of the 
+parameter space. Within those intervals, the weight changes according to
+ a polynomial function (<i>basis functions</i>) of degree d. At the 
+boundaries of the intervals, the basis functions go smoothly to zero, 
+the smoothness being determined by the degree of the polynomial.</p>
+<p>As an example, the basis function of degree one is a triangle 
+function. It rises from zero to one, then falls to zero again. While it 
+rises, the basis function of the previous control point falls. In that 
+way, the curve interpolates between the two points, and the resulting 
+curve is a polygon, which is <a href="https://en.wikipedia.org/wiki/Continuous_function" title="Continuous function">continuous</a>, but not <a href="https://en.wikipedia.org/wiki/Differentiable" title="Differentiable" class="mw-redirect">differentiable</a>
+ at the interval boundaries, or knots. Higher degree polynomials have 
+correspondingly more continuous derivatives. Note that within the 
+interval the polynomial nature of the basis functions and the linearity 
+of the construction make the curve perfectly smooth, so it is only at 
+the knots that discontinuity can arise.</p>
+<p>In many applications the fact that a single control point only 
+influences those intervals where it is active is a highly desirable 
+property, known as <b>local support</b>. In modeling, it allows the changing of one part of a surface while keeping other parts equal.</p>
+<p>Adding more control points allows better approximation to a given 
+curve, although only a certain class of curves can be represented 
+exactly with a finite number of control points. NURBS curves also 
+feature a scalar <b>weight</b> for each control point. This allows for 
+more control over the shape of the curve without unduly raising the 
+number of control points. In particular, it adds conic sections like 
+circles and ellipses to the set of curves that can be represented 
+exactly. The term <i>rational</i> in NURBS refers to these weights.</p>
+<p>The control points can have any <a href="https://en.wikipedia.org/wiki/Dimensionality" title="Dimensionality" class="mw-redirect">dimensionality</a>. One-dimensional points just define a <a href="https://en.wikipedia.org/wiki/Scalar_%28mathematics%29" title="Scalar (mathematics)">scalar</a>
+ function of the parameter. These are typically used in image processing
+ programs to tune the brightness and color curves. Three-dimensional 
+control points are used abundantly in 3D modeling, where they are used 
+in the everyday meaning of the word 'point', a location in 3D space. 
+Multi-dimensional points might be used to control sets of time-driven 
+values, e.g. the different positional and rotational settings of a robot
+ arm. NURBS surfaces are just an application of this. Each control 
+'point' is actually a full vector of control points, defining a curve. 
+These curves share their degree and the number of control points, and 
+span one dimension of the parameter space. By interpolating these 
+control vectors over the other dimension of the parameter space, a 
+continuous set of curves is obtained, defining the surface.</p>
+<h3><span class="mw-headline" id="Knot_vector">Knot vector</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="https://en.wikipedia.org/w/index.php?title=Non-uniform_rational_B-spline&amp;action=edit&amp;section=6" title="Edit section: Knot vector">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>The knot vector is a sequence of parameter values that determines 
+where and how the control points affect the NURBS curve. The number of 
+knots is always equal to the number of control points plus curve degree 
+plus one (i.e. number of control points plus curve order). The knot 
+vector divides the parametric space in the intervals mentioned before, 
+usually referred to as <i>knot spans</i>. Each time the parameter value 
+enters a new knot span, a new control point becomes active, while an old
+ control point is discarded. It follows that the values in the knot 
+vector should be in nondecreasing order, so (0, 0, 1, 2, 3, 3) is valid 
+while (0, 0, 2, 1, 3, 3) is not.</p>
+<p>Consecutive knots can have the same value. This then defines a knot 
+span of zero length, which implies that two control points are activated
+ at the same time (and of course two control points become deactivated).
+ This has impact on continuity of the resulting curve or its higher 
+derivatives; for instance, it allows the creation of corners in an 
+otherwise smooth NURBS curve. A number of coinciding knots is sometimes 
+referred to as a knot with a certain <b>multiplicity</b>. Knots with 
+multiplicity two or three are known as double or triple knots. The 
+multiplicity of a knot is limited to the degree of the curve; since a 
+higher multiplicity would split the curve into disjoint parts and it 
+would leave control points unused. For first-degree NURBS, each knot is 
+paired with a control point.</p>
+<p>The knot vector usually starts with a knot that has multiplicity 
+equal to the order. This makes sense, since this activates the control 
+points that have influence on the first knot span. Similarly, the knot 
+vector usually ends with a knot of that multiplicity. Curves with such 
+knot vectors start and end in a control point.</p>
+<p>The the values of the knots control the mapping between the input 
+parameter and the corresponding NURBS value. For example, if a NURBS 
+describes a path through space over time, the knots control the time 
+that the function proceeds past the control points. For the purposes of 
+representing shapes, however, only the ratios of the difference between 
+the knot values matter; in that case, the knot vectors (0, 0, 1, 2, 3, 
+3) and (0, 0, 2, 4, 6, 6) produce the same curve. The positions of the 
+knot values influences the mapping of parameter space to curve space. 
+Rendering a NURBS curve is usually done by stepping with a fixed stride 
+through the parameter range. By changing the knot span lengths, more 
+sample points can be used in regions where the curvature is high. 
+Another use is in situations where the parameter value has some physical
+ significance, for instance if the parameter is time and the curve 
+describes the motion of a robot arm. The knot span lengths then 
+translate into velocity and acceleration, which are essential to get 
+right to prevent damage to the robot arm or its environment. This 
+flexibility in the mapping is what the phrase <i>non uniform</i> in NURBS refers to.</p>
+<p>Necessary only for internal calculations, knots are usually not 
+helpful to the users of modeling software. Therefore, many modeling 
+applications do not make the knots editable or even visible. It's 
+usually possible to establish reasonable knot vectors by looking at the 
+variation in the control points. More recent versions of NURBS software 
+(e.g., <a href="https://en.wikipedia.org/wiki/Autodesk_Maya" title="Autodesk Maya">Autodesk Maya</a> and <a href="https://en.wikipedia.org/wiki/Rhinoceros_3D" title="Rhinoceros 3D">Rhinoceros 3D</a>) allow for interactive editing of knot positions, but this is significantly less intuitive than the editing of control points.</p>
+<h3><span class="mw-headline" id="Comparison_of_Knots_and_Control_Points">Comparison of Knots and Control Points</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="https://en.wikipedia.org/w/index.php?title=Non-uniform_rational_B-spline&amp;action=edit&amp;section=7" title="Edit section: Comparison of Knots and Control Points">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>A common misconception is that each knot is paired with a control 
+point. This is true only for degree 1 NURBS (polylines). For higher 
+degree NURBS, there are groups of 2 x degree knots that correspond to 
+groups of (degree+1) control points. For example, suppose we have a 
+degree 3 NURBS with 7 control points and knots 0,0,0,1,2,5,8,8,8. The 
+first four control points are grouped with the first six knots. The 
+second through fifth control points are grouped with the knots 
+0,0,1,2,5,8. The third through sixth control points are grouped with the
+ knots 0,1,2,5,8,8. The last four control points are grouped with the 
+last six knots.</p>
+<p>Some modelers that use older algorithms for NURBS evaluation require two extra knot values for a total of (degree+N+1) knots.<sup id="cite_ref-What_is_NURBS_Geometry_5-0" class="reference"><a href="#cite_note-What_is_NURBS_Geometry-5"><span>[</span>5<span>]</span></a></sup></p>
+<h3><span class="mw-headline" id="Order">Order</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="https://en.wikipedia.org/w/index.php?title=Non-uniform_rational_B-spline&amp;action=edit&amp;section=8" title="Edit section: Order">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>The <i>order</i> of a NURBS curve defines the number of nearby 
+control points that influence any given point on the curve. The curve is
+ represented mathematically by a polynomial of degree one less than the 
+order of the curve. Hence, second-order curves (which are represented by
+ linear polynomials) are called linear curves, third-order curves are 
+called quadratic curves, and fourth-order curves are called cubic 
+curves. The number of control points must be greater than or equal to 
+the order of the curve.</p>
+<p>In practice, cubic curves are the ones most commonly used. Fifth- and
+ sixth-order curves are sometimes useful, especially for obtaining 
+continuous higher order derivatives, but curves of higher orders are 
+practically never used because they lead to internal numerical problems 
+and tend to require disproportionately large calculation times.</p>
+<h3><span class="mw-headline" id="Construction_of_the_basis_functions">Construction of the basis functions</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="https://en.wikipedia.org/w/index.php?title=Non-uniform_rational_B-spline&amp;action=edit&amp;section=9" title="Edit section: Construction of the basis functions">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>The <a href="https://en.wikipedia.org/wiki/B-spline" title="B-spline">B-spline</a> basis functions used in the construction of NURBS curves are usually denoted as <img class="mwe-math-fallback-png-inline tex" alt="N_{i,n}(u)" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/b33f6b4331e1096135e274e197186850.png">, in which <img class="mwe-math-fallback-png-inline tex" alt="i" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/865c0c0b4ab0e063e5caa3387c1a8741.png"> corresponds to the <img class="mwe-math-fallback-png-inline tex" alt="i" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/865c0c0b4ab0e063e5caa3387c1a8741.png"><sup>th</sup> control point, and <img class="mwe-math-fallback-png-inline tex" alt="n" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/7b8b965ad4bca0e41ab51de7b31363a1.png"> corresponds with the degree of the basis function.<sup id="cite_ref-6" class="reference"><a href="#cite_note-6"><span>[</span>6<span>]</span></a></sup> The parameter dependence is frequently left out, so we can write <img class="mwe-math-fallback-png-inline tex" alt="N_{i,n}" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/a031ea646903d6943a25262fda51e2e5.png">. The definition of these basis functions is recursive in <img class="mwe-math-fallback-png-inline tex" alt="n" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/7b8b965ad4bca0e41ab51de7b31363a1.png">. The degree-0 functions <img class="mwe-math-fallback-png-inline tex" alt="N_{i,0}" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/d57110c8783a73b7467b7f122b01be73.png"> are piecewise constant functions. They are one on the corresponding knot span and zero everywhere else. Effectively, <img class="mwe-math-fallback-png-inline tex" alt="N_{i,n}" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/a031ea646903d6943a25262fda51e2e5.png"> is a linear interpolation of <img class="mwe-math-fallback-png-inline tex" alt="N_{i,n-1}" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/89b133553bd6270b6543021080ade226.png"> and <img class="mwe-math-fallback-png-inline tex" alt="N_{i+1,n-1}" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/3e8f97f4a43b127bf043cdba1e46bc42.png">. The latter two functions are non-zero for <img class="mwe-math-fallback-png-inline tex" alt="n" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/7b8b965ad4bca0e41ab51de7b31363a1.png"> knot spans, overlapping for <img class="mwe-math-fallback-png-inline tex" alt="n-1" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/a438673491daae8148eae77373b6a467.png"> knot spans. The function <img class="mwe-math-fallback-png-inline tex" alt="N_{i,n}" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/a031ea646903d6943a25262fda51e2e5.png"> is computed as</p>
+<div class="thumb tright">
+<div class="thumbinner" style="width:222px;"><a href="https://en.wikipedia.org/wiki/File:Nurbsbasisconstruct.svg" class="image"><img alt="" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/220px-Nurbsbasisconstruct.png" class="thumbimage" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Nurbsbasisconstruct.svg/330px-Nurbsbasisconstruct.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Nurbsbasisconstruct.svg/440px-Nurbsbasisconstruct.svg.png 2x" data-file-width="720" data-file-height="540" height="165" width="220"></a>
+<div class="thumbcaption">
+<div class="magnify"><a href="https://en.wikipedia.org/wiki/File:Nurbsbasisconstruct.svg" class="internal" title="Enlarge"><img src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/magnify-clip.png" alt="" height="11" width="15"></a></div>
+From top to bottom: Linear basis functions <img class="mwe-math-fallback-png-inline tex" alt="N_{1,1}" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/bb5cf479da761427c12ff6bed1b92183.png"> (blue) and <img class="mwe-math-fallback-png-inline tex" alt="N_{2,1}" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/42e43d52cc3f93f4f274f774ba74b4ab.png"> (green) (top), their weight functions <img class="mwe-math-fallback-png-inline tex" alt="f" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/8fa14cdd754f91cc6554c9e71929cce7.png"> and <img class="mwe-math-fallback-png-inline tex" alt="g" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/b2f5ff47436671b6e533d8dc3614845d.png"> (middle) and the resulting quadratic basis function (bottom). The knots are 0, 1, 2, and 2.5</div>
+</div>
+</div>
+<dl>
+<dd><img class="mwe-math-fallback-png-inline tex" alt="N_{i,n} = f_{i,n} N_{i,n-1} + g_{i+1,n} N_{i+1,n-1}" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/4613c6bd2ef4cbda157f4b89a7e22a2c.png"></dd>
+</dl>
+<p><img class="mwe-math-fallback-png-inline tex" alt="f_i" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/dbb3b84cea7e7015fb1a591964fbd918.png"> rises linearly from zero to one on the interval where <img class="mwe-math-fallback-png-inline tex" alt="N_{i,n-1}" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/89b133553bd6270b6543021080ade226.png"> is non-zero, while <img class="mwe-math-fallback-png-inline tex" alt="g_{i+1}" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/6552a7fb514c7af6a9fa10f7b2bb0a68.png"> falls from one to zero on the interval where <img class="mwe-math-fallback-png-inline tex" alt="N_{i+1,n-1}" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/3e8f97f4a43b127bf043cdba1e46bc42.png"> is non-zero. As mentioned before, <img class="mwe-math-fallback-png-inline tex" alt="N_{i,1}" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/6abd4ae410ebd994dbe014dc3672c614.png">
+ is a triangular function, nonzero over two knot spans rising from zero 
+to one on the first, and falling to zero on the second knot span. Higher
+ order basis functions are non-zero over corresponding more knot spans 
+and have correspondingly higher degree. If <img class="mwe-math-fallback-png-inline tex" alt="u" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/7b774effe4a349c6dd82ad4f4f21d34c.png"> is the parameter, and <img class="mwe-math-fallback-png-inline tex" alt="k_i" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/26e634477c7a1285bb21c5df84371894.png"> is the <img class="mwe-math-fallback-png-inline tex" alt="i" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/865c0c0b4ab0e063e5caa3387c1a8741.png"><sup>th</sup> knot, we can write the functions <img class="mwe-math-fallback-png-inline tex" alt="f" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/8fa14cdd754f91cc6554c9e71929cce7.png"> and <img class="mwe-math-fallback-png-inline tex" alt="g" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/b2f5ff47436671b6e533d8dc3614845d.png"> as</p>
+<dl>
+<dd><img class="mwe-math-fallback-png-inline tex" alt="f_{i,n}(u) = {{u - k_i} \over {k_{i+n} - k_i}}" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/9f1311dfa6cf79149d46301b52ba328d.png"></dd>
+</dl>
+<p>and</p>
+<dl>
+<dd><img class="mwe-math-fallback-png-inline tex" alt="g_{i,n}(u) = {{k_{i+n} - u} \over {k_{i+n} - k_{i}}}" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/42da24a9098d85ad7e72bb6941a100c5.png"></dd>
+</dl>
+<p>The functions <img class="mwe-math-fallback-png-inline tex" alt="f" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/8fa14cdd754f91cc6554c9e71929cce7.png"> and <img class="mwe-math-fallback-png-inline tex" alt="g" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/b2f5ff47436671b6e533d8dc3614845d.png"> are positive when the corresponding lower order basis functions are non-zero. By <a href="https://en.wikipedia.org/wiki/Mathematical_induction" title="Mathematical induction">induction</a> on n it follows that the basis functions are non-negative for all values of <img class="mwe-math-fallback-png-inline tex" alt="n" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/7b8b965ad4bca0e41ab51de7b31363a1.png"> and <img class="mwe-math-fallback-png-inline tex" alt="u" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/7b774effe4a349c6dd82ad4f4f21d34c.png">. This makes the computation of the basis functions numerically stable.</p>
+<p>Again by induction, it can be proved that the sum of the basis 
+functions for a particular value of the parameter is unity. This is 
+known as the <b>partition of unity</b> property of the basis functions.</p>
+<div class="thumb tright">
+<div class="thumbinner" style="width:568px;"><a href="https://en.wikipedia.org/wiki/File:Nurbsbasislin2.png" class="image"><img alt="" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/Nurbsbasislin2.png" class="thumbimage" data-file-width="566" data-file-height="77" height="77" width="566"></a>
+<div class="thumbcaption">Linear basis functions</div>
+</div>
+</div>
+<div class="thumb tright">
+<div class="thumbinner" style="width:568px;"><a href="https://en.wikipedia.org/wiki/File:Nurbsbasisquad2.png" class="image"><img alt="" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/Nurbsbasisquad2.png" class="thumbimage" data-file-width="566" data-file-height="77" height="77" width="566"></a>
+<div class="thumbcaption">Quadratic basis functions</div>
+</div>
+</div>
+<p>The figures show the linear and the quadratic basis functions for the knots {..., 0, 1, 2, 3, 4, 4.1, 5.1, 6.1, 7.1, ...}</p>
+<p>One knot span is considerably shorter than the others. On that knot 
+span, the peak in the quadratic basis function is more distinct, 
+reaching almost one. Conversely, the adjoining basis functions fall to 
+zero more quickly. In the geometrical interpretation, this means that 
+the curve approaches the corresponding control point closely. In case of
+ a double knot, the length of the knot span becomes zero and the peak 
+reaches one exactly. The basis function is no longer differentiable at 
+that point. The curve will have a sharp corner if the neighbour control 
+points are not collinear.</p>
+<h3><span class="mw-headline" id="General_form_of_a_NURBS_curve">General form of a NURBS curve</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="https://en.wikipedia.org/w/index.php?title=Non-uniform_rational_B-spline&amp;action=edit&amp;section=10" title="Edit section: General form of a NURBS curve">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>Using the definitions of the basis functions <img class="mwe-math-fallback-png-inline tex" alt="N_{i,n}" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/a031ea646903d6943a25262fda51e2e5.png"> from the previous paragraph, a NURBS curve takes the following form:<sup id="cite_ref-7" class="reference"><a href="#cite_note-7"><span>[</span>7<span>]</span></a></sup></p>
+<dl>
+<dd><img class="mwe-math-fallback-png-inline tex" alt="C(u) = \sum_{i=1}^{k} {\frac
+	{N_{i,n}w_i}
+	{\sum_{j=1}^k N_{j,n}w_j}}
+	\bold{P}_i = \frac
+	{\sum_{i=1}^k {N_{i,n}w_i \bold{P}_i}}
+	{\sum_{i=1}^k {N_{i,n}w_i}}
+	" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/390565e96d8fa04e0a693a0b145539ae.png"></dd>
+</dl>
+<p>In this, <img class="mwe-math-fallback-png-inline tex" alt="k" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/8ce4b16b22b58894aa86c421e8759df3.png"> is the number of control points <img class="mwe-math-fallback-png-inline tex" alt="\bold{P}_i" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/569a540f96c51ee6d445b3bd07f2ad59.png"> and <img class="mwe-math-fallback-png-inline tex" alt="w_i" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/dfc96001568235d60dc12dca4b32d260.png">
+ are the corresponding weights. The denominator is a normalizing factor 
+that evaluates to one if all weights are one. This can be seen from the 
+partition of unity property of the basis functions. It is customary to 
+write this as</p>
+<dl>
+<dd><img class="mwe-math-fallback-png-inline tex" alt="C(u)=\sum_{i=1}^k R_{i,n}(u)\bold{P}_i" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/88a15335e8ed6f0a2df66a9f2e0687f1.png"></dd>
+</dl>
+<p>in which the functions</p>
+<dl>
+<dd><img class="mwe-math-fallback-png-inline tex" alt="R_{i,n}(u) = {N_{i,n}(u)w_i \over \sum_{j=1}^k N_{j,n}(u)w_j}" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/a9e34da63974bd1ccc35d66062f431af.png"></dd>
+</dl>
+<p>are known as the <i>rational basis functions</i>.</p>
+<h3><span class="mw-headline" id="General_form_of_a_NURBS_surface">General form of a NURBS surface</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="https://en.wikipedia.org/w/index.php?title=Non-uniform_rational_B-spline&amp;action=edit&amp;section=11" title="Edit section: General form of a NURBS surface">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>A NURBS surface is obtained as the <a href="https://en.wikipedia.org/wiki/Tensor_product" title="Tensor product">tensor product</a> of two NURBS curves, thus using two independent parameters <img class="mwe-math-fallback-png-inline tex" alt="u" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/7b774effe4a349c6dd82ad4f4f21d34c.png"> and <img class="mwe-math-fallback-png-inline tex" alt="v" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/9e3669d19b675bd57058fd4664205d2a.png"> (with indices <img class="mwe-math-fallback-png-inline tex" alt="i" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/865c0c0b4ab0e063e5caa3387c1a8741.png"> and <img class="mwe-math-fallback-png-inline tex" alt="j" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/363b122c528f54df4a0446b6bab05515.png"> respectively):<sup id="cite_ref-8" class="reference"><a href="#cite_note-8"><span>[</span>8<span>]</span></a></sup></p>
+<dl>
+<dd><img class="mwe-math-fallback-png-inline tex" alt="S(u,v) = \sum_{i=1}^k \sum_{j=1}^l R_{i,j}(u,v) \bold{P}_{i,j} " src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/927227774322ff21c048c07dd5730f97.png"></dd>
+</dl>
+<p>with</p>
+<dl>
+<dd><img class="mwe-math-fallback-png-inline tex" alt="R_{i,j}(u,v) = \frac {N_{i,n}(u) N_{j,m}(v) w_{i,j}} {\sum_{p=1}^k \sum_{q=1}^l N_{p,n}(u) N_{q,m}(v) w_{p,q}}" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/68f82c45da72b39094e11229f8ccf953.png"></dd>
+</dl>
+<p>as rational basis functions.</p>
+<h2><span class="mw-headline" id="Manipulating_NURBS_objects">Manipulating NURBS objects</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="https://en.wikipedia.org/w/index.php?title=Non-uniform_rational_B-spline&amp;action=edit&amp;section=12" title="Edit section: Manipulating NURBS objects">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>A number of transformations can be applied to a NURBS object. For 
+instance, if some curve is defined using a certain degree and N control 
+points, the same curve can be expressed using the same degree and N+1 
+control points. In the process a number of control points change 
+position and a knot is inserted in the knot vector. These manipulations 
+are used extensively during interactive design. When adding a control 
+point, the shape of the curve should stay the same, forming the starting
+ point for further adjustments. A number of these operations are 
+discussed below.<sup id="cite_ref-9" class="reference"><a href="#cite_note-9"><span>[</span>9<span>]</span></a></sup><sup id="cite_ref-10" class="reference"><a href="#cite_note-10"><span>[</span>10<span>]</span></a></sup></p>
+<h3><span class="mw-headline" id="Knot_insertion">Knot insertion</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="https://en.wikipedia.org/w/index.php?title=Non-uniform_rational_B-spline&amp;action=edit&amp;section=13" title="Edit section: Knot insertion">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>As the term suggests, <b>knot insertion</b> inserts a knot into the knot vector. If the degree of the curve is <img class="mwe-math-fallback-png-inline tex" alt="n" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/7b8b965ad4bca0e41ab51de7b31363a1.png">, then <img class="mwe-math-fallback-png-inline tex" alt="n-1" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/a438673491daae8148eae77373b6a467.png"> control points are replaced by <img class="mwe-math-fallback-png-inline tex" alt="n" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/7b8b965ad4bca0e41ab51de7b31363a1.png"> new ones. The shape of the curve stays the same.</p>
+<p>A knot can be inserted multiple times, up to the maximum multiplicity of the knot. This is sometimes referred to as <b>knot refinement</b> and can be achieved by an algorithm that is more efficient than repeated knot insertion.</p>
+<h3><span class="mw-headline" id="Knot_removal">Knot removal</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="https://en.wikipedia.org/w/index.php?title=Non-uniform_rational_B-spline&amp;action=edit&amp;section=14" title="Edit section: Knot removal">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p><b>Knot removal</b> is the reverse of knot insertion. Its purpose is 
+to remove knots and the associated control points in order to get a more
+ compact representation. Obviously, this is not always possible while 
+retaining the exact shape of the curve. In practice, a tolerance in the 
+accuracy is used to determine whether a knot can be removed. The process
+ is used to clean up after an interactive session in which control 
+points may have been added manually, or after importing a curve from a 
+different representation, where a straightforward conversion process 
+leads to redundant control points.</p>
+<h3><span class="mw-headline" id="Degree_elevation">Degree elevation</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="https://en.wikipedia.org/w/index.php?title=Non-uniform_rational_B-spline&amp;action=edit&amp;section=15" title="Edit section: Degree elevation">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>A NURBS curve of a particular degree can always be represented by a 
+NURBS curve of higher degree. This is frequently used when combining 
+separate NURBS curves, e.g., when creating a NURBS surface interpolating
+ between a set of NURBS curves or when unifying adjacent curves. In the 
+process, the different curves should be brought to the same degree, 
+usually the maximum degree of the set of curves. The process is known as
+ <b>degree elevation</b>.</p>
+<h3><span class="mw-headline" id="Curvature">Curvature</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="https://en.wikipedia.org/w/index.php?title=Non-uniform_rational_B-spline&amp;action=edit&amp;section=16" title="Edit section: Curvature">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>The most important property in <a href="https://en.wikipedia.org/wiki/Differential_geometry" title="Differential geometry">differential geometry</a> is the <a href="https://en.wikipedia.org/wiki/Curvature" title="Curvature">curvature</a> <img class="mwe-math-fallback-png-inline tex" alt="\kappa" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/c78f6d0f108bd13554e62804d0790f42.png">.
+ It describes the local properties (edges, corners, etc.) and relations 
+between the first and second derivative, and thus, the precise curve 
+shape. Having determined the derivatives it is easy to compute <img class="mwe-math-fallback-png-inline tex" alt="\kappa=\frac{|r'(t) \times r''(t)|}{|r'(t)|^3}" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/1749947838f13b2d5f598e22b3b0ed13.png"> or approximated as the arclength from the second derivate <img class="mwe-math-fallback-png-inline tex" alt="\kappa=|r''(s_o)|" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/271f95618bc0a3265fdb8e98005563f6.png">. The direct computation of the curvature <img class="mwe-math-fallback-png-inline tex" alt="\kappa" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/c78f6d0f108bd13554e62804d0790f42.png"> with these equations is the big advantage of parameterized curves against their polygonal representations.</p>
+<h2><span class="mw-headline" id="Example:_a_circle">Example: a circle</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="https://en.wikipedia.org/w/index.php?title=Non-uniform_rational_B-spline&amp;action=edit&amp;section=17" title="Edit section: Example: a circle">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>Non-rational splines or <a href="https://en.wikipedia.org/wiki/B%C3%A9zier_curve" title="Bézier curve">Bézier curves</a>
+ may approximate a circle, but they cannot represent it exactly. 
+Rational splines can represent any conic section, including the circle, 
+exactly. This representation is not unique, but one possibility appears 
+below:</p>
+<center>
+<table class="wikitable">
+<tbody><tr>
+<th style="width:6em;"><i>x</i></th>
+<th style="width:6em;"><i>y</i></th>
+<th style="width:6em;"><i>z</i></th>
+<th style="width:6em;">weight</th>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td><img class="mwe-math-fallback-png-inline tex" alt="\sqrt{2}/2" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/1b617f10629a1ca486bfecc14db42209.png"></td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>−1</td>
+<td>1</td>
+<td>0</td>
+<td><img class="mwe-math-fallback-png-inline tex" alt="\sqrt{2}/2" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/1b617f10629a1ca486bfecc14db42209.png"></td>
+</tr>
+<tr>
+<td>−1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>−1</td>
+<td>−1</td>
+<td>0</td>
+<td><img class="mwe-math-fallback-png-inline tex" alt="\sqrt{2}/2" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/1b617f10629a1ca486bfecc14db42209.png"></td>
+</tr>
+<tr>
+<td>0</td>
+<td>−1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>−1</td>
+<td>0</td>
+<td><img class="mwe-math-fallback-png-inline tex" alt="\sqrt{2}/2" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/1b617f10629a1ca486bfecc14db42209.png"></td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody></table>
+</center>
+<p>The order is three, since a circle is a quadratic curve and the 
+spline's order is one more than the degree of its piecewise polynomial 
+segments. The knot vector is <img class="mwe-math-fallback-png-inline tex" alt="\{0, 0, 0, \pi/2, \pi/2, \pi, \pi, 3\pi/2, 3\pi/2, 2\pi, 2\pi, 2\pi\}\," src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/4f288c6a88930ce27edbf3d71bc83e1d.png">.
+ The circle is composed of four quarter circles, tied together with 
+double knots. Although double knots in a third order NURBS curve would 
+normally result in loss of continuity in the first derivative, the 
+control points are positioned in such a way that the first derivative is
+ continuous. In fact, the curve is infinitely differentiable everywhere,
+ as it must be if it exactly represents a circle.</p>
+<p>The curve represents a circle exactly, but it is not exactly 
+parametrized in the circle's arc length. This means, for example, that 
+the point at <img class="mwe-math-fallback-png-inline tex" alt="t" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/e358efa489f58062f10dd7316b65649e.png"> does not lie at <img class="mwe-math-fallback-png-inline tex" alt="(\sin(t), \cos(t))" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/1575aedf1690a97b45800b30d28a00e3.png">
+ (except for the start, middle and end point of each quarter circle, 
+since the representation is symmetrical). This would be impossible, 
+since the <i>x</i> coordinate of the circle would provide an exact rational polynomial expression for <img class="mwe-math-fallback-png-inline tex" alt="\cos(t)" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/76269c809ed95f49bdba4964a309a176.png">, which is impossible. The circle does make one full revolution as its parameter <img class="mwe-math-fallback-png-inline tex" alt="t" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/e358efa489f58062f10dd7316b65649e.png"> goes from 0 to <img class="mwe-math-fallback-png-inline tex" alt="2\pi" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/46a6c4d715584adb3e6681ee351d1df6.png">, but this is only because the knot vector was arbitrarily chosen as multiples of <img class="mwe-math-fallback-png-inline tex" alt="\pi/2" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/1f8b57e932cf2d585ed71af904be8638.png">.</p>
+<h2><span class="mw-headline" id="See_also">See also</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="https://en.wikipedia.org/w/index.php?title=Non-uniform_rational_B-spline&amp;action=edit&amp;section=18" title="Edit section: See also">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/T-Spline_%28mathematics%29" title="T-Spline (mathematics)" class="mw-redirect">T-Spline</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Spline_%28mathematics%29" title="Spline (mathematics)">Spline</a></li>
+<li><a href="https://en.wikipedia.org/wiki/B%C3%A9zier_surface" title="Bézier surface">Bézier surface</a></li>
+<li><a href="https://en.wikipedia.org/wiki/B%C3%A9zier_curve" title="Bézier curve">Bézier curve</a></li>
+<li><a href="https://en.wikipedia.org/wiki/De_Boor%27s_algorithm" title="De Boor's algorithm">de Boor's algorithm</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Subdivision_surface" title="Subdivision surface">Subdivision surface</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Triangle_mesh" title="Triangle mesh">Triangle mesh</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Point_cloud" title="Point cloud">Point cloud</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Rational_motion" title="Rational motion">Rational motion</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Isogeometric_analysis" title="Isogeometric analysis">Isogeometric analysis</a></li>
+</ul>
+<h2><span class="mw-headline" id="References">References</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="https://en.wikipedia.org/w/index.php?title=Non-uniform_rational_B-spline&amp;action=edit&amp;section=19" title="Edit section: References">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<table class="metadata plainlinks ambox ambox-style ambox-More_footnotes" role="presentation">
+<tbody><tr>
+<td class="mbox-image">
+<div style="width:52px;"><img alt="" src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/40px-Text_document_with_red_question_mark.png" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Text_document_with_red_question_mark.svg/60px-Text_document_with_red_question_mark.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Text_document_with_red_question_mark.svg/80px-Text_document_with_red_question_mark.svg.png 2x" data-file-width="48" data-file-height="48" height="40" width="40"></div>
+</td>
+<td class="mbox-text"><span class="mbox-text-span">This article includes a <a href="https://en.wikipedia.org/wiki/Wikipedia:Citing_sources" title="Wikipedia:Citing sources">list of references</a>, but <b>its sources remain unclear because it has insufficient <a href="https://en.wikipedia.org/wiki/Wikipedia:Citing_sources#Inline_citations" title="Wikipedia:Citing sources">inline citations</a></b>. <span class="hide-when-compact">Please help to <a href="https://en.wikipedia.org/wiki/Wikipedia:WikiProject_Fact_and_Reference_Check" title="Wikipedia:WikiProject Fact and Reference Check">improve</a> this article by <a href="https://en.wikipedia.org/wiki/Wikipedia:When_to_cite" title="Wikipedia:When to cite">introducing</a> more precise citations.</span> <small><i>(April 2009)</i></small></span></td>
+</tr>
+</tbody></table>
+<ul>
+<li>Les Piegl &amp; Wayne Tiller: <i>The NURBS Book</i>, Springer-Verlag
+ 1995–1997 (2nd ed.). The main reference for Bézier, B-Spline and NURBS;
+ chapters on mathematical representation and construction of curves and 
+surfaces, interpolation, shape modification, programming concepts.</li>
+<li>Dr. Thomas Sederberg, BYU <i>NURBS</i>, <a rel="nofollow" class="external free" href="http://cagd.cs.byu.edu/%7E557/text/ch6.pdf">http://cagd.cs.byu.edu/~557/text/ch6.pdf</a></li>
+<li>Dr. Lyle Ramshaw. <i>Blossoming: A connect-the-dots approach to splines</i>, Research Report 19, Compaq Systems Research Center, Palo Alto, CA, June 1987, <a rel="nofollow" class="external free" href="http://www.hpl.hp.com/techreports/Compaq-DEC/SRC-RR-19.pdf">http://www.hpl.hp.com/techreports/Compaq-DEC/SRC-RR-19.pdf</a></li>
+<li>David F. Rogers: <i>An Introduction to NURBS with Historical Perspective</i>, Morgan Kaufmann Publishers 2001. Good elementary book for NURBS and related issues.</li>
+<li>Gershenfeld, <i>Neil A. The nature of mathematical modeling.</i> Cambridge university press, 1999.</li>
+</ul>
+<h2><span class="mw-headline" id="Notes">Notes</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="https://en.wikipedia.org/w/index.php?title=Non-uniform_rational_B-spline&amp;action=edit&amp;section=20" title="Edit section: Notes">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<ol class="references">
+<li id="cite_note-1"><span class="mw-cite-backlink"><b><a href="#cite_ref-1"><span class="cite-accessibility-label">Jump up </span>^</a></b></span> <span class="reference-text">Foley, van Dam, Feiner &amp; Hughes: <i><a href="https://en.wikipedia.org/wiki/Computer_Graphics:_Principles_and_Practice" title="Computer Graphics: Principles and Practice">Computer Graphics: Principles and Practice</a></i>, section 11.2, <a href="https://en.wikipedia.org/wiki/Addison-Wesley" title="Addison-Wesley">Addison-Wesley</a> 1996 (2nd ed.).</span></li>
+<li id="cite_note-2"><span class="mw-cite-backlink"><b><a href="#cite_ref-2"><span class="cite-accessibility-label">Jump up </span>^</a></b></span> <span class="reference-text"><span class="citation book"><a rel="nofollow" class="external text" href="http://www.springer.com/engineering/computational+intelligence+and+complexity/book/978-3-642-20759-4"><i>Bio-Inspired Self-Organizing Robotic Systems</i></a>. p.&nbsp;9<span class="reference-accessdate">. Retrieved 2014-01-06</span>.</span><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ANon-uniform+rational+B-spline&amp;rft.btitle=Bio-Inspired+Self-Organizing+Robotic+Systems&amp;rft.genre=book&amp;rft_id=http%3A%2F%2Fwww.springer.com%2Fengineering%2Fcomputational%2Bintelligence%2Band%2Bcomplexity%2Fbook%2F978-3-642-20759-4&amp;rft.pages=9&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&nbsp;</span></span></span></li>
+<li id="cite_note-3"><span class="mw-cite-backlink"><b><a href="#cite_ref-3"><span class="cite-accessibility-label">Jump up </span>^</a></b></span> <span class="reference-text">David F. Rogers: An Introduction to NURBS with Historical Perspective, section 7.1</span></li>
+<li id="cite_note-4"><span class="mw-cite-backlink"><b><a href="#cite_ref-4"><span class="cite-accessibility-label">Jump up </span>^</a></b></span> <span class="reference-text">Gershenfeld: <i><a href="https://en.wikipedia.org/w/index.php?title=The_Nature_of_Mathematical_Modeling&amp;action=edit&amp;redlink=1" class="new" title="The Nature of Mathematical Modeling (page does not exist)">The Nature of Mathematical Modeling</a></i>, page 141, <a href="https://en.wikipedia.org/w/index.php?title=Cambridge-University-Press&amp;action=edit&amp;redlink=1" class="new" title="Cambridge-University-Press (page does not exist)">Cambridge-University-Press</a> 1999</span></li>
+<li id="cite_note-What_is_NURBS_Geometry-5"><span class="mw-cite-backlink"><b><a href="#cite_ref-What_is_NURBS_Geometry_5-0"><span class="cite-accessibility-label">Jump up </span>^</a></b></span> <span class="reference-text"><a rel="nofollow" class="external autonumber" href="http://www.rhino3d.com/nurbs/">[1]</a></span></li>
+<li id="cite_note-6"><span class="mw-cite-backlink"><b><a href="#cite_ref-6"><span class="cite-accessibility-label">Jump up </span>^</a></b></span> <span class="reference-text">Les Piegl &amp; Wayne Tiller: <i>The NURBS Book</i>, chapter 2, sec. 2</span></li>
+<li id="cite_note-7"><span class="mw-cite-backlink"><b><a href="#cite_ref-7"><span class="cite-accessibility-label">Jump up </span>^</a></b></span> <span class="reference-text">Les Piegl &amp; Wayne Tiller: <i>The NURBS Book</i>, chapter 4, sec. 2</span></li>
+<li id="cite_note-8"><span class="mw-cite-backlink"><b><a href="#cite_ref-8"><span class="cite-accessibility-label">Jump up </span>^</a></b></span> <span class="reference-text">Les Piegl &amp; Wayne Tiller: <i>The NURBS Book</i>, chapter 4, sec. 4</span></li>
+<li id="cite_note-9"><span class="mw-cite-backlink"><b><a href="#cite_ref-9"><span class="cite-accessibility-label">Jump up </span>^</a></b></span> <span class="reference-text">Les Piegl &amp; Wayne Tiller: <i>The NURBS Book</i>, chapter 5</span></li>
+<li id="cite_note-10"><span class="mw-cite-backlink"><b><a href="#cite_ref-10"><span class="cite-accessibility-label">Jump up </span>^</a></b></span> <span class="reference-text">L.
+ Piegl, Modifying the shape of rational B-splines. Part 1: curves, 
+Computer-Aided Design, Volume 21, Issue 8, October 1989, Pages 509-518, 
+ISSN 0010-4485, <a rel="nofollow" class="external free" href="http://dx.doi.org/10.1016/0010-4485%2889%2990059-6">http://dx.doi.org/10.1016/0010-4485(89)90059-6</a>.</span></li>
+</ol>
+<h2><span class="mw-headline" id="External_links">External links</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="https://en.wikipedia.org/w/index.php?title=Non-uniform_rational_B-spline&amp;action=edit&amp;section=21" title="Edit section: External links">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<ul>
+<li><a rel="nofollow" class="external text" href="http://www.rw-designer.com/NURBS">Clear explanation of NURBS for non-experts</a></li>
+<li><a rel="nofollow" class="external text" href="http://geometrie.foretnik.net/files/NURBS-en.swf">Interactive NURBS demo</a></li>
+<li><a rel="nofollow" class="external text" href="http://www.cs.wpi.edu/%7Ematt/courses/cs563/talks/nurbs.html">About Nonuniform Rational B-Splines - NURBS</a></li>
+<li><a rel="nofollow" class="external text" href="http://ibiblio.org/e-notes/Splines/Intro.htm">An Interactive Introduction to Splines</a></li>
+<li><a rel="nofollow" class="external free" href="http://www.cs.bris.ac.uk/Teaching/Resources/COMS30115/all.pdf">http://www.cs.bris.ac.uk/Teaching/Resources/COMS30115/all.pdf</a></li>
+<li><a rel="nofollow" class="external free" href="http://homepages.inf.ed.ac.uk/rbf/CVonline/LOCAL_COPIES/AV0405/DONAVANIK/bezier.html">http://homepages.inf.ed.ac.uk/rbf/CVonline/LOCAL_COPIES/AV0405/DONAVANIK/bezier.html</a></li>
+<li><a rel="nofollow" class="external free" href="http://mathcs.holycross.edu/%7Ecroyden/csci343/notes.html">http://mathcs.holycross.edu/~croyden/csci343/notes.html</a> (Lecture 33: Bézier Curves, Splines)</li>
+<li><a rel="nofollow" class="external free" href="http://www.cs.mtu.edu/%7Eshene/COURSES/cs3621/NOTES/notes.html">http://www.cs.mtu.edu/~shene/COURSES/cs3621/NOTES/notes.html</a></li>
+<li><a rel="nofollow" class="external text" href="http://octave.sourceforge.net/nurbs">A free software package for handling NURBS curves, surfaces and volumes</a> in <a href="https://en.wikipedia.org/wiki/Octave" title="Octave">Octave</a> and <a href="https://en.wikipedia.org/wiki/Matlab" title="Matlab" class="mw-redirect">Matlab</a></li>
+</ul>
+
+
+<!-- 
+NewPP limit report
+Parsed by mw1070
+CPU time usage: 0.784 seconds
+Real time usage: 1.420 seconds
+Preprocessor visited node count: 970/1000000
+Preprocessor generated node count: 2551/1500000
+Post‐expand include size: 5083/2048000 bytes
+Template argument size: 10/2048000 bytes
+Highest expansion depth: 6/40
+Expensive parser function count: 2/500
+Lua time usage: 0.072/10.000 seconds
+Lua memory usage: 1.39 MB/50 MB
+-->
+
+<!-- Saved in parser cache with key enwiki:pcache:idhash:308474-0!*!0!!en!4!*!math=0 and timestamp 20140606151530 and revision id 606671679
+ -->
+<noscript><img src="//en.wikipedia.org/wiki/Special:CentralAutoLogin/start?type=1x1" alt="" title="" width="1" height="1" style="border: none; position: absolute;" /></noscript></div>									<div class="printfooter">
+						Retrieved from "<a dir="ltr" href="https://en.wikipedia.org/w/index.php?title=Non-uniform_rational_B-spline&amp;oldid=606671679">http://en.wikipedia.org/w/index.php?title=Non-uniform_rational_B-spline&amp;oldid=606671679</a>"					</div>
+													<div id="catlinks" class="catlinks"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="https://en.wikipedia.org/wiki/Help:Category" title="Help:Category">Categories</a>: <ul><li><a href="https://en.wikipedia.org/wiki/Category:Computer-aided_design" title="Category:Computer-aided design">Computer-aided design</a></li><li><a href="https://en.wikipedia.org/wiki/Category:Splines" title="Category:Splines">Splines</a></li><li><a href="https://en.wikipedia.org/wiki/Category:3D_computer_graphics" title="Category:3D computer graphics">3D computer graphics</a></li><li><a href="https://en.wikipedia.org/wiki/Category:Interpolation" title="Category:Interpolation">Interpolation</a></li><li><a href="https://en.wikipedia.org/wiki/Category:Multivariate_interpolation" title="Category:Multivariate interpolation">Multivariate interpolation</a></li></ul></div><div id="mw-hidden-catlinks" class="mw-hidden-catlinks mw-hidden-cats-hidden">Hidden categories: <ul><li><a href="https://en.wikipedia.org/wiki/Category:Articles_lacking_in-text_citations_from_April_2009" title="Category:Articles lacking in-text citations from April 2009">Articles lacking in-text citations from April 2009</a></li><li><a href="https://en.wikipedia.org/wiki/Category:All_articles_lacking_in-text_citations" title="Category:All articles lacking in-text citations">All articles lacking in-text citations</a></li></ul></div></div>												<div class="visualClear"></div>
+							</div>
+		</div>
+		<div id="mw-navigation">
+			<h2>Navigation menu</h2>
+
+			<div id="mw-head">
+									<div id="p-personal" role="navigation" class="" aria-labelledby="p-personal-label">
+						<h3 id="p-personal-label">Personal tools</h3>
+						<ul>
+							<li id="pt-createaccount"><a href="https://en.wikipedia.org/w/index.php?title=Special:UserLogin&amp;returnto=Non-uniform+rational+B-spline&amp;type=signup">Create account</a></li><li id="pt-login"><a href="https://en.wikipedia.org/w/index.php?title=Special:UserLogin&amp;returnto=Non-uniform+rational+B-spline" title="You're encouraged to log in; however, it's not mandatory. [Alt+Maj+o]" accesskey="o">Log in</a></li>						</ul>
+					</div>
+									<div id="left-navigation">
+										<div id="p-namespaces" role="navigation" class="vectorTabs" aria-labelledby="p-namespaces-label">
+						<h3 id="p-namespaces-label">Namespaces</h3>
+						<ul>
+															<li id="ca-nstab-main" class="selected"><span><a href="https://en.wikipedia.org/wiki/Non-uniform_rational_B-spline" title="View the content page [Alt+Maj+c]" accesskey="c">Article</a></span></li>
+															<li id="ca-talk"><span><a href="https://en.wikipedia.org/wiki/Talk:Non-uniform_rational_B-spline" title="Discussion about the content page [Alt+Maj+t]" accesskey="t">Talk</a></span></li>
+													</ul>
+					</div>
+										<div id="p-variants" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-variants-label">
+						<h3 id="mw-vector-current-variant">
+													</h3>
+
+						<h3 tabindex="0" id="p-variants-label"><span>Variants</span><a tabindex="-1" href="#"></a></h3>
+
+						<div class="menu">
+							<ul>
+															</ul>
+						</div>
+					</div>
+									</div>
+				<div id="right-navigation">
+										<div id="p-views" role="navigation" class="vectorTabs" aria-labelledby="p-views-label">
+						<h3 id="p-views-label">Views</h3>
+						<ul>
+															<li id="ca-view" class="selected"><span><a href="https://en.wikipedia.org/wiki/Non-uniform_rational_B-spline">Read</a></span></li>
+															<li id="ca-edit"><span><a href="https://en.wikipedia.org/w/index.php?title=Non-uniform_rational_B-spline&amp;action=edit" title="You can edit this page. Please use the preview button before saving [Alt+Maj+e]" accesskey="e">Edit</a></span></li>
+															<li id="ca-history" class="collapsible"><span><a href="https://en.wikipedia.org/w/index.php?title=Non-uniform_rational_B-spline&amp;action=history" title="Past versions of this page [Alt+Maj+h]" accesskey="h">View history</a></span></li>
+													</ul>
+					</div>
+										<div id="p-cactions" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-cactions-label">
+						<h3 tabindex="0" id="p-cactions-label"><span>Actions</span><a tabindex="-1" href="#"></a></h3>
+
+						<div class="menu">
+							<ul>
+															</ul>
+						</div>
+					</div>
+										<div id="p-search" role="search">
+						<h3>
+							<label for="searchInput">Search</label>
+						</h3>
+
+						<form action="/w/index.php" id="searchform">
+														<div id="simpleSearch">
+															<input autocomplete="off" tabindex="1" name="search" placeholder="Search" title="Search Wikipedia [Alt+Maj+f]" accesskey="f" id="searchInput" type="search"><input value="Special:Search" name="title" type="hidden"><input name="go" value="Go" title="Go to a page with this exact name if one exists" id="searchButton" class="searchButton" type="submit">								</div>
+						</form>
+					</div>
+									</div>
+			</div>
+			<div id="mw-panel">
+				<div id="p-logo" role="banner"><a style="background-image: url(//upload.wikimedia.org/wikipedia/en/b/bc/Wiki.png);" href="https://en.wikipedia.org/wiki/Main_Page" title="Visit the main page"></a></div>
+						<div class="portal first" role="navigation" id="p-navigation" aria-labelledby="p-navigation-label">
+			<h3 id="p-navigation-label">Navigation</h3>
+
+			<div class="body">
+									<ul>
+													<li id="n-mainpage-description"><a href="https://en.wikipedia.org/wiki/Main_Page" title="Visit the main page [Alt+Maj+z]" accesskey="z">Main page</a></li>
+													<li id="n-contents"><a href="https://en.wikipedia.org/wiki/Portal:Contents" title="Guides to browsing Wikipedia">Contents</a></li>
+													<li id="n-featuredcontent"><a href="https://en.wikipedia.org/wiki/Portal:Featured_content" title="Featured content – the best of Wikipedia">Featured content</a></li>
+													<li id="n-currentevents"><a href="https://en.wikipedia.org/wiki/Portal:Current_events" title="Find background information on current events">Current events</a></li>
+													<li id="n-randompage"><a href="https://en.wikipedia.org/wiki/Special:Random" title="Load a random article [Alt+Maj+x]" accesskey="x">Random article</a></li>
+													<li id="n-sitesupport"><a href="https://donate.wikimedia.org/wiki/Special:FundraiserRedirector?utm_source=donate&amp;utm_medium=sidebar&amp;utm_campaign=C13_en.wikipedia.org&amp;uselang=en" title="Support us">Donate to Wikipedia</a></li>
+													<li id="n-shoplink"><a href="https://shop.wikimedia.org/" title="Visit the Wikimedia Shop">Wikimedia Shop</a></li>
+											</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id="p-interaction" aria-labelledby="p-interaction-label">
+			<h3 id="p-interaction-label">Interaction</h3>
+
+			<div class="body">
+									<ul>
+													<li id="n-help"><a href="https://en.wikipedia.org/wiki/Help:Contents" title="Guidance on how to use and edit Wikipedia">Help</a></li>
+													<li id="n-aboutsite"><a href="https://en.wikipedia.org/wiki/Wikipedia:About" title="Find out about Wikipedia">About Wikipedia</a></li>
+													<li id="n-portal"><a href="https://en.wikipedia.org/wiki/Wikipedia:Community_portal" title="About the project, what you can do, where to find things">Community portal</a></li>
+													<li id="n-recentchanges"><a href="https://en.wikipedia.org/wiki/Special:RecentChanges" title="A list of recent changes in the wiki [Alt+Maj+r]" accesskey="r">Recent changes</a></li>
+													<li id="n-contactpage"><a href="https://en.wikipedia.org/wiki/Wikipedia:Contact_us">Contact page</a></li>
+											</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id="p-tb" aria-labelledby="p-tb-label">
+			<h3 id="p-tb-label">Tools</h3>
+
+			<div class="body">
+									<ul>
+													<li id="t-whatlinkshere"><a href="https://en.wikipedia.org/wiki/Special:WhatLinksHere/Non-uniform_rational_B-spline" title="List of all English Wikipedia pages containing links to this page [Alt+Maj+j]" accesskey="j">What links here</a></li>
+													<li id="t-recentchangeslinked"><a href="https://en.wikipedia.org/wiki/Special:RecentChangesLinked/Non-uniform_rational_B-spline" title="Recent changes in pages linked from this page [Alt+Maj+k]" accesskey="k">Related changes</a></li>
+													<li id="t-upload"><a href="https://en.wikipedia.org/wiki/Wikipedia:File_Upload_Wizard" title="Upload files [Alt+Maj+u]" accesskey="u">Upload file</a></li>
+													<li id="t-specialpages"><a href="https://en.wikipedia.org/wiki/Special:SpecialPages" title="A list of all special pages [Alt+Maj+q]" accesskey="q">Special pages</a></li>
+													<li id="t-permalink"><a href="https://en.wikipedia.org/w/index.php?title=Non-uniform_rational_B-spline&amp;oldid=606671679" title="Permanent link to this revision of the page">Permanent link</a></li>
+													<li id="t-info"><a href="https://en.wikipedia.org/w/index.php?title=Non-uniform_rational_B-spline&amp;action=info">Page information</a></li>
+													<li id="t-wikibase"><a href="https://www.wikidata.org/wiki/Q734737" title="Link to connected data repository item [Alt+Maj+g]" accesskey="g">Data item</a></li>
+						<li id="t-cite"><a href="https://en.wikipedia.org/w/index.php?title=Special:Cite&amp;page=Non-uniform_rational_B-spline&amp;id=606671679" title="Information on how to cite this page">Cite this page</a></li>					</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id="p-coll-print_export" aria-labelledby="p-coll-print_export-label">
+			<h3 id="p-coll-print_export-label">Print/export</h3>
+
+			<div class="body">
+									<ul>
+													<li id="coll-create_a_book"><a href="https://en.wikipedia.org/w/index.php?title=Special:Book&amp;bookcmd=book_creator&amp;referer=Non-uniform+rational+B-spline">Create a book</a></li>
+													<li id="coll-download-as-rl"><a href="https://en.wikipedia.org/w/index.php?title=Special:Book&amp;bookcmd=render_article&amp;arttitle=Non-uniform+rational+B-spline&amp;oldid=606671679&amp;writer=rl">Download as PDF</a></li>
+													<li id="t-print"><a href="https://en.wikipedia.org/w/index.php?title=Non-uniform_rational_B-spline&amp;printable=yes" title="Printable version of this page [Alt+Maj+p]" accesskey="p">Printable version</a></li>
+											</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id="p-lang" aria-labelledby="p-lang-label"><span original-title="Language settings" aria-haspopup="true" role="button" tabindex="0" class="uls-settings-trigger"></span>
+			<h3 id="p-lang-label">Languages</h3>
+
+			<div class="body">
+									<ul>
+													<li class="interlanguage-link interwiki-ar"><a href="https://ar.wikipedia.org/wiki/%D9%86%D9%8A%D8%B1%D8%A8%D8%B3" title="نيربس – Arabic" hreflang="ar" lang="ar">العربية</a></li>
+													<li class="interlanguage-link interwiki-ca"><a href="https://ca.wikipedia.org/wiki/NURBS" title="NURBS – Catalan" hreflang="ca" lang="ca">Català</a></li>
+													<li class="interlanguage-link interwiki-cs"><a href="https://cs.wikipedia.org/wiki/NURBS" title="NURBS – Czech" hreflang="cs" lang="cs">Čeština</a></li>
+													<li class="interlanguage-link interwiki-de"><a href="https://de.wikipedia.org/wiki/Non-Uniform_Rational_B-Spline" title="Non-Uniform Rational B-Spline – German" hreflang="de" lang="de">Deutsch</a></li>
+													<li class="interlanguage-link interwiki-es"><a href="https://es.wikipedia.org/wiki/NURBS" title="NURBS – Spanish" hreflang="es" lang="es">Español</a></li>
+													<li class="interlanguage-link interwiki-fa"><a href="https://fa.wikipedia.org/wiki/%D9%86%D8%B1%D8%A8%D8%B2" title="نربز – Persian" hreflang="fa" lang="fa">فارسی</a></li>
+													<li class="interlanguage-link interwiki-fr"><a href="https://fr.wikipedia.org/wiki/NURBS" title="NURBS – French" hreflang="fr" lang="fr">Français</a></li>
+													<li class="interlanguage-link interwiki-id"><a href="https://id.wikipedia.org/wiki/NURBS" title="NURBS – Indonesian" hreflang="id" lang="id">Bahasa Indonesia</a></li>
+													<li class="interlanguage-link interwiki-it"><a href="https://it.wikipedia.org/wiki/NURBS" title="NURBS – Italian" hreflang="it" lang="it">Italiano</a></li>
+													<li class="interlanguage-link interwiki-lv"><a href="https://lv.wikipedia.org/wiki/NURBS" title="NURBS – Latvian" hreflang="lv" lang="lv">Latviešu</a></li>
+													<li class="interlanguage-link interwiki-ja"><a href="https://ja.wikipedia.org/wiki/NURBS" title="NURBS – Japanese" hreflang="ja" lang="ja">日本語</a></li>
+													<li class="interlanguage-link interwiki-pl"><a href="https://pl.wikipedia.org/wiki/NURBS" title="NURBS – Polish" hreflang="pl" lang="pl">Polski</a></li>
+													<li class="interlanguage-link interwiki-pt"><a href="https://pt.wikipedia.org/wiki/NURBS" title="NURBS – Portuguese" hreflang="pt" lang="pt">Português</a></li>
+													<li class="interlanguage-link interwiki-ru"><a href="https://ru.wikipedia.org/wiki/NURBS" title="NURBS – Russian" hreflang="ru" lang="ru">Русский</a></li>
+													<li class="interlanguage-link interwiki-sl"><a href="https://sl.wikipedia.org/wiki/NURBS" title="NURBS – Slovenian" hreflang="sl" lang="sl">Slovenščina</a></li>
+													<li class="interlanguage-link interwiki-fi"><a href="https://fi.wikipedia.org/wiki/NURBS" title="NURBS – Finnish" hreflang="fi" lang="fi">Suomi</a></li>
+													<li class="interlanguage-link interwiki-sv"><a href="https://sv.wikipedia.org/wiki/NURBS" title="NURBS – Swedish" hreflang="sv" lang="sv">Svenska</a></li>
+													<li class="interlanguage-link interwiki-uk"><a href="https://uk.wikipedia.org/wiki/NURBS" title="NURBS – Ukrainian" hreflang="uk" lang="uk">Українська</a></li>
+													<li class="interlanguage-link interwiki-vi"><a href="https://vi.wikipedia.org/wiki/NURBS" title="NURBS – Vietnamese" hreflang="vi" lang="vi">Tiếng Việt</a></li>
+													<li class="interlanguage-link interwiki-zh"><a href="https://zh.wikipedia.org/wiki/%E9%9D%9E%E5%9D%87%E5%8C%80%E6%9C%89%E7%90%86B%E6%A0%B7%E6%9D%A1" title="非均匀有理B样条 – Chinese" hreflang="zh" lang="zh">中文</a></li>
+													
+											</ul>
+				<div class="after-portlet after-portlet-lang"><span class="wb-langlinks-edit wb-langlinks-link"><a action="edit" href="https://www.wikidata.org/wiki/Q734737#sitelinks-wikipedia" text="Edit links" title="Edit interlanguage links" class="wbc-editpage">Edit links</a></span></div>			</div>
+		</div>
+				</div>
+		</div>
+		<div id="footer" role="contentinfo">
+							<ul id="footer-info">
+											<li id="footer-info-lastmod"> This page was last modified on 1 May 2014 at 19:43.<br></li>
+											<li id="footer-info-copyright">Text is available under the <a rel="license" href="https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License">Creative Commons Attribution-ShareAlike License</a><a rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/" style="display:none;"></a>;
+additional terms may apply.  By using this site, you agree to the <a href="https://wikimediafoundation.org/wiki/Terms_of_Use">Terms of Use</a> and <a href="https://wikimediafoundation.org/wiki/Privacy_policy">Privacy Policy</a>. Wikipedia® is a registered trademark of the <a href="https://www.wikimediafoundation.org/">Wikimedia Foundation, Inc.</a>, a non-profit organization.</li>
+									</ul>
+							<ul id="footer-places">
+											<li id="footer-places-privacy"><a href="https://wikimediafoundation.org/wiki/Privacy_policy" title="wikimedia:Privacy policy">Privacy policy</a></li>
+											<li id="footer-places-about"><a href="https://en.wikipedia.org/wiki/Wikipedia:About" title="Wikipedia:About">About Wikipedia</a></li>
+											<li id="footer-places-disclaimer"><a href="https://en.wikipedia.org/wiki/Wikipedia:General_disclaimer" title="Wikipedia:General disclaimer">Disclaimers</a></li>
+											<li id="footer-places-contact"><a href="https://en.wikipedia.org/wiki/Wikipedia:Contact_us">Contact Wikipedia</a></li>
+											<li id="footer-places-developers"><a href="https://www.mediawiki.org/wiki/Special:MyLanguage/How_to_contribute">Developers</a></li>
+											<li id="footer-places-mobileview"><a href="https://en.m.wikipedia.org/wiki/Non-uniform_rational_B-spline" class="noprint stopMobileRedirectToggle">Mobile view</a></li>
+									</ul>
+										<ul id="footer-icons" class="noprint">
+											<li id="footer-copyrightico">
+															<a href="https://wikimediafoundation.org/"><img src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/wikimedia-button.png" alt="Wikimedia Foundation" height="31" width="88"></a>
+													</li>
+											<li id="footer-poweredbyico">
+															<a href="https://www.mediawiki.org/"><img src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" height="31" width="88"></a>
+													</li>
+									</ul>
+						<div style="clear:both"></div>
+		</div>
+		<script>/*<![CDATA[*/window.jQuery && jQuery.ready();/*]]>*/</script><script>if(window.mw){
+mw.loader.state({"site":"loading","user":"ready","user.groups":"ready"});
+}</script>
+<script>if(window.mw){
+mw.loader.load(["ext.math.mathjax.enabler","ext.cite","mediawiki.toc","mobile.desktop","mediawiki.action.view.postEdit","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","ext.gadget.teahouse","ext.gadget.ReferenceTooltips","ext.gadget.DRN-wizard","ext.gadget.charinsert","ext.gadget.refToolbar","mw.MwEmbedSupport.style","mmv.bootstrap.autostart","ext.gettingstarted.assignToken","ext.eventLogging.subscriber","ext.navigationTiming","schema.UniversalLanguageSelector","ext.uls.eventlogger","ext.uls.interlanguage"],null,true);
+}</script>
+<script src="Non-uniform%20rational%20B-spline%20-%20Wikipedia,%20the%20free%20encyclopedia_fichiers/load.php"></script>
+<script>if(window.mw){
+mw.config.set({"wgBackendResponseTime":251,"wgHostname":"mw1064"});
+}</script>
+	
+
+	<div class="suggestions" style="display: none; font-size: 13px;"><div class="suggestions-results"></div><div class="suggestions-special"></div></div></body></html>
