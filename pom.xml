@@ -181,6 +181,10 @@
             <id>OpenIMAJ Snapshots maven repository</id>
             <url>http://octopussy.ecs.soton.ac.uk/m2/snapshots/</url>
         </repository>
+        <repository>
+   <id>xuggle repo</id>
+   <url>http://xuggle.googlecode.com/svn/trunk/repo/share/java/</url>
+  </repository>
     </repositories>
     <dependencies>
         <dependency>
@@ -256,6 +260,11 @@
             <artifactId>swing-layout</artifactId>
             <version>1.0.3</version>
         </dependency>
+        <dependency>
+   <groupId>xuggle</groupId>
+   <artifactId>xuggle-xuggler</artifactId>
+   <version>5.2</version>
+  </dependency>
     </dependencies>
     
 </project>
