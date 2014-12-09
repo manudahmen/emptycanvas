@@ -38,4 +38,12 @@ public class ColorTexture implements ITexture
     public Color getMaillageTexturedColor(int numQuadX, int numQuadY, double x, double y) {
         return color;
     }
+
+    public void timeNext(long milli) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void timeNext() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
