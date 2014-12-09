@@ -10,7 +10,7 @@ import java.awt.Color;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import info.emptycanvas.library.object.Animation;
+import info.emptycanvas.library.object.temps.Animation;
 import info.emptycanvas.library.object.Point3D;
 import info.emptycanvas.library.object.Scene;
 import info.emptycanvas.library.object.TRI;
@@ -24,6 +24,7 @@ import info.emptycanvas.library.object.TRIObject;
  *         28 déc. 2011
  * 
  */
+/*
 public class CopyOfTrianguleSphereAnimation extends Animation {
 	private TRIObject o;
 	int n = 2;
@@ -76,3 +77,4 @@ public class CopyOfTrianguleSphereAnimation extends Animation {
 	}
 
 }
+*/

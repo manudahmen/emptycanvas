@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
-import info.emptycanvas.library.object.Animation;
+import info.emptycanvas.library.object.temps.Animation;
 import info.emptycanvas.library.object.Point3D;
 import info.emptycanvas.library.object.Scene;
 import info.emptycanvas.library.object.TRI;
@@ -25,20 +25,15 @@ import info.emptycanvas.library.object.TRIObject;
  * 27 déc. 2011
  *
  */
+/*
 public class TriHoleSphereAnime extends Animation {
 	Polyhedre th ;
 	int n=0;
-	/**
-	 * @param s
-	 */
 	public TriHoleSphereAnime(Scene s) {
 		super(s);
 	}
 	
 	private Point3D pcurrent = new Point3D(0,0,0);
-	/**
-	 * @param th2
-	 */
 	private void modifier(Polyhedre th2) {
 		th2.deleteAll();
 		double a = 0, b=0, R=10;
@@ -53,3 +48,4 @@ public class TriHoleSphereAnime extends Animation {
 	}
 
 }
+*/

@@ -250,4 +250,12 @@ public class TColor implements ITexture
     public void setTransparent(Color WHITE) {
         this.transparent = WHITE;
     }
+
+    public void timeNext(long milli) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void timeNext() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

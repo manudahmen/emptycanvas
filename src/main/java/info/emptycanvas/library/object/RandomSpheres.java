@@ -5,6 +5,7 @@
 */
 package info.emptycanvas.library.object;
 
+import info.emptycanvas.library.object.temps.Animation;
 import info.emptycanvas.library.extra.SimpleSphere;
 import java.awt.*;
 import java.util.*;
@@ -18,9 +19,7 @@ public class RandomSpheres extends Animation {
     private Random r = new Random();
 
     public RandomSpheres(Scene s) {
-        super(s);
-        resX = 1000;
-        resY = 1000;
+        super(s, new Dimension(1000,1000));
         n = 10;
         ran = new Point3D[n];
         next = new Point3D[n];
@@ -32,7 +31,6 @@ public class RandomSpheres extends Animation {
 
     }
 
-    @Override
     public void modifier() {
         Scene s = new Scene();
         t += 0.01f;
@@ -48,16 +46,6 @@ public class RandomSpheres extends Animation {
             SimpleSphere ss = new SimpleSphere(ran[i].mult(1 - t).plus(next[i].mult(t)), i, Color.white);
             s.add(ss);
         }
-        scene(s);
-    }
-
-
-    public static void main(String[] args) {
-        Scene s = new Scene();
-        RandomSpheres a = new RandomSpheres(s);
-        a.repertoire("RANDOMSPHERES");
-        a.nom("RS001");
-
-        a.lancer();
+        scene = s;
     }
 }
