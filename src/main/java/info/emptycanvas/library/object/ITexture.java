@@ -20,4 +20,6 @@ public interface ITexture {
     
     public Color getMaillageTexturedColor(int numQuadX, int numQuadY, double x,
             double y);
+    public void timeNext(long milli);
+    public void timeNext();
 }
