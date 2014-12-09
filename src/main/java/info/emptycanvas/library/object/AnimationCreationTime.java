@@ -14,17 +14,47 @@ package info.emptycanvas.library.object;
  *
  * @author Manuel Dahmen <ibiiztera.it@gmail.com>
  */
-public class AnimationCreationTime implements Runnable
-{
+public class AnimationCreationTime
+{  
+    int fpsDest = 25;
     protected long temps;
-    protected int intervalleEntreDeuxImages;
     public AnimationCreationTime(long temps)
     {
         this.temps = temps;
     }
+    public AnimationCreationTime(double tempsSecondes)
+    {
+        this.temps = (long)(tempsSecondes*1000.0);
+    }
+    public long getTime()
+    {
+        return temps;
+    }
+    public double getTimeInSeconds()
+    {
+        return temps/1000.0;
+    }
+    public void avanceUneFrame()
+    {
+        temps += 1000/fpsDest;
+    }
 
-    public void run() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void setFpsDest(int fpsDest) {
+        this.fpsDest = fpsDest;
+    }
+
+
+    public int getFpsDest() {
+        return fpsDest;
+    }
+
+    public long getTemps() {
+        return temps;
+    }
+
+
+    public void setTemps(long temps) {
+        this.temps = temps;
     }
     
 }
