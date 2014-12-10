@@ -69,4 +69,23 @@ public class Representable implements Serializable {
     {
         throw new UnsupportedOperationException("Operation non supportee");
     }
+    
+    public void setProperty(String name, Object value)
+    {
+        if(value!=null)
+        {
+            if(value instanceof Barycentre)
+            {
+                
+                this.position((Barycentre)value);
+                
+            }
+            else if(value instanceof ITexture)
+            {
+                
+                this.texture((ITexture)value);
+                
+            }
+        }
+    }
  }

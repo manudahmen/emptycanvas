@@ -15,6 +15,7 @@ import java.awt.image.RenderedImage;
 import java.io.File;
 import java.io.IOException;
 import java.text.NumberFormat;
+import java.util.ArrayList;
 import javax.imageio.ImageIO;
 
 /**
@@ -22,18 +23,15 @@ import javax.imageio.ImageIO;
  * @author Manuel
  */
 public class Animation {
-
+    protected AnimationCreationTime time;
+    
     protected Dimension resolution;
 
     protected Scene scene;
 
-    private int noImage;
-
-    private String repertoire;
-
-    private String patternFichier;
-
-    private String nom;
+    private ArrayList<AnimationMouvements> moves = new ArrayList<AnimationMouvements>();
+            
+    
     ZBuffer z;
 
     public Animation(Scene s, Dimension dim) {
@@ -41,5 +39,34 @@ public class Animation {
         this.scene = s;
         z = new ZBufferImpl((int) resolution.getWidth(), (int) resolution.getHeight());
     }
+    public void setDuration(double duration)
+    {
+        time = new AnimationCreationTime(duration);
+    }
+    public void addMove(AnimationMouvements m)
+    {
+        moves.add(m);
+    }
 
+    public AnimationCreationTime getTime() {
+        return time;
+    }
+
+    public Dimension getResolution() {
+        return resolution;
+    }
+
+    public ArrayList<AnimationMouvements> getMoves() {
+        return moves;
+    }
+
+    public Scene getScene() {
+        return scene;
+    }
+    
+    public void generate()
+    {
+        AnimationGenerator gen = new AnimationGenerator(this);
+        gen.start();
+    }
 }
