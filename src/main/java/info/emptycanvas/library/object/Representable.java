@@ -70,7 +70,7 @@ public class Representable implements Serializable {
         throw new UnsupportedOperationException("Operation non supportee");
     }
     
-    public void setProperty(String name, Object value)
+    public void setProperty(Object value, Object... keys)
     {
         if(value!=null)
         {
