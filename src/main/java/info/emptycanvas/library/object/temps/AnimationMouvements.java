@@ -17,11 +17,9 @@ import java.awt.Dimension;
  */
 public class AnimationMouvements {
     private Animation animation;
-    private FonctionTemps fonction;
-    
+    private Fonction fonction;
     private Representable representable;
     
-    private FonctionTemps fp;
     
     
     
@@ -36,5 +34,9 @@ public class AnimationMouvements {
     protected void setFonctionPosition(FonctionTemps fp)
     {
         this.fonction = fp;
+    }
+    protected void setFonctionModele(FonctionModele fm)
+    {
+        this.fonction = fm;
     }
 }
