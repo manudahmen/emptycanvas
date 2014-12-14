@@ -6,7 +6,7 @@
 
     <groupId>be.ibiiztera</groupId>
     <artifactId>emptycanvas</artifactId>
-    <version>2014-11-010</version>
+    <version>2014-11-011</version>
     <packaging>jar</packaging>
     <name>emptycanvas</name>
     <distributionManagement>

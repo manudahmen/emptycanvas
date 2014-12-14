@@ -11,6 +11,8 @@ import info.emptycanvas.library.object.Representable;
 import info.emptycanvas.library.object.TRIObject;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -20,7 +22,7 @@ import java.util.List;
  */
 public class RepresentableConteneur extends Representable {
 
-    private List<Representable> re = new ArrayList<Representable>();
+    private Collection<Representable> re = Collections.synchronizedCollection(new ArrayList<Representable>());
 
     public RepresentableConteneur(Representable[] r) {
         re.addAll(Arrays.asList(r));
@@ -29,19 +31,19 @@ public class RepresentableConteneur extends Representable {
     public RepresentableConteneur() {
     }
 
-    public void add(Representable r) {
+    public synchronized void add(Representable r) {
         re.add(r);
     }
 
-    public void remove(Representable r2) {
+    public synchronized void remove(Representable r2) {
         re.remove(r2);
     }
 
-    public void clear() {
+    public synchronized void clear() {
         re.clear();
     }
 
-    public List<Representable> getListRepresentable() {
+    public Collection<Representable> getListRepresentable() {
         return re;
     }
 
