@@ -43,7 +43,7 @@ public class RepresentableConteneur extends Representable {
         re.clear();
     }
 
-    public Collection<Representable> getListRepresentable() {
+    public synchronized Collection<Representable> getListRepresentable() {
         return re;
     }
 
