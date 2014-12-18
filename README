@@ -1,31 +1,58 @@
 * README MIS A JOUR
-* AU 10 AOUT 2013. 
-CE LOGICIEL EST FOURNI TEL QUEL.
+* AU 18/12/2014. 
+
+Ce fichier README est fourni tel quel.
+
+Il est disponible en telechargement sur :
+http://www.ibiiztera.be/ qui contient des informations de base 
+sur l'auteur du projet.
+
+Les sites de référence pour le code source sont:
+
+http://github.com
+http://codeplex.com/ (Actuelle source)
+
+Le logiciel accompagné de ces sources est fourni ici, sous forme de 
+sources Java ou autre langage. Des releases plus ou moins fréquentes
+permettent à ce projet de se donner régulièrement à l'utilisateur.
+
+Le projet, cependant, n'évolue pas vite. Il "n'est pas à la hauteur" 
+c'est-à-dire "L'essayer c'est l'adopter". ... Mais oui, mais 
+Mesdames, Messieurs, parfois on se lasse, l'utilisateur, que dire 
+alors du développeur?
+
+Le prix: 
+
++ no cost or proper internet connexion 
+
+Licence logicielle:
+
+J'ai déjà pensé à bdouiller mes licences, à jouer à qui-perd-gagne, 
+au pigeon idiot, au requin méchant.
+
+Disons que la licence est libre, vous avez un choix:
+- Microsoft Public Licence
+- FSF GNU General Licence (123+)
+- Une licence que je souhaite écrire moi-même, ou me faire 
+aider d'une secrétaire ou d'un avocat.
+
 
 ne contient pas de code malicieux a ma connaissance.
 
-Il est disponible en telechargement sur :
-http://www.ibiiztera.be/
 
-Les sources actualisees regulierement 
-mises a jour sont sur: 
-http://codeplex.com/emptycanvas/
+Le logiciel a été testé avec succès sur différentes plateformes 
+et systèmes d'exploitation;
 
-Il est place sous licence GNU GPL
-telle que fournie par la fondation GNU :
-http://gnu.org
+WINDOWS 7 32b
+WINDOWS 7 64b 
+LINUX Ubuntu 32b
+- Java@Oracle ²
+- Java@openjdk
 
-et 
+Les jars ne sont pas signés pour l'instant,
+ce serait trop 
+me demander que de ne pas me faire voler "mon bic"!
 
-sous licence Microsoft Public Licence
-
-LE LOGICIEL A ETE TESTE 
-AVEC SUCCES SUR PLATEFORME 
-WINDOWS 32 BITS WINDOWS 64 BITS 
-ET LINUX 32 BITS avec le jdk qui va bien.
-
-Les jars ne sont pas signes, ce serait trop 
-me demander!
 
 
 La bibliotheque MonteMedia d'une tierce
