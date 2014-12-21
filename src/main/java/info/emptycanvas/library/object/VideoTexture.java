@@ -29,10 +29,33 @@ public class VideoTexture extends MediaListenerAdapter implements ITexture {
     IMediaReader reader;
 
     
-   public VideoTexture(String film)
-   {
-       this.file = new File(film);
-   }
+   public VideoTexture(String filename) {
+       this.file = new File(filename);
+     
+        vp = new VideoPipe();
+        
+        
+        // create a media reader for processing video
+        IMediaReader reader = ToolFactory.makeReader(filename);
+
+        // stipulate that we want BufferedImages created in BGR 24bit color space
+        reader.setBufferedImageTypeToGenerate(BufferedImage.TYPE_3BYTE_BGR);
+
+        // note that DecodeAndCaptureFrames is derived from
+        // MediaReader.ListenerAdapter and thus may be added as a listener
+        // to the MediaReader. DecodeAndCaptureFrames implements
+        // onVideoPicture().
+        reader.addListener(this);
+
+        // read out the contents of the media file, note that nothing else
+        // happens here.  action happens in the onVideoPicture() method
+        // which is called when complete video pictures are extracted from
+        // the media source
+        while (reader.readPacket() == null) {
+            do {
+            } while (false);
+        }
+    }
     public VideoTexture() {
         
     }
@@ -243,11 +266,20 @@ public class VideoTexture extends MediaListenerAdapter implements ITexture {
                 BufferedImage ret = image;
                 reprendre();
                 return ret;
+                
             }
             else
+            {
+                finTraitementFilm();
                 return null;
+            }
+            
+            
         }
-        
+        public void finTraitementFilm()
+        {
+            image = null;
+        }
     }
 
     /**
@@ -293,8 +325,10 @@ public class VideoTexture extends MediaListenerAdapter implements ITexture {
        
     }
 
+    @Override
     public void onVideoPicture(IVideoPictureEvent event) {
-        
+        vp.add(event.getImage());
+        image = new ECBufferedImage( event.getImage());
     }
 
   public boolean nextFrame()
