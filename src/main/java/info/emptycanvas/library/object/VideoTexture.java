@@ -14,6 +14,8 @@ import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.monte.media.avi.AVIReader;
 
 /**
@@ -24,8 +26,7 @@ public class VideoTexture extends MediaListenerAdapter implements ITexture {
     private ECBufferedImage image;
     private VideoPipe vp ;
     private final Object e = null;
-    private int maxBuffSize = 25;
-    private final ArrayList<BufferedImage> bufferImages= new ArrayList<BufferedImage>(maxBuffSize);
+    public final int maxBuffSize = 25;
     IMediaReader reader;
 
     
@@ -211,7 +212,7 @@ public class VideoTexture extends MediaListenerAdapter implements ITexture {
     {
         
         private boolean verrou;
-        private BufferedImage image;
+        private ArrayList<BufferedImage> images = new ArrayList<BufferedImage>(300);
         private boolean fin;
         
         private boolean verrou() {
@@ -240,11 +241,16 @@ public class VideoTexture extends MediaListenerAdapter implements ITexture {
         }
         public void add(BufferedImage bi)
         {
-            while(isProcesseeding())
+            while(images.size()>=maxBuffSize)
             {
-                
+                attendre();
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(VideoTexture.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
-            image = bi;
+            images.add(bi);
         }
         
         public boolean isProcesseeding()
@@ -252,19 +258,14 @@ public class VideoTexture extends MediaListenerAdapter implements ITexture {
             return verrou();
         }
 
-        @Override
-        public void run() {
-            while(!fin)
-            {
-                
-            }
-        }
 
         private BufferedImage imageSuivante() {
-            if(image!=null)
+            if(!images.isEmpty())
             {
-                BufferedImage ret = image;
+                BufferedImage ret = images.get(0);
+                
                 reprendre();
+                
                 return ret;
                 
             }
@@ -328,12 +329,11 @@ public class VideoTexture extends MediaListenerAdapter implements ITexture {
     @Override
     public void onVideoPicture(IVideoPictureEvent event) {
         vp.add(event.getImage());
-        image = new ECBufferedImage( event.getImage());
     }
 
   public boolean nextFrame()
     {
-        vp.imageSuivante();
+        image = new ECBufferedImage(vp.imageSuivante());
         return true;
     }
   
