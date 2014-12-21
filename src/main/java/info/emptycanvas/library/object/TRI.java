@@ -40,6 +40,9 @@ public class TRI extends  Representable {
     public TRI(Point3D [] s, Color c) {
     	this(s[0], s[1], s[2], c);
 	}
+    public TRI(Point3D [] s, ITexture c) {
+    	this(s[0], s[1], s[2], c);
+	}
 
 
     public void setSommet(Point3D[] sommet) {

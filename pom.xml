@@ -6,7 +6,7 @@
 
     <groupId>be.ibiiztera</groupId>
     <artifactId>emptycanvas</artifactId>
-    <version>2014-11-011</version>
+    <version>2014-2XMAX</version>
     <packaging>jar</packaging>
     <name>emptycanvas</name>
     <distributionManagement>
@@ -265,6 +265,11 @@
    <artifactId>xuggle-xuggler</artifactId>
    <version>5.4</version>
   </dependency>
+        <dependency>
+            <groupId>io.humble</groupId>
+            <artifactId>humble-video-all</artifactId>
+            <version>0.1.1</version>
+        </dependency>
     </dependencies>
     
 </project>

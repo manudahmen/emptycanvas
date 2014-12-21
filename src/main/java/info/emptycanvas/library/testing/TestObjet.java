@@ -223,7 +223,7 @@ public class TestObjet implements Test, Runnable{
 
         template = bundle1.getString("template");
 
-        properties.put("name", this.getClass().getCanonicalName());
+        properties.put("name", this.getClass().getName());
         properties.put("version", version);
 
         resx = Integer.parseInt(bundle1.getString("resx"));
