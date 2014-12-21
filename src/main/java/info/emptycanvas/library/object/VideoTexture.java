@@ -16,28 +16,28 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.monte.media.avi.AVIReader;
 
 /**
  *
  * @author manu
  */
 public class VideoTexture extends MediaListenerAdapter implements ITexture {
-    private ECBufferedImage image;
-    private VideoPipe vp ;
-    private final Object e = null;
-    public final int maxBuffSize = 25;
-    IMediaReader reader;
 
-    
-   public VideoTexture(String filename) {
-       this.file = new File(filename);
-     
+    private ECBufferedImage image;
+    private VideoPipe vp;
+    private final Object e = null;
+    public final int maxBuffSize = 25 * 60 * 700;
+    IMediaReader reader;
+    private boolean notSuivante;
+
+    public VideoTexture(String filename) {
+        this.file = new File(filename);
+
         vp = new VideoPipe();
-        
-        
+
+        new Thread(vp).start();
         // create a media reader for processing video
-        IMediaReader reader = ToolFactory.makeReader(filename);
+        final IMediaReader reader = ToolFactory.makeReader(filename);
 
         // stipulate that we want BufferedImages created in BGR 24bit color space
         reader.setBufferedImageTypeToGenerate(BufferedImage.TYPE_3BYTE_BGR);
@@ -52,14 +52,28 @@ public class VideoTexture extends MediaListenerAdapter implements ITexture {
         // happens here.  action happens in the onVideoPicture() method
         // which is called when complete video pictures are extracted from
         // the media source
-        while (reader.readPacket() == null) {
-            do {
-            } while (false);
-        }
+        reader.open();
+
+        new Thread() {
+            public void run() {
+                while (reader.readPacket() == null) {
+                    while (vp.images.size() > maxBuffSize) {
+                        try {
+                            Thread.sleep(100);
+                        } catch (InterruptedException ex) {
+                            Logger.getLogger(VideoTexture.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+                }
+
+            }
+        }.start();
     }
+
     public VideoTexture() {
-        
+
     }
+
     public BufferedImage getImage() {
         return image;
     }
@@ -67,9 +81,6 @@ public class VideoTexture extends MediaListenerAdapter implements ITexture {
     public void setImage(ECBufferedImage image) {
         this.image = image;
     }
-
-
-
 
     private Color couleur = Color.BLACK;
     private String nom = "texture";
@@ -79,26 +90,23 @@ public class VideoTexture extends MediaListenerAdapter implements ITexture {
     private File file = null;
     private Color transparent = Color.WHITE;
 
-
     public Color couleur(double rx, double ry) {
-            int x = (int) (rx * image.getWidth());
-            int y = (int) (ry * image.getHeight());
-            if (x < 0) {
-                x = 0;
-            }
-            if (y < 0) {
-                y = 0;
-            }
-            if (x >= image.getWidth()) {
-                x = image.getWidth() - 1;
-            }
-            if (y >= image.getHeight()) {
-                y = image.getHeight() - 1;
-            }
-            return new Color(image.getRGB(x, y));
+        int x = (int) (rx * image.getWidth());
+        int y = (int) (ry * image.getHeight());
+        if (x < 0) {
+            x = 0;
+        }
+        if (y < 0) {
+            y = 0;
+        }
+        if (x >= image.getWidth()) {
+            x = image.getWidth() - 1;
+        }
+        if (y >= image.getHeight()) {
+            y = image.getHeight() - 1;
+        }
+        return new Color(image.getRGB(x, y));
     }
-
-
 
     public void setNom(String nom) {
         this.nom = nom;
@@ -112,7 +120,6 @@ public class VideoTexture extends MediaListenerAdapter implements ITexture {
         return couleur;
     }
 
-   
     /**
      * Quadrilatère numQuadX = 1, numQuadY = 1, x, y 3----2 ^2y |\ | | 4 |
      * 0--\-1 1 -> 2x
@@ -125,7 +132,7 @@ public class VideoTexture extends MediaListenerAdapter implements ITexture {
      */
     public Color getMaillageTexturedColor(int numQuadX, int numQuadY, double x,
             double y) {
-   
+
         int xi = ((int) (1d * image.getWidth() * x));
         int yi = ((int) (1d * image.getHeight() * y));
         if (xi >= image.getWidth()) {
@@ -135,10 +142,11 @@ public class VideoTexture extends MediaListenerAdapter implements ITexture {
             yi = image.getHeight() - 1;
         }
         Color c = new Color(image.getRGB(xi, yi));
-        if(c.equals(transparent))
+        if (c.equals(transparent)) {
             return null;
-        else
+        } else {
             return c;
+        }
     }
 
     /**
@@ -170,7 +178,6 @@ public class VideoTexture extends MediaListenerAdapter implements ITexture {
         return new Color(image.getRGB(xi, yi));
     }
 
-
     public void setNomFichier(String nomFichier) {
         this.nomFichier = nomFichier;
     }
@@ -180,22 +187,23 @@ public class VideoTexture extends MediaListenerAdapter implements ITexture {
     }
 
     public int getColorAt(double a, double b) {
-        int c = new Color( image
+        int c = new Color(image
                 .getRGB((int) (a * image
-                .getWidth()),
-                (int) (b * image
-                .getHeight()))
-        ) .getRGB();
-        if(new Color(c).equals(transparent))
+                        .getWidth()),
+                        (int) (b * image
+                        .getHeight()))
+        ).getRGB();
+        if (new Color(c).equals(transparent)) {
             return 0xFFFFFF00;
-        else
+        } else {
             return c;
+        }
     }
 
     void scene(Scene scene) {
         this.scene = scene;
     }
-    
+
     public void setTransparent(Color WHITE) {
         this.transparent = WHITE;
     }
@@ -208,13 +216,12 @@ public class VideoTexture extends MediaListenerAdapter implements ITexture {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public class VideoPipe extends Thread
-    {
-        
+    public class VideoPipe extends Thread {
+
         private boolean verrou;
-        private ArrayList<BufferedImage> images = new ArrayList<BufferedImage>(300);
+        private ArrayList<ECBufferedImage> images = new ArrayList<ECBufferedImage>(300);
         private boolean fin;
-        
+
         private boolean verrou() {
             return verrou;
         }
@@ -231,55 +238,45 @@ public class VideoTexture extends MediaListenerAdapter implements ITexture {
         public void attendre() {
             mettreVerrou();
         }
-        public void reprendre()
-        {
+
+        public void reprendre() {
             enleverVerrou();
         }
-        public void fin()
-        {
+
+        public void fin() {
             this.fin = true;
         }
-        public void add(BufferedImage bi)
-        {
-            while(images.size()>=maxBuffSize)
-            {
-                attendre();
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(VideoTexture.class.getName()).log(Level.SEVERE, null, ex);
-                }
+        int compte = 0;
+
+        public void add(final ECBufferedImage bi) {
+
+            if (bi != null) {
+                images.add(bi);
+                System.out.println("Texture vidéos: images.c = " + compte++);
             }
-            images.add(bi);
         }
-        
-        public boolean isProcesseeding()
-        {
+
+        public boolean isProcesseeding() {
             return verrou();
         }
 
+        private synchronized ECBufferedImage imageSuivante() {
+            if (!images.isEmpty()) {
+                ECBufferedImage ret = images.get(0);
 
-        private BufferedImage imageSuivante() {
-            if(!images.isEmpty())
-            {
-                BufferedImage ret = images.get(0);
-                
+                images.remove(0);
+
                 reprendre();
-                
+
                 return ret;
-                
+
             }
-            else
-            {
-                finTraitementFilm();
-                return null;
-            }
-            
-            
+            return null;
+
         }
-        public void finTraitementFilm()
-        {
-            image = null;
+
+        public void finTraitementFilm() {
+            // image = null;
         }
     }
 
@@ -288,55 +285,80 @@ public class VideoTexture extends MediaListenerAdapter implements ITexture {
      * only one video stream from the media container.
      */
     private int mVideoStreamIndex = -1;
-    static class sTestObjet extends TestObjet{
-            
-            @Override
-            public void ginit() {
-                VideoTexture videoTexture;
-                videoTexture = new VideoTexture("D:\\Bibliothèque\\Films\\Cinema anglais" + "\\" + "Sailor.Et.Lula.1990.FRENCH.BRRiP.XViD.AC3-HuSh.avi");
-                TRI tri = new TRI(new Point3D [] {P.n(0,0,0),P.n(0,1,0),P.n(1,1,0)}, videoTexture);
 
-                scene().add(tri);
-                
-                Camera c = new Camera(Point3D.Z, Point3D.O0);
-                
-                
-            }
-            
+    static class sTestObjet extends TestObjet {
+
+        TRI tri = null;
+        VideoTexture videoTexture;
+
+        @Override
+        public void ginit() {
+            videoTexture = new VideoTexture("D:\\Bibliothèque\\Films\\Cinema anglais" + "\\" + "Sailor.Et.Lula.1990.FRENCH.BRRiP.XViD.AC3-HuSh.avi");
+            tri = new TRI(new Point3D[]{P.n(0, 0, 0), P.n(0, 1, 0), P.n(1, 1, 0)}, videoTexture);
+
+            scene().add(tri);
+
+            Camera c = new Camera(Point3D.Z, Point3D.O0);
+
         }
-    public static void testing ()
-    {
+
+        @Override
+        public void testScene() throws Exception {
+            videoTexture.nextFrame();
+        }
+
+    }
+
+    public static void testing() {
         TestObjet to;
         to = new sTestObjet();
         to.setMaxFrames(2000);
+        to.setResx(400);
+        to.setResy(300);
         to.loop(true);
-        
+
         new Thread(to).start();
     }
+
     public static void main(String[] args) {
         /*if (args.length <= 0) {
-        throw new IllegalArgumentException(
-        "must pass in a filename as the first argument");
-        }*/
+         throw new IllegalArgumentException(
+         "must pass in a filename as the first argument");
+         }*/
         // create a new mr. decode and capture frames
         testing();
 
-        
-        
-       
     }
 
     @Override
     public void onVideoPicture(IVideoPictureEvent event) {
-        vp.add(event.getImage());
+        /*Logger.getLogger(VideoTexture.class.getName()).log(Level.INFO, ""
+         + "Class"+event.getClass()
+         + "Image Class"+event.getImage().getClass()
+         + "JavaData"+event.getJavaData()
+         + "MediaData"+event.getMediaData()
+         + "Picture"+event.getPicture()
+         );
+         */
+        while (notSuivante) {
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(VideoTexture.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+        BufferedImage image1 = event.getImage();
+        if (image1 != null) {
+            vp.add(new ECBufferedImage(image1));
+            notSuivante = true;
+        }
     }
 
-  public boolean nextFrame()
-    {
-        image = new ECBufferedImage(vp.imageSuivante());
+    public boolean nextFrame() {
+        image = vp.imageSuivante();
+        notSuivante = false;
         return true;
     }
-  
-  
-}
 
+}
