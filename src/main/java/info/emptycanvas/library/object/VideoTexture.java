@@ -9,7 +9,6 @@ import com.xuggle.mediatool.IMediaReader;
 import com.xuggle.mediatool.MediaListenerAdapter;
 import com.xuggle.mediatool.ToolFactory;
 import com.xuggle.mediatool.event.IVideoPictureEvent;
-import info.emptycanvas.library.testing.TestObjet;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -29,6 +28,9 @@ public class VideoTexture extends MediaListenerAdapter implements ITexture {
     public final int maxBuffSize = 25 * 60 * 700;
     IMediaReader reader;
     private boolean notSuivante;
+    private File file;
+    private Color couleur;
+    private Scene scene;
 
     public VideoTexture(String filename) {
         this.file = new File(filename);
@@ -37,7 +39,7 @@ public class VideoTexture extends MediaListenerAdapter implements ITexture {
 
         new Thread(vp).start();
         // create a media reader for processing video
-        final IMediaReader reader = ToolFactory.makeReader(filename);
+        reader = ToolFactory.makeReader(filename);
 
         // stipulate that we want BufferedImages created in BGR 24bit color space
         reader.setBufferedImageTypeToGenerate(BufferedImage.TYPE_3BYTE_BGR);
@@ -82,12 +84,8 @@ public class VideoTexture extends MediaListenerAdapter implements ITexture {
         this.image = image;
     }
 
-    private Color couleur = Color.BLACK;
     private String nom = "texture";
     private String nomFichier = "image.png";
-    private Scene scene;
-    private int track = 0;
-    private File file = null;
     private Color transparent = Color.WHITE;
 
     public Color couleur(double rx, double ry) {
@@ -286,49 +284,6 @@ public class VideoTexture extends MediaListenerAdapter implements ITexture {
      */
     private int mVideoStreamIndex = -1;
 
-    static class sTestObjet extends TestObjet {
-
-        TRI tri = null;
-        VideoTexture videoTexture;
-
-        @Override
-        public void ginit() {
-            videoTexture = new VideoTexture("D:\\Bibliothèque\\Films\\Cinema anglais" + "\\" + "Sailor.Et.Lula.1990.FRENCH.BRRiP.XViD.AC3-HuSh.avi");
-            tri = new TRI(new Point3D[]{P.n(0, 0, 0), P.n(0, 1, 0), P.n(1, 1, 0)}, videoTexture);
-
-            scene().add(tri);
-
-            Camera c = new Camera(Point3D.Z, Point3D.O0);
-
-        }
-
-        @Override
-        public void testScene() throws Exception {
-            videoTexture.nextFrame();
-        }
-
-    }
-
-    public static void testing() {
-        TestObjet to;
-        to = new sTestObjet();
-        to.setMaxFrames(2000);
-        to.setResx(400);
-        to.setResy(300);
-        to.loop(true);
-
-        new Thread(to).start();
-    }
-
-    public static void main(String[] args) {
-        /*if (args.length <= 0) {
-         throw new IllegalArgumentException(
-         "must pass in a filename as the first argument");
-         }*/
-        // create a new mr. decode and capture frames
-        testing();
-
-    }
 
     @Override
     public void onVideoPicture(IVideoPictureEvent event) {
