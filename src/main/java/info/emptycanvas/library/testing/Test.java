@@ -2,6 +2,7 @@ package info.emptycanvas.library.testing;
 
 import info.emptycanvas.library.object.Camera;
 import info.emptycanvas.library.object.Scene;
+import info.emptycanvas.library.object.ZBuffer;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Properties;
@@ -16,7 +17,7 @@ public interface Test  extends Runnable {
     public Camera camera();
     public void testScene() throws Exception;
     public void testScene(File f) throws Exception;
-    
+    public void prezbuffer(ZBuffer z);
     public void run();
     public boolean loop();
     public boolean nextFrame();

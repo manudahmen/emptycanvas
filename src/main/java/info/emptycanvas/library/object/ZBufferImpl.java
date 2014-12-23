@@ -31,7 +31,7 @@ public class ZBufferImpl implements ZBuffer {
     // DEFINITIONS
     public double INFINI_PROF = Double.MAX_VALUE;
     private Point3D INFINI = new Point3D(0, 0, INFINI_PROF);
-    private Color COULEUR_FOND = Color.WHITE;
+    private Color COULEUR_FOND = new Color(1f,1f,1f,1f);
     public static final int PERSPECTIVE_ISOM = 0;
     public static final int PERSPECTIVE_OEIL = 1;
     public int type_perspective = PERSPECTIVE_OEIL;

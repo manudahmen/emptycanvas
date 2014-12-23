@@ -90,7 +90,7 @@ public class TestObjet implements Test, Runnable{
     private File fileD;
     private boolean pause = false;
     private boolean pauseActive = false;
-    private TColor couleurFond = new TColor(Color.BLACK);
+    private TColor couleurFond = null ; //new TColor(Color.BLACK);
     private File directory;
     protected ArrayList<TestInstance.Parameter> dynParams;
     public static final ArrayList<TestInstance.Parameter> initParams = new ArrayList<TestInstance.Parameter>();
@@ -101,6 +101,11 @@ public class TestObjet implements Test, Runnable{
     }
     ArrayList<TestInstance.Parameter> getDynParams() {
         return this.dynParams;
+    }
+
+    public void prezbuffer(ZBuffer z) {
+        if(couleurFond!=null)
+            z.couleurDeFond(couleurFond);
     }
 
     public class ImageContainer {
@@ -427,8 +432,9 @@ public class TestObjet implements Test, Runnable{
         ginit();
 
         ZBuffer z = ZBufferFactory.instance(resx, resy, D3);
-        z.couleurDeFond(couleurFond);
-
+        
+        
+        prezbuffer(z);
         
         Logger.getLogger(getClass().getCanonicalName()).info(getClass().getCanonicalName());
         Logger.getLogger(getClass().getCanonicalName()).info(directory().getAbsolutePath());
