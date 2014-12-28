@@ -19,6 +19,7 @@ public class ColorTexture implements ITexture
     		throw new NullPointerException();
         color = c;
     }
+
     public Color color()
     {
         return color;
