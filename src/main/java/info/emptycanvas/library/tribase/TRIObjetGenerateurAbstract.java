@@ -134,8 +134,8 @@ public abstract class TRIObjetGenerateurAbstract extends Representable implement
 			Point3D ret = sommet[0].plus(
 					sommet[1].moins(sommet[0]).mult(ratioX)).plus(
 					sommet[2].moins(sommet[1]).mult(ratioY));
-			ret.setC(texture.getMaillageTexturedColor(numX, numY,
-					((numX + ratioX) / maxX), ((numY + ratioY) / maxY)));
+			ret.texture(new ColorTexture(texture.getMaillageTexturedColor(numX, numY,
+					((numX + ratioX) / maxX), ((numY + ratioY) / maxY))));
 
 			ret.setNormale((tris[0].getSommet()[1].moins(tris[0].getSommet()[0])).prodVect((tris[0]
 					.getSommet()[2].moins(tris[0].getSommet()[0]))));
@@ -146,8 +146,8 @@ public abstract class TRIObjetGenerateurAbstract extends Representable implement
 			Point3D ret = sommet[1].plus(
 					sommet[0].moins(sommet[1]).mult(ratioY)).plus(
 					sommet[2].moins(sommet[0]).mult(ratioX));
-			ret.setC(texture.getMaillageTexturedColor(numX, numY,
-					((numX + ratioX) / maxX), ((numY + ratioY) / maxY)));
+			ret.texture(new ColorTexture(texture.getMaillageTexturedColor(numX, numY,
+					((numX + ratioX) / maxX), ((numY + ratioY) / maxY))));
 
 			ret.setNormale((tris[1].getSommet()[1].moins(tris[1].getSommet()[0])).prodVect((tris[1]
 					.getSommet()[2].moins(tris[1].getSommet()[0]))));
@@ -157,7 +157,7 @@ public abstract class TRIObjetGenerateurAbstract extends Representable implement
 	}
 
 	public void draw(ZBuffer z) {
-		Point3D INFINI = new Point3D(0, 0, 10000, Color.BLUE);
+		Point3D INFINI = new Point3D(0, 0, 10000, new ColorTexture(Color.BLUE));
 		TRI[] tris = new TRI[2];
 		tris[0] = new TRI(INFINI, INFINI, INFINI);
 		tris[1] = new TRI(INFINI, INFINI, INFINI);

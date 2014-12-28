@@ -5,6 +5,7 @@
 */
 package info.emptycanvas.library.script;
 
+import info.emptycanvas.library.object.ColorTexture;
 import java.util.ArrayList;
 
 import info.emptycanvas.library.object.Point3D;
@@ -66,7 +67,7 @@ public class InterpretePoint3DCouleur implements Interprete {
 
         pos = ib.getPosition();
 
-        p.setC(cc);
+        p.texture(new ColorTexture(cc));
 
         this.pos = pos;
 

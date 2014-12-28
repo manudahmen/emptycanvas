@@ -19,7 +19,6 @@
  */
 package info.emptycanvas.library.object;
 
-import java.awt.Color;
 /***
  * 
  * Classe pour les Points à trois coordonnées de type double
@@ -83,15 +82,6 @@ public class Point3D extends Representable {
 		return pb.plus(pa.mult(-1));
 	}
 	
-	private Color color;
-	
-	public Color getColor() {
-		return color;
-	}
-	
-	public void setColor(Color color) {
-		this.color = color;
-	}
 	
 	/***
 	 * id
@@ -136,21 +126,21 @@ public class Point3D extends Representable {
 	 * @param z0 z-coordonnée
 	 * @param co Couleur du "point" en vue d'un dessin
 	 */
-	public Point3D(double x0, double y0, double z0, Color co) {
+	public Point3D(double x0, double y0, double z0, ITexture t) {
 		x = new double[3];
 		x[0] = x0;
 		x[1] = y0;
 		x[2] = z0;
-		texture(new  TColor(co));
+		texture(t);
 	}
 	/***
 	 * Initialise à partir d'un vecteur
 	 * @param x0 coordonnées (3)
 	 * @param co Couleur
 	 */
-	public Point3D(double [] x0, Color co) {
+	public Point3D(double [] x0, ITexture t) {
 		x = x0;
-		texture(new TColor(co));
+		texture(t);
 	}
 
 	public Point3D(Point3D p0) {
@@ -198,36 +188,6 @@ public class Point3D extends Representable {
 		return new Point3D(this).moins(c).mult(d).plus(c);
 	}
 
-	/*
-	 * public Point3D rotation(Axe axe, double angle) { Point3D src = new
-	 * Point3D(this); // TODO CHECK ALGOs Point3D vectAxe =
-	 * axe.getP2().plus(axe.getP1().mult(-1));
-	 * 
-	 * double a =
-	 * (src.plus(axe.getP1().mult(-1)).prodScalaire(vectAxe))/(vectAxe
-	 * .prodScalaire(vectAxe));
-	 * 
-	 * Point3D p =
-	 * axe.getP1().plus(axe.getP1().mult(-1).plus(axe.getP2()).mult(a));
-	 * 
-	 * Point3D vectX = p.mult(-1).plus(src).norme1();
-	 * 
-	 * Point3D vectY = vectX.prodVect(vectAxe).norme1();
-	 * 
-	 * Point3D vectZ = vectX.prodVect(vectY);
-	 * 
-	 * Matrix m = new Matrix(vectX, vectY, vectZ);
-	 * 
-	 * Point3D pPrim = m.mult(src.plus(p.mult(-1))).plus(p); * return pPrim; }
-	 */
-	/*
-	 * public Point3D rotation(DoubleMatrix2D m, Point3D centre) { Point3D p =
-	 * new Point3D(this); return m.mult(new
-	 * Point3D(this).moins(centre)).plus(centre); }
-	 * 
-	 * public Point3D rotation(DoubleMatrix2D m, Point3D centre, Point3D p) {
-	 * return m.mult(new Point3D(p).moins(centre)).plus(centre); }
-	 */
 	@Deprecated
 	public Point3D homothetie(Point3D c, double d, Point3D p) {
 		return new Point3D(p).moins(c).mult(d).plus(c);
@@ -259,10 +219,6 @@ public class Point3D extends Representable {
 		return new Point3D(p).plus(translation);
 	}
 
-	/*
-	 * public Point3D rotation(Axe axe, double angle) { return rotation(axe,
-	 * angle); }
-	 */
 	/***
 	 * Multiplication 
 	 * @param xDIFF facteur 
@@ -332,10 +288,6 @@ public class Point3D extends Representable {
 
 	public void set(int i, double d) {
 		x[i] = d;
-	}
-
-	public void setC(Color c) {
-		texture(new TColor(c));
 	}
 
 	public void setId(String id) {

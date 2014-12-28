@@ -5,6 +5,7 @@
 */
 package info.emptycanvas.library.extra;
 
+import info.emptycanvas.library.object.ColorTexture;
 import info.emptycanvas.library.object.Point3D;
 import info.emptycanvas.library.object.TRIGeneratorUtil;
 import info.emptycanvas.library.object.TRI;
@@ -59,7 +60,7 @@ public class Tourbillon extends  Representable implements
 				Point3D p = new Point3D(-d
 						* Math.sin(2 * Math.PI * tours * h + angle), -h, d
 						* Math.cos(2 * Math.PI * tours * h + angle));
-				p.setC(c);
+				p.texture(new ColorTexture(c));
 
 				obj.add(p);
 
