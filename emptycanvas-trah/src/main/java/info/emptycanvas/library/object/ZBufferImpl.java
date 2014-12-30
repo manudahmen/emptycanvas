@@ -804,7 +804,7 @@ public class ZBufferImpl implements ZBuffer {
                     for (int i = 0; i < itere; i++) {
                         Point3D p = s.getOrigine().mult(i / itere)
                                 .plus(s.getExtremite().mult(1 - i / itere));
-                        p.setC(s.getC());
+                        p.texture(new ColorTexture(s.getC());
                         ime.testProf(p, p.getC());
                     }
                 }
@@ -903,7 +903,7 @@ public class ZBufferImpl implements ZBuffer {
                     for (int i = 0; i < itere; i++) {
                         Point3D p = s.getOrigine().mult(i / itere)
                                 .plus(s.getExtremite().mult(1 - i / itere));
-                        p.setC(s.getC());
+                        p.texture(new ColorTexture(s.getC());
                         ime.testProf(p, p.getC());
                     }
                 }
@@ -1478,7 +1478,7 @@ public class ZBufferImpl implements ZBuffer {
                 Math.abs(x1.getY() - x2.getY())) * 4;
         for (int i = 0; i < itere; i++) {
             Point3D p = p1.mult(i / itere).plus(p2.mult(1 - i / itere));
-            p.setC(c);
+            p.texture(new ColorTexture(c);
             ime.testProf(p, n, c);
         }
 

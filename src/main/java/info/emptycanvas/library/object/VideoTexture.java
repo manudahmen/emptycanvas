@@ -8,9 +8,11 @@ import info.emptycanvas.library.testing.TestObjet;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import sun.net.util.URLUtil;
 
 /**
  *
@@ -71,7 +73,7 @@ public class VideoTexture extends MediaListenerAdapter implements ITexture {
         public void finTraitementFilm() {
             // image = null;
         }
-        private synchronized ECBufferedImage imageSuivante() {
+        private synchronized ECBufferedImage imageSuivante() throws EOFilmException {
             if (!images.isEmpty()) {
                 ECBufferedImage ret = images.get(0);
 
@@ -82,7 +84,7 @@ public class VideoTexture extends MediaListenerAdapter implements ITexture {
                 return ret;
 
             }
-            return null;
+            throw new EOFilmException();
 
         }
 
@@ -133,10 +135,6 @@ public class VideoTexture extends MediaListenerAdapter implements ITexture {
 
     private boolean notSuivante;
 
-    private Color couleur = Color.BLACK;
-    private String nom = "texture";
-    private String nomFichier = "image.png";
-    private Scene scene;
     private int track = 0;
     private File file = null;
     private Color transparent = Color.WHITE;
@@ -148,6 +146,10 @@ public class VideoTexture extends MediaListenerAdapter implements ITexture {
     private int mVideoStreamIndex = -1;
 
     public VideoTexture() {
+
+    }
+    public VideoTexture(URL vid) {
+        this(vid.toExternalForm());
 
     }
 
@@ -189,6 +191,8 @@ public class VideoTexture extends MediaListenerAdapter implements ITexture {
 
             }
         }.start();
+        
+        
     }
 
     public Color couleur(double rx, double ry) {
@@ -221,14 +225,6 @@ public class VideoTexture extends MediaListenerAdapter implements ITexture {
         } else {
             return c;
         }
-    }
-
-    public Color getCouleur() {
-        return couleur;
-    }
-
-    public BufferedImage getImage() {
-        return image;
     }
 
     /**
@@ -289,16 +285,13 @@ public class VideoTexture extends MediaListenerAdapter implements ITexture {
         return new Color(image.getRGB(xi, yi));
     }
 
-    public String getNom() {
-        return nom;
-    }
-
-    public String getNomFichier() {
-        return nomFichier;
-    }
-
     public boolean nextFrame() {
-        image = vp.imageSuivante();
+        try {
+            image = vp.imageSuivante();
+        } catch (EOFilmException ex) {
+            Logger.getLogger(VideoTexture.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
         notSuivante = false;
         return true;
     }
@@ -326,22 +319,6 @@ public class VideoTexture extends MediaListenerAdapter implements ITexture {
             vp.add(new ECBufferedImage(image1));
             notSuivante = true;
         }
-    }
-
-    void scene(Scene scene) {
-        this.scene = scene;
-    }
-
-    public void setImage(ECBufferedImage image) {
-        this.image = image;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public void setNomFichier(String nomFichier) {
-        this.nomFichier = nomFichier;
     }
 
     public void setTransparent(Color WHITE) {

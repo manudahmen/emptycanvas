@@ -12,19 +12,22 @@ package info.emptycanvas.library.nurbs;
 
 import info.emptycanvas.library.object.Point3D;
 import info.emptycanvas.library.object.Representable;
+import info.emptycanvas.library.tribase.TRIObjetGenerateurAbstract;
 
 /**
  *
  * @author Manuel Dahmen <ibiiztera.it@gmail.com>
  */
-public abstract class ParametrizedSurface extends Representable{
+public abstract class ParametrizedSurface extends TRIObjetGenerateurAbstract{
   
     protected double start1, start2;
     protected double end1, end2;
         public int incr1 = 100;
     public int incr2 = 100;
 
+
     public abstract Point3D calculerPoint3D(double u, double v);
+            ;
     public abstract Point3D calculerVitesse3D(double u, double v);
     
     public int incr1()
@@ -53,4 +56,10 @@ public abstract class ParametrizedSurface extends Representable{
     {
         return calculerPoint3D(u2, v2).moins(calculerPoint3D(u1, v1));
     }
+    
+    public Point3D coordPoint3D(int x, int y) {
+        return calculerPoint3D(1.0*x/getMaxX(), 1.0*y/getMaxY());
+    }
+
+    
 }

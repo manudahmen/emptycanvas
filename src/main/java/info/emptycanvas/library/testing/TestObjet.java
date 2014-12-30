@@ -666,7 +666,7 @@ public class TestObjet implements Test, Runnable{
 
                         z.dessinerSilhouette3D();
 
-                        ri = ((ZBufferImpl) z).image2();
+                        ri = ((ZBufferImpl) z).image();
                         try {
                             aw.write(0, ri, 1);
                         } catch (IOException e) {

@@ -17,16 +17,38 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Arrays;
 import java.util.Iterator;
+import javax.imageio.ImageIO;
 
 /***
  * Classe de rendu graphique
  */
 public class ZBufferImpl implements ZBuffer {
-	protected final ImageFond backgroundTexture = new ImageFond();
+    protected long id()
+    {
+        return id;
+    }
 
+    /**
+     * Couleur de fond (texture: couleur, image, vidéo, ...
+     */
+    protected final ImageFond backgroundTexture = new ImageFond(new ColorTexture(Color.WHITE));
+    {
+        try
+        {
+            backgroundTexture.setText(new ImageTexture(new ECBufferedImage(ImageIO.read(getClass().getResourceAsStream("/ibiiztetra_logo.png")))));
+        }
+        catch(Exception ex)
+        {
+        }
+    }
 	public class ImageFond {
 		ITexture tex;
 
+                public ImageFond(ITexture tex)
+                {
+			this.tex = tex;
+                }
+                
 		public void setText(ITexture tex) {
 			this.tex = tex;
 		}
@@ -485,7 +507,7 @@ public class ZBufferImpl implements ZBuffer {
 		}
 
 		public int getElementCouleur(int x, int y) {
-			if (checkCoordonnees(x, y) && Simeid[x][y] == id) {
+			if (checkCoordonnees(x, y) && Simeid[x][y] == id()) {
 				return getRGBInt(Sc, x, y);
 			} else {
 				return COULEUR_FOND_INT(x, y);
@@ -1352,7 +1374,9 @@ public class ZBufferImpl implements ZBuffer {
 				ECBufferedImage.TYPE_INT_RGB);
 		for (int i = 0; i < la; i++) {
 			for (int j = 0; j < ha; j++) {
-				bi2.setRGB(i, j, ime.getIME().getElementCouleur(i, j));
+                            int elementCouleur = ime.getIME().getElementCouleur(i, j);
+                                bi2.setRGB(i, j, elementCouleur);
+                                        
 			}
 		}
 		System.out.print("+");

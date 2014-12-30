@@ -197,7 +197,7 @@ public class Point3D extends Representable {
 
 	public static Point3D rotation(Matrix33 axes, Point3D origine, Point3D p) {
 		Point3D ret = axes.mult(p.moins(origine)).plus(origine);
-		ret.setC(p.getC());
+		ret.texture(new ColorTexture(p.getC());
 		return ret;
 	}
 

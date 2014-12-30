@@ -145,7 +145,7 @@ public class ImageTexture implements ITexture{
         }
         Color c = new Color(image.getRGB(xi, yi));
         if(c.equals(transparent))
-            return null;
+            return new Color(1f,1f,1f,1f);
         else
             return c;
     }

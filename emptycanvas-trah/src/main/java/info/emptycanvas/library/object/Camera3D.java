@@ -116,13 +116,13 @@ public class Camera3D extends Camera  {
 
 	public Point3D calculerPointDansRepereGAUCHE(Point3D p) {
 		Point3D p2 = cGauche.calculerPointDansRepere(p);
-		p2.setC(p.getC());
+		p2.texture(new ColorTexture(p.getC());
 		return p2;
 	}
 
 	public Point3D calculerPointDansRepereDROIT(Point3D p) {
 		Point3D p2 = cDroite.calculerPointDansRepere(p);
-		p2.setC(p.getC());
+		p2.texture(new ColorTexture(p.getC());
 		return p2;
 	}
 

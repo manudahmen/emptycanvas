@@ -71,5 +71,5 @@ public class SurfaceParametriquePolynomialeBSpline extends ParametrizedSurface {
                     * N(i + 1, degree - 1, t, dim01);
         }
     }
-        
+
     }

@@ -69,7 +69,7 @@ public class InterpreteSegment implements Interprete {
 		this.pos = pos;
 		
 		SegmentDroite sd =  new SegmentDroite(p1, p2);
-		sd.setC(c);
+		sd.texture(new ColorTexture(c);
 
 		return sd;
 	}

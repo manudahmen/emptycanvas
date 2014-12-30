@@ -19,6 +19,11 @@ import info.emptycanvas.library.object.Point3D;
 public class NurbsSurface extends  ParametrizedSurface
 
 {
+
+    @Override
+    public Point3D coordPoint3D(int x, int y) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     public class Entry<E, V>
     {
         public E key;
