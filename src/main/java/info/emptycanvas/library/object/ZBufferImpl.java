@@ -1081,7 +1081,7 @@ public class ZBufferImpl implements ZBuffer {
 										b.calculerPoint3D((i - 1 < 0 ? 0
 												: i - 1) * 1d / i1,
 												(j - 1 < 0 ? 0 : j - 1) * 1d
-														/ i2) }, new TColor(
+														/ i2) }, new ColorTexture(
 										b.getColor(i1, i2, 1.0d * i / i1, 1.d
 												* j / i2))));
 					}
