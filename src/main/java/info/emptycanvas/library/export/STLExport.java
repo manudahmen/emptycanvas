@@ -28,7 +28,7 @@ public class STLExport {
 			file.createNewFile();
 			PrintWriter pw = new PrintWriter(new FileOutputStream(file));
 
-				pw.println("solid O_"+scene.description);
+				pw.println("solid Emptycanvas_"+scene.description);
 
 				Iterator<Representable> it = scene.iterator();
 
@@ -79,8 +79,13 @@ public class STLExport {
 		for (int s = 0; s < r.getPoints().size(); s++) {
 			w += "vertex ";
 			for (int c = 0; c < 3; c++)
-				w += r.getPoints().get(s).get(c) + " ";
-			w += "\n";
+                        {
+                            double A = r.getPoints().get(s).get(c);
+                            if(Double.isNaN(A)) A = 0;
+                                w += A + " ";
+                        }
+                        
+                        w += "\n";
 		}
 		w += "endloop\n";
 		return w += "endfacet\n";
@@ -138,8 +143,13 @@ public class STLExport {
 		for (int s = 0; s < 3; s++) {
 			w += "vertex ";
 			for (int c = 0; c < 3; c++)
-				w += r.getSommet()[s].get(c) + " ";
-			w += "\n";
+                        {
+                            double A = r.getSommet()[s].get(c) ;
+                            if(Double.isNaN(A))
+                                A = 0;
+				w += A + " ";
+                        }
+                        w += "\n";
 		}
 		w += "endloop\n";
 		return w += "endfacet\n\n";

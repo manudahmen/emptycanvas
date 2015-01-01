@@ -20,8 +20,8 @@ import info.emptycanvas.library.tribase.TRIObjetGenerateurAbstract;
  */
 public abstract class ParametrizedSurface extends TRIObjetGenerateurAbstract{
   
-    protected double start1, start2;
-    protected double end1, end2;
+    protected double start1=0, start2=0;
+    protected double end1=1, end2=1;
         public int incr1 = 100;
     public int incr2 = 100;
 
