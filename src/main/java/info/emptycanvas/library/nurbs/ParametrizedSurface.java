@@ -22,19 +22,19 @@ public abstract class ParametrizedSurface extends TRIObjetGenerateurAbstract{
   
     protected double start1=0, start2=0;
     protected double end1=1, end2=1;
-        public int incr1 = 100;
-    public int incr2 = 100;
+        public double incr1 = 100.0;
+    public double incr2 = 100.0;
 
 
     public abstract Point3D calculerPoint3D(double u, double v);
             ;
     public abstract Point3D calculerVitesse3D(double u, double v);
     
-    public int incr1()
+    public double incr1()
     {
         return incr1;
     }
-    public int incr2()
+    public double incr2()
     {
         return incr1;
     }

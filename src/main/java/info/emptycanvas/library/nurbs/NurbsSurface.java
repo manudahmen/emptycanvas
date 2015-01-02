@@ -10,8 +10,6 @@
 package info.emptycanvas.library.nurbs;
 
 import info.emptycanvas.library.object.Point3D;
-import org.bridj.Pointer;
-import org.bridj.cpp.com.OLEAutomationLibrary;
 
 /**
  *
@@ -21,7 +19,7 @@ public class NurbsSurface extends ParametrizedSurface {
 
     public static final int type_coordX = 0;
     public static final int type_coordY = 1;
-    private int degree;
+    private int degree = 1;
 
     @Override
     public Point3D coordPoint3D(int x, int y) {
@@ -152,11 +150,7 @@ public class NurbsSurface extends ParametrizedSurface {
     public NurbsSurface() {
     }
 
-    /*@Override
-    public Point3D calculerPoint3D(double u, double v) {
-        return formule(u, v);
-    }
-*/
+
     @Override
     public Point3D calculerVitesse3D(double u, double v) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -255,15 +249,16 @@ public class NurbsSurface extends ParametrizedSurface {
         this.T = T;
     }
 
-    public double N(int type_coord, int i, int degree, double t) {
-
-        if (degree <= 0) {
+    public double N(int type_coord, int i, int deg, double t) {
+        if(i>=intervalle.m)
+            return 0;
+        if (deg <= 0) {
             return 1;
         } else {
-            return N(type_coord, i, degree - 1, t)
-                    * f0sur0egal0(coefficients(type_coord, i + 1) - t, t - coefficients(type_coord, i - 1))
-                    + N(type_coord, i + 1, degree - 1, t)
-                    * f0sur0egal0(coefficients(type_coord, i + degree + 1) - t, t - coefficients(type_coord, i + 1));
+            return N(type_coord, i, deg - 1, t)
+                    * f0sur0egal0(coefficients(type_coord, i + 1) - t, t - coefficients(type_coord, i))
+                    + N(type_coord, i + 1, deg - 1, t)
+                    * f0sur0egal0(coefficients(type_coord, i + deg + 1) - t, t - coefficients(type_coord, i + 1));
         }
     }
 
