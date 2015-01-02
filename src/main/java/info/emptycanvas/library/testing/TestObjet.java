@@ -14,6 +14,7 @@ import info.emptycanvas.library.object.Scene;
 import info.emptycanvas.library.object.ZBuffer;
 import info.emptycanvas.library.object.ZBufferFactory;
 import info.emptycanvas.library.export.STLExport;
+import info.emptycanvas.library.object.ITexture;
 import info.emptycanvas.library.script.ExtensionFichierIncorrecteException;
 import info.emptycanvas.library.script.Loader;
 import info.emptycanvas.library.script.VersionNonSupporteeException;
@@ -111,7 +112,7 @@ public class TestObjet implements Test, Runnable{
     private File fileD;
     private boolean pause = false;
     private boolean pauseActive = false;
-    private TColor couleurFond = new TColor(Color.BLACK);
+    private ITexture couleurFond;
     private File directory;
     protected ArrayList<TestInstance.Parameter> dynParams;
 
@@ -585,7 +586,9 @@ public class TestObjet implements Test, Runnable{
         ginit();
 
         ZBuffer z = ZBufferFactory.instance(resx, resy, D3);
-        z.couleurDeFond(couleurFond);
+        
+        if(scene().texture()!=null)
+            z.backgroundTexture(scene().texture());
 
         
         Logger.getLogger(getClass().getCanonicalName()).info(getClass().getCanonicalName());

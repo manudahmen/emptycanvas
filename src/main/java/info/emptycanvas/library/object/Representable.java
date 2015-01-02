@@ -3,14 +3,13 @@
  */
 package info.emptycanvas.library.object;
 
-import java.awt.Color;
 import java.io.Serializable;
 
 public class Representable implements Serializable {
     protected Barycentre bc = new Barycentre();
     protected Representable parent;
     protected Scene scene;
-    protected ITexture texture = new TColor(Color.WHITE);
+    protected ITexture texture = null;
     private String id;
     public Representable() {
     }

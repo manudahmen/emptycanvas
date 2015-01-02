@@ -17,7 +17,7 @@ import java.awt.Point;
  */
 public abstract class PGeneratorZ extends Representable {
 	public abstract void dessine(ZBuffer z);
-	public void dessineStructure(ZBufferImpl zBufferImpl) {
+	public void dessineStructure(ZBuffer zBufferImpl) {
 		// TODO Auto-generated method stub
 		
 	}

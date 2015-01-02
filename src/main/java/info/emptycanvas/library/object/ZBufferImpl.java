@@ -37,7 +37,7 @@ public class ZBufferImpl implements ZBuffer {
 
     {
         try {
-            backgroundTexture.setText(new ImageTexture(new ECBufferedImage(ImageIO.read(getClass().getResourceAsStream("/ibiiztetra_logo.png")))));
+            backgroundTexture(new ImageTexture(new ECBufferedImage(ImageIO.read(getClass().getResourceAsStream("fondParDefaut.jpg")))));
         } catch (Exception ex) {
         }
     }
@@ -1656,7 +1656,7 @@ public class ZBufferImpl implements ZBuffer {
     }
 
     @Override
-    public void BackgroundTexture(ITexture tex) {
+    public void backgroundTexture(ITexture tex) {
         backgroundTexture.setText(tex);
     }
 

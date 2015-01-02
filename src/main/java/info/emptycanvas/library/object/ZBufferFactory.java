@@ -2,7 +2,7 @@ package info.emptycanvas.library.object;
 
 public class ZBufferFactory
 {
-    private static ZBufferImpl insta = null;
+    private static ZBuffer insta = null;
     private static int la=-1, ha=-1;
 	public static ZBuffer instance(int x, int y)
 	{
