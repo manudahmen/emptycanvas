@@ -87,4 +87,9 @@ public class Representable implements Serializable {
     public void texture(ITexture tc) {
 	        this.texture = tc;
 	    }
+    
+    public Representable strictCopyOf() throws CloneNotSupportedException
+    {
+        return (Representable) this.clone();
+    }
  }

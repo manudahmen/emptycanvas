@@ -254,10 +254,6 @@ public class Scene extends Representable implements Serializable {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public void texture(ArrayList<TColor> c) {
-        colors.addAll(c);
-    }
-
     @Override
     public void texture(ITexture c) {
         colors.add(c);

@@ -1,0 +1,325 @@
+h1.myH1 {
+    color: #009CDE;
+    font-family: Arial;
+    font-weight: bold;
+    margin-bottom: 1px;
+    margin-top: 0px;
+    font-size: 22px;
+}
+
+h2.myH2 {
+    color: #009CDE;
+    font-family: Arial;
+    font-weight: bold;
+    margin-bottom: 1px;
+    margin-top: 0px;
+    font-size: 100%;
+}
+
+h3.siteModulesHeaderID {
+    color: #009CDE;
+    font-family: Arial;
+    font-weight: bold;
+    margin-bottom: 0%;
+    font-size: 100%;
+    margin-top: 0%;
+    margin-bottom: 25px;
+}
+
+
+
+h3.myH3NoIndent {
+    color: #009CDE;
+    font-family: Arial;
+    font-weight: bold;
+    margin-bottom: 35px;
+    font-size: 100%;
+    margin-left: 1px;
+    margin-top: 0%;
+}
+
+a.siteModuleLinkID {
+    color: #236192;
+    font-family: Arial;
+    font-weight: normal;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+#siteModuleLinkDivID {
+    margin-top:1px;
+    margin-bottom:1px;
+}
+
+p.important {
+    color: green;
+}
+
+a.popSearch {
+    color: #000;
+    font-family: Arial;
+    margin-bottom: 3px;
+    text-decoration: none;
+    font-size: 80%;
+    text-decoration: none;
+}
+
+a.breadcrumbs {
+    color: #000000;
+    font-family: Arial;
+    text-decoration: none;
+    color: #000000;
+}
+
+p.breadcrumbs {
+    color: #000000;
+    font-family: Arial;
+    text-decoration: none;
+    font-size: 80%;
+    color: #000000;
+    margin-top: 0px;
+}
+
+#center_panel {
+    width: 660px;
+    height: 430px;
+    display: block;
+    float: right;
+    visibility: visible;
+    margin-top: 10px;
+    margin-bottom:20px;
+}
+
+/* Main middle content */
+
+#mainContentContainer {
+    height: 590px; 
+    margin-left: auto; 
+    margin-right: auto;
+    margin-bottom: 24px;
+}
+
+
+/* Module List TDs and the list */
+
+#gcseSearchFilterModule {
+    width: 190px;
+}
+
+#gcseSearchFilterModuleTitleTD {
+    font-family: Arial;
+    font-size: 11px;
+    width: 20px;
+}
+
+#gcseSearchFilterModuleListTD {
+    width: 230px;
+}
+
+#gcseSearchFilterSourceSite {
+    width: 190px;
+}
+
+#gcseSearchFilterSourceSiteTitleTD {
+    font-family: Arial;
+    font-size: 11px;
+    width: 20px;
+}
+
+#gcseSearchFilterSourceSiteListD {
+    width: 230px;
+}
+/* Search component container styles */
+#gcseContentContainer
+{
+	margin-left:auto;
+	margin-right:auto;
+	font-family:Arial;
+	width:960px;
+}
+#gcseSearchComponent
+{
+	margin-top:20px;
+}
+#gcseSearchComponentTextBox {
+	width: 840px;
+	height: 28px; 
+	padding: 0px 0px 0px 0px; 
+    padding-left: 10px;
+	border: 1px solid #009ADA;
+	vertical-align:middle;
+    font-size:15px;
+}
+#gcseSearchComponentTextBox:focus {
+    color: #ffffff;
+}
+#gcseSearchComponentButton
+{
+	color:white; 
+	background:#333333; 
+	height:30px; 
+	width:100px; 
+	padding: 0px 0px 0px 0px;
+	border:none;
+	font-size:18px;
+	text-align:center;
+	vertical-align:middle;
+	line-height:15px;
+        float:right;
+}
+#gcseSearchFiltersComponent
+{
+	margin-top:16px;
+    margin-bottom: 20px;
+	float:left;
+}
+#gcseSearchFiltersComponentText
+{
+    color:#979797;
+	width:auto;
+	height:18px;
+	text-align:center;
+	font-size:15px;
+	float:left;
+}
+#gcseSearchFiltersComponentModules
+{
+	margin-left:20px;
+	float:left;
+}
+#gcseSearchFiltersComponentSources
+{
+	margin-left:30px;
+	float:left;
+}
+/* Help Resoueces styles */
+#helpResourcesContainer {
+    width: 85%;
+    float: left; 
+    font-family:Arial;
+    padding-left: 20px;
+    margin-top: 35px;
+}
+h2.helpResourcesHeaderID {
+}
+a.helpResourcesListItem {
+    font-size: 13px;
+    text-decoration: none;
+    color: inherit;
+    margin-bottom: 1px;
+    margin-top: 0px;
+}
+
+a.helpResourcesListItem:hover {
+    color: rgb(17, 17, 17);
+}
+/* Box inside shading and hoverung */
+
+.portalBlockhelpResources {
+    color: #58595B;
+    font-family: Arial;
+    /* font-size: 10pt; */
+  border: 1px solid #D9D9D6;
+  box-shadow: inset 0px 0px 12px #D9D9D6;
+  -moz-box-shadow: inset 0px 0px 12px #D9D9D6;
+  -webkit-box-shadow: inset 0px 0px 12px #D9D9D6;
+    margin-bottom: 0px;
+  background: #fff;
+}
+
+
+.portalBlockhelpResources h2 {
+  font-weight: bold;
+  font-size: 15px;
+  color: rgb(0, 156, 222);
+  padding: 0 !important;
+  margin: 0 0 0 0px !important;
+  line-height: 35px;
+  white-space: nowrap; 
+}
+.portalBlockhelpResources:hover {
+  border: 1px solid rgb(137, 137, 134);
+  box-shadow: 0px 0px 12px rgb(185, 185, 182) inset;
+}
+
+/* Upper part belongs to the resources links area */
+
+
+/* Help Center Footer formatting */
+
+#homeSiteHTML, #homeSiteBODY {
+   margin:0;
+   padding:0;
+   height:100%;
+   overflow-y:no-display;
+}
+#siteIndexHTML {
+   margin:0;
+   padding:0;
+   height:100%;
+}
+#siteIndexBODY {
+   margin:0;
+   padding:0;
+   position:relative;
+}
+#footerDummyContainer {
+    width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 100%;
+    position: relative;
+}
+#mainPageContainer {
+    width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+    padding-bottom: 53px;
+}
+#footerLinksBottomSpacer {
+    position:relative;
+    height:120px;
+    width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+}
+#footerLinksBottomFixer {
+    display:block;
+    width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+    position:absolute;
+    bottom: 0px;
+    height:53px;
+}
+#footerLinksContainer {
+    width: 960px;
+    height:53px;
+    background: url('images/help_center_footer.png');
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: 13px;
+    font-family: Arial;
+    color:white;
+    line-height:25px;
+}
+
+#footerLinksContainer_upperLine {
+    height:50%;
+    vertical-align:middle;
+}
+
+#footerLinksContainer_bottomLine {
+    height:50%;
+    vertical-align:middle;
+}
+/* Place holders */
+#footerLinksHeader {
+}
+
+a.footerLinksAnchorItem {
+        color:white;
+        text-decoration:none;
+}

@@ -238,7 +238,7 @@ public class NurbsSurface extends ParametrizedSurface {
 
     public double coefficients(int type_coord, double t) {
         for (int i = 0; i < intervalle.m; i++) {
-            if (intervalle.get(type_coord, i) <= t && intervalle.get(type_coord, i + 1) >= t) {
+            if (t>=intervalle.get(type_coord, i)  && intervalle.get(type_coord, i + 1) <= t) {
                 return intervalle.get(type_coord, i);
             }
         }
@@ -262,7 +262,7 @@ public class NurbsSurface extends ParametrizedSurface {
         }
     }
 
-    public double C(int i, int n, double t) {
+    public double C(int i, int n) {
         return factorielle(n) / factorielle(i) / factorielle(n - i);
     }
 
@@ -279,12 +279,13 @@ public class NurbsSurface extends ParametrizedSurface {
     }
 
     public Point3D calculerNurbs(double u, double v) {
-        int M = intervalle.m - degree - 1;
+        int M = degree;//intervalle.m - degree - 1;
+        //System.out.println("Fact = " + M);
         double sum = 0;
         Point3D ret = Point3D.O0;
         for (int i = 0; i < points[0].length; i++) {
             for (int j = 0; j < points.length; j++) {
-                double sumP = C(M, i, u) * C(M, j, v) * N(type_coordX, i, degree, u) * N(type_coordY, j, degree, v);
+                double sumP = C(M, i) * C(M, j) * N(type_coordX, i, degree, u) * N(type_coordY, j, degree, v);
                 ret = ret.plus(points[i][j].mult(sumP));
                 sum += sumP;
             }
