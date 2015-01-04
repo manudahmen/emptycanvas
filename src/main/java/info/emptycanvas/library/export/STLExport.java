@@ -10,7 +10,6 @@ import java.util.Iterator;
 import info.emptycanvas.library.object.Polygone;
 import info.emptycanvas.library.object.Representable;
 import info.emptycanvas.library.object.Scene;
-import info.emptycanvas.library.object.TColor;
 import info.emptycanvas.library.object.TRI;
 import info.emptycanvas.library.object.TRIConteneur;
 import info.emptycanvas.library.object.TRIObject;
@@ -18,7 +17,6 @@ import info.emptycanvas.library.tribase.TRIGenerable;
 import info.emptycanvas.library.tribase.TRIObjetGenerateur;
 import info.emptycanvas.library.nurbs.ParametrizedSurface;
 import info.emptycanvas.library.object.RepresentableConteneur;
-import java.awt.Color;
 
 public class STLExport {
 
@@ -35,9 +33,7 @@ public class STLExport {
             while (it.hasNext()) {
                 Representable r = it.next();
 
-                pw.print(
-                        traite(r)
-                );
+                        traite(r, pw);
             }
 
             pw.println("endsolid");
@@ -46,134 +42,126 @@ public class STLExport {
         }
     }
 
-    public static String traite(ParametrizedSurface n) {
-        String s = "";
-        double incr1 = 1.0 / n.incr1;
-        double incr2 = 1.0 / n.incr2;
-        for (double i = 0; i <= 1 - incr1; i += incr1) {
-            for (double j = 0; j <= 1 - incr2; j += incr2) {
+    public static void traite(ParametrizedSurface n, PrintWriter pw) {
+        write("", pw);
+        for (double i = n.getStartU(); i <= n.getEndU()- n.getIncrU(); i += n.getIncrU()) {
+            for (double j = n.getStartV(); j <= n.getEndV() - n.getIncrV(); j += n.getIncrV()) {
                 double u = i;
                 double v = j;
-                s += traite(new TRI(n.calculerPoint3D(u, v),
-                        n.calculerPoint3D(u + incr1, v),
-                        n.calculerPoint3D(u + incr1,
-                                v + incr2),
-                        n.texture()));
-                s += traite(new TRI(n.calculerPoint3D(u, v),
-                        n.calculerPoint3D(u, v + incr2),
-                        n.calculerPoint3D(u + incr1,
-                                v + incr2),
-                        n.texture()));
+                traite(new TRI(n.calculerPoint3D(u, v),
+                        n.calculerPoint3D(u + n.getIncrU(), v),
+                        n.calculerPoint3D(u + n.getIncrU(),
+                                v + n.getIncrV()),
+                        n.texture()), pw);
+                traite(new TRI(n.calculerPoint3D(u, v),
+                        n.calculerPoint3D(u, v + n.getIncrV()),
+                        n.calculerPoint3D(u + n.getIncrU(),
+                                v + n.getIncrV()),
+                        n.texture()), pw);
             }
 
         }
-        return s;
     }
 
-    private static String traite(Polygone r) {
-        String w = "facet normal 0 0 0 \n" + "outer loop\n";
+    private static void traite(Polygone r, PrintWriter pw) {
+        write("facet normal 0 0 0 \n" + "outer loop\n", pw);
         for (int s = 0; s < r.getPoints().size(); s++) {
-            w += "vertex ";
+            write("vertex ", pw);
             for (int c = 0; c < 3; c++) {
                 double A = r.getPoints().get(s).get(c);
                 if (Double.isNaN(A)) {
                     A = 0;
                 }
-                w += A + " ";
+                write(A + " ", pw);
             }
 
-            w += "\n";
+            write("\n", pw);
         }
-        w += "endloop\n";
-        return w += "endfacet\n";
+        write("endloop\n", pw);
+        write("endfacet\n", pw);
     }
 
-    private static String traite(Representable r) {
-        String s = "";
+    private static void traite(Representable r, PrintWriter pw) {
+        write("", pw);
 
         if (r instanceof RepresentableConteneur) {
-            s = traite((RepresentableConteneur) r);
+            traite((RepresentableConteneur) r, pw);
         }
         if (r instanceof TRIObject) {
-            s = traite((TRIObject) r);
+            traite((TRIObject) r, pw);
         }
         if (r instanceof TRIGenerable) {
-            s = traite((TRIGenerable) r);
+            traite((TRIGenerable) r, pw);
         }
         if (r instanceof Polygone) {
-            s = traite((Polygone) r);
+            traite((Polygone) r, pw);
         }
         if (r instanceof TRI) {
-            s = traite((TRI) r);
+            traite((TRI) r, pw);
         }
         if (r instanceof TRIObjetGenerateur) {
-            s = traite((TRIObjetGenerateur) r);
+            traite((TRIObjetGenerateur) r, pw);
         }
         if (r instanceof TRIConteneur) {
-            s = traite((TRIConteneur) r);
+            traite((TRIConteneur) r, pw);
         }
         if (r instanceof ParametrizedSurface) {
-            s = traite((ParametrizedSurface) r);
+            traite((ParametrizedSurface) r, pw);
         }
-        return s;
     }
 
-    private static String traite(RepresentableConteneur r) {
-        String s = "";
+    private static void traite(RepresentableConteneur r, PrintWriter pw) {
+        write("", pw);
         Iterator<Representable> it = r.iterator();
         while (it.hasNext()) {
-            s += traite(it.next());
+            it.next();
         }
-        return s;
     }
 
-    private static String traite(TRI r) {
-        String w = "facet normal 0 0 0 \n" + "outer loop\n";
+    private static void traite(TRI r, PrintWriter pw) {
+        write("facet normal 0 0 0 \n" + "outer loop\n", pw);
         for (int s = 0; s < 3; s++) {
-            w += "vertex ";
+            write("vertex ", pw);
             for (int c = 0; c < 3; c++) {
                 double A = r.getSommet()[s].get(c);
                 if (Double.isNaN(A)) {
                     A = 0;
                 }
-                w += A + " ";
+                write(A + " ", pw);
             }
-            w += "\n";
+            write("\n", pw);
         }
-        w += "endloop\n";
-        return w += "endfacet\n";
+        write("endloop\n", pw);
+        write("endfacet\n", pw);
 
     }
 
-    public static String traite(TRIConteneur TC) {
-        String s = "";
+    public static void traite(TRIConteneur TC, PrintWriter pw) {
+        write("", pw);
 
         Iterator<TRI> it = TC.iterable().iterator();
 
         while (it.hasNext()) {
             TRI t = it.next();
 
-            s += traite(t);
+            traite(t, pw);
         }
-
-        return s;
     }
 
-    private static String traite(TRIGenerable r) {
-        return traite(r.generate());
+    private static void traite(TRIGenerable r, PrintWriter pw) {
+        r.generate();
     }
 
-    private static String traite(TRIObject r) {
+    private static void traite(TRIObject r, PrintWriter pw) {
         String s = "";
         Iterator<TRI> it = r.getTriangles().iterator();
         while (it.hasNext()) {
 
-            s += traite(it.next());
+            traite(it.next(), pw);
         }
-        return s;
     }
 
-    private static String traite(TRIObjetGenerateur r) {
+    private static void traite(TRIObjetGenerateur r, PrintWriter pw) {
         String s = "";
         int x = r.getMaxX();
         int y = r.getMaxY();
@@ -181,11 +169,15 @@ public class STLExport {
         for (int i = 0; i < x; i++) {
             for (int j = 0; j < y; j++) {
                 r.getTris(i, j, tris);
-                s += traite(tris[0]);
-                s += traite(tris[1]);
+                traite(tris[0], pw);
+                traite(tris[1], pw);
 
             }
         }
-        return s;
+    }
+    
+    public static void write(String flowElement, PrintWriter pw)
+    {
+        pw.write(flowElement);
     }
 }

@@ -5,10 +5,6 @@
 */
 package be.ibiiztera.md.pmatrix.pushmatrix.base;
 
-import info.emptycanvas.library.object.MODObjet;
-import info.emptycanvas.library.object.Representable;
-import info.emptycanvas.library.object.TColor;
-
 /**
  *
  * @author Manuel DAHMEN

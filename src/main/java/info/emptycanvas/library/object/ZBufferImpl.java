@@ -1131,7 +1131,7 @@ public class ZBufferImpl implements ZBuffer {
                 PGeneratorZ p = (PGeneratorZ) r;
                 p.generate(this);
                 p.dessine(this);
-            } else if (r instanceof NurbsSurface) {
+            } /*else if (r instanceof NurbsSurface) {
                 NurbsSurface n = (NurbsSurface) r;
                 double INCR = 0.01;
                 for (double i = 0; i < 1; i += INCR) {
@@ -1149,7 +1149,7 @@ public class ZBufferImpl implements ZBuffer {
                         dessinerSilhouette3D(tris[1]);
                     }
                 }
-            } else if (r instanceof ParametrizedCurve) {
+            }*/ else if (r instanceof ParametrizedCurve) {
                 // System.out.println("Curve");
                 ParametrizedCurve n = (ParametrizedCurve) r;
                 interactionCourant = n;
@@ -1167,20 +1167,20 @@ public class ZBufferImpl implements ZBuffer {
                 // System.out.println("Surface");
                 ParametrizedSurface n = (ParametrizedSurface) r;
                 interactionCourant = n;
-                double incr1 = 1.0 / n.incr1;
-                double incr2 = 1.0 / n.incr2;
-                for (double i = 0; i <= 1 - incr1; i += incr1) {
-                    for (double j = 0; j <= 1 - incr2; j += incr2) {
+                double incr1 = 1.0 / n.getIncrU();
+                double incr2 = 1.0 / n.getIncrV();
+        for (double i = n.getStartU(); i <= n.getEndU()- n.getIncrU(); i += n.getIncrU()) {
+            for (double j = n.getStartU(); j <= n.getEndV() - n.getIncrV(); j += n.getIncrV()) {
                         double u = i;
                         double v = j;
                         dessinerSilhouette3D(new TRI(n.calculerPoint3D(u, v),
-                                n.calculerPoint3D(u + incr1, v),
-                                n.calculerPoint3D(u + incr2, v + incr2),
-                                new TColor(Color.MAGENTA)));
+                                n.calculerPoint3D(u + n.getIncrU(), v),
+                                n.calculerPoint3D(u + n.getIncrU(), v + n.getIncrV()),
+                                n.texture()));
                         dessinerSilhouette3D(new TRI(n.calculerPoint3D(u, v),
-                                n.calculerPoint3D(u, v + incr2),
-                                n.calculerPoint3D(u + incr2, v + incr2),
-                                new TColor(Color.MAGENTA)));
+                                n.calculerPoint3D(u, v + n.getIncrV()),
+                                n.calculerPoint3D(u + n.getIncrU(), v + n.getIncrV()),
+                                n.texture()));
 
                     }
 

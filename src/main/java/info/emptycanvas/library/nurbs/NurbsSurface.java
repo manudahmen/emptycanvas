@@ -1,7 +1,6 @@
 /**
  * *
- * Global license :  *
- * Microsoft Public Licence
+ * Global license : * Microsoft Public Licence
  *
  * author Manuel Dahmen <ibiiztera.it@gmail.com>
  *
@@ -17,8 +16,24 @@ import info.emptycanvas.library.object.Point3D;
  */
 public class NurbsSurface extends ParametrizedSurface {
 
-    public static final int type_coordX = 0;
-    public static final int type_coordY = 1;
+    /**
+     * *
+     *
+     * degree:
+     *
+     * Degré de la fonction de base
+     *
+     * params[]:
+     *
+     * Tableau de noeuds weights[]: * Tableau de pondérations pour des courbes
+     * NURBS rationnelles ; sinon NULL ou 1.0 pour une b-spline polynomiale.
+     * c_pnts[][3]:
+     *
+     * Tableau de points de contrôle Définition : k = degree of basis function N
+     * = number of knots, degree -2 wi = weights Ci = control points (x, y, z) *
+     * wi Bi,k = basis functions Par cette équation, le nombre de points de
+     * contrôle est égal à N+1.
+     */
     private int degree = 1;
 
     @Override
@@ -31,52 +46,31 @@ public class NurbsSurface extends ParametrizedSurface {
         return calculerNurbs(u, v);
     }
 
-    public class Entry<E, V> {
-
-        public E key;
-        public V value;
-    }
-
     /**
      * *
      * "Knots"
      */
     class Intervalle {
 
-        private double[] T0;
+        private final double[][] Data;
         private final int m, n;
 
-        public Intervalle(int m, int n) {
-            this.m = n;
-            this.n = n;
-            T0 = new double[m * n];
+        private Intervalle(double[][] T) {
+            this.Data = T;
+            m = T.length;
+            n = T[0].length;
         }
 
         public double get(int i, int j) {
-            try{return this.T0[j * m + i];}
-            catch(java.lang.ArrayIndexOutOfBoundsException ex) {System.out.print("#");
-            return 0;}
-        }
-
-        private double get(int i, int j, boolean b, int incr) {
-            if (i < 0) {
+            try {
+                return this.Data[i][j];
+            } catch (java.lang.ArrayIndexOutOfBoundsException ex) {
                 return 0;
             }
-            if (i >= m) {
-                return 0;
-            }
-            if (j < 0) {
-                return 0;
-            }
-            if (j >= n) {
-                return 0;
-            }
-
-            return this.T0[((j + (!b ? incr : 0))) * m + (b ? incr : 0)];
         }
 
         public void set(int i, int j, double v) {
-            this.T0[j * m + i] = v;
+            this.Data[i][j] = v;
         }
     }
 
@@ -86,70 +80,36 @@ public class NurbsSurface extends ParametrizedSurface {
      */
     class Point3DPoids {
 
-        private final Point3D[] points;
-        private final double[] poids;
+        private final Point3D[][] points;
+        private final double[][] poids;
         final int m, n;
 
-        public Point3DPoids(int m, int n) {
-            this.m = n;
-            this.n = n;
-            this.points = new Point3D[m * n];
-            this.poids = new double[m * n];
+        public Point3DPoids(Point3D [][] poins, double [][] poids) {
+            this.points = poins;
+            this.poids = poids;
+            m = points.length;
+            n = points[0].length;
         }
 
         private double getPoids(int i, int j) {
-            return poids[j * m + i];
+            return poids[i][j];
         }
 
         public Point3D getPoint3D(int i, int j) {
-            return points[j * m + i];
+            return points[i][j];
         }
 
         public void set(int i, int j, Point3D p, double w) {
             if (i >= 0 && i < m && j >= 0 && j < n) {
-                points[j * m + i] = p;
-                poids[j * m + i] = w;
-                return;
+                points[i][j] = p;
+                poids[i][j] = w;
             }
 
         }
     }
-
-    class Vecteur {
-
-        private final int n;
-        private final double[] values;
-
-        public Vecteur(int n) {
-            this.n = n;
-            this.values = new double[n];
-        }
-
-        public double get(int i) {
-            if (i >= 0 && i < n) {
-                return values[i];
-            }
-            throw new ArrayIndexOutOfBoundsException("vecteur" + i);
-        }
-
-        public void set(int i, double v) {
-            if (i >= 0 && i < n) {
-                values[i] = v;
-                return;
-            }
-            throw new ArrayIndexOutOfBoundsException("vecteur" + i);
-        }
-    }
-    private Point3D[][] points;
-    private double[][] poids;
-
-    private double[][] T;
-    private Intervalle intervalle;
-    private Point3DPoids forme;
 
     public NurbsSurface() {
     }
-
 
     @Override
     public Point3D calculerVitesse3D(double u, double v) {
@@ -158,20 +118,17 @@ public class NurbsSurface extends ParametrizedSurface {
 
     public void creerNurbs() {
         if (points != null && T != null && poids != null) {
-            intervalle = new Intervalle(T[0].length, T.length);
-            forme = new Point3DPoids(points[0].length, points.length);
+            intervalle = new Intervalle(T);
+            forme = new Point3DPoids(points, poids);
 
-            for (int i = 0; i < intervalle.m; i++) {
-                for (int j = 0; j < intervalle.n; j++) {
-                    intervalle.set(i, j, T[i][j]);
-                }
-            }
 
             for (int i = 0; i < forme.m; i++) {
                 for (int j = 0; j < forme.n; j++) {
                     forme.set(i, j, points[i][j], poids[i][j]);
                 }
             }
+            
+            
         }
     }
 
@@ -183,91 +140,45 @@ public class NurbsSurface extends ParametrizedSurface {
         }
     }
 
-    /*    public double fonctionNurbs(int i, int j, int k, double t, int xcoord) {
-     boolean invert = xcoord == 1?true:false;
-     boolean x = true;
-     boolean y = false;
-     if (k == 0) {
-     return 1;
-     } else if(i+k+1<intervalle.m){
-     double fract1 = f0sur0egal0(t - intervalle.get(i, j, invert^x, 0), intervalle.get(i, j, invert^x, k)-intervalle.get(i, j, invert^x,0));
-     double fract2 = f0sur0egal0(intervalle.get(i, j, invert^x, k+1) - t, intervalle.get(i, j, invert^x, k+1) - intervalle.get(i, j, invert^x, 1));
-
-     return fract1 * fonctionNurbs(i, j, k - 1, t, 0) + fract2 * fonctionNurbs(i + 1, j, k - 1, t, 1);
-     }
-     else 
-     return 0;
-     }
-     */
-    /*    public Point3D formule(double t, double s) {
-     Point3D fract1 = Point3D.O0;
-     double fract2 = 0;
-     int m = forme.m;
-     int n = forme.n;
-
-     int p = intervalle.m;
-     int q = intervalle.n;
-
-        
-     int a = m - p + 1>=0? (m-p+1<m?m-p+1:m-1):0;
-     int b = n - q + 1>=0? (n-q+1<n?n-q+1:n-1):0;
-        
-     for (int i = 0; i < m - 1; i++) {
-     for (int j = 0; j < n ; j++) {
-     fract1 = fract1
-     .plus(forme.getPoint3D(i, j)
-     .mult(forme.getPoids(i, j) 
-     * fonctionNurbs(i, j, a, t, 0) 
-     * fonctionNurbs(i, j, b, s, 1)));
-     }
-     }
-     for (int k = 0; k < m; k++) {
-     for (int l = 0; l < n; l++) {
-     fract2 = fract2 
-     + forme.getPoids(k, l) 
-     * fonctionNurbs(k, l, a, t, 0) * fonctionNurbs(k, l, b, s, 1);
-     }
-     }
-     return fract1.mult(1/fract2);
-     }
-     */
-    public void setMaillage(Point3D[][] points, double[][] poids) {
-        this.points = points;
-        this.poids = poids;
-    }
-
-    public double coefficients(int type_coord, double t) {
+    public int coefficients(int type_coord, double t) {
         for (int i = 0; i < intervalle.m; i++) {
-            if (t>=intervalle.get(type_coord, i)  && intervalle.get(type_coord, i + 1) <= t) {
-                return intervalle.get(type_coord, i);
+            if ((t >= intervalle.get(type_coord, i)) && (t <intervalle.get(type_coord, i + 1) )) {
+                return i;
             }
         }
         return 0;
+    }
+
+    public void setMaillage(Point3D[][] points, double[][] poids) {
+        this.points = points;
+        this.poids = poids;
     }
 
     public void setReseauFonction(double[][] T) {
         this.T = T;
     }
 
-    public double N(int type_coord, int i, int deg, double t) {
-        if(i>=intervalle.m)
+    public double N(int type_coord, int place, int deg, double t) {
+        if (place >= intervalle.m) {
             return 0;
+        }
         if (deg <= 0) {
             return 1;
-        } else {
-            return N(type_coord, i, deg - 1, t)
-                    * f0sur0egal0(coefficients(type_coord, i + 1) - t, t - coefficients(type_coord, i))
-                    + N(type_coord, i + 1, deg - 1, t)
-                    * f0sur0egal0(coefficients(type_coord, i + deg + 1) - t, t - coefficients(type_coord, i + 1));
+
         }
+        return N(type_coord, place, deg - 1, t)
+                * f0sur0egal0(intervalle.get(type_coord, place + 1) - t, t - intervalle.get(type_coord, place))
+                + N(type_coord, place + 1, deg - 1, t)
+                * f0sur0egal0(intervalle.get(type_coord, place + deg + 1) - t, t - intervalle.get(type_coord, place + 1));
+
     }
 
-    public double C(int i, int n) {
+    public long C(int i, int n) {
         return factorielle(n) / factorielle(i) / factorielle(n - i);
     }
 
-    protected double factorielle(int n) {
-        double sum = 1;
+    protected long factorielle(int n) {
+        long sum = 1;
         for (int i = 1; i <= n; i++) {
             sum *= i;
         }
@@ -279,17 +190,45 @@ public class NurbsSurface extends ParametrizedSurface {
     }
 
     public Point3D calculerNurbs(double u, double v) {
-        int M = degree;//intervalle.m - degree - 1;
+        int M = intervalle.m + degree - 1;
+        int N = intervalle.n + degree - 1;
         //System.out.println("Fact = " + M);
         double sum = 0;
         Point3D ret = Point3D.O0;
-        for (int i = 0; i < points[0].length; i++) {
-            for (int j = 0; j < points.length; j++) {
-                double sumP = C(M, i) * C(M, j) * N(type_coordX, i, degree, u) * N(type_coordY, j, degree, v);
-                ret = ret.plus(points[i][j].mult(sumP));
+        for (int i = 0; i < forme.m; i++) {
+            for (int j = 0; j < forme.n; j++) {
+                double sumP = (double) (C(i, forme.m) * C(j, forme.n)) * N(type_coordX, i, degree, u) * N(type_coordY, j, degree, v);
+                ret = ret.plus(points[j][i].mult(sumP));
                 sum += sumP;
             }
         }
         return ret.mult(1 / sum);
     }
+
+    @Override
+    public String toString() {
+        String s = "nurbs ( \n";
+        for (int i = 0; i < intervalle.m; i++) {
+            for (int j = 0; j < intervalle.n; j++) {
+                s += "knot (" + i + "," + j + ")=" + intervalle.get(i, j) + "\n\t";
+            }
+        }
+        for (int i = 0; i < forme.m; i++) {
+            for (int j = 0; j < forme.n; j++) {
+                s += "point (" + i + "," + j + ")=" + forme.getPoint3D(i, j) + "  Poids : (" + i + "," + j + ")" + forme.getPoids(i, j) + "\n\t";
+            }
+        }
+        return s + "\n\n)";
+    }
+
+    public static final int type_coordX = 0;
+    public static final int type_coordY = 1;
+
+    private Point3D[][] points;
+    private double[][] poids;
+    private double[][] T;
+
+    private Intervalle intervalle;
+    private Point3DPoids forme;
+
 }
