@@ -22,17 +22,16 @@ import java.awt.Color;
  * @author Manuel Dahmen <ibiiztera.it@gmail.com>
  */
 public class TestNurbs2 extends TestObjet {
-    public double mr()
-    {
+
+    public double mr() {
         return Math.random();
-            
+
     }
-    
+
     @Override
     public void testScene() throws Exception {
         scene().clear();
-        
-        
+
         NurbsSurface n = new NurbsSurface();
         n.setMaillage(new Point3D[][]{
             {
@@ -53,12 +52,12 @@ public class TestNurbs2 extends TestObjet {
             {1, 1, 1}
         });
 
-        n.setDegreU(2);
-        n.setDegreV(2);
+        n.setDegreU(3);
+        n.setDegreV(3);
 
         n.setReseauFonction(new double[][]{
-            {0, 0,0, 0,  1, 1, 1, 1},
-            {0, 0,0, 0, 1, 1, 1, 1}
+            {1, 1, 1, 1, 1, 1},
+            {1, 1, 1, 1, 1, 1}
         });
 
         n.texture(new ColorTexture(Color.WHITE));
@@ -81,13 +80,16 @@ public class TestNurbs2 extends TestObjet {
     }
 
     public static void main(String[] args) {
-        
+
         TestNurbs2 n = new TestNurbs2();
+
+        n.setGenerate(GENERATE_MODEL | GENERATE_IMAGE);
+
+        n.setMaxFrames(30);
         
-        
-        n.setGenerate(GENERATE_MODEL|GENERATE_IMAGE);
+        n.loop(true);
         
         new Thread(n).start();
-        
+
     }
 }
