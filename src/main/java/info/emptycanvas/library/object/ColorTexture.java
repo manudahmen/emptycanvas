@@ -15,9 +15,9 @@ public class ColorTexture implements ITexture
     }
     public ColorTexture(Color c)
     {
-    	if(c==null)
-    		throw new NullPointerException();
-        color = c;
+        this();
+    	if(c!=null)
+            color = c;
     }
 
     public Color color()

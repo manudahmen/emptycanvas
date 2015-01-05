@@ -34,7 +34,8 @@ public class NurbsSurface extends ParametrizedSurface {
      * wi Bi,k = basis functions Par cette équation, le nombre de points de
      * contrôle est égal à N+1.
      */
-    private int degree = 1;
+    private int degreeU;
+    private int degreeV;
 
     @Override
     public Point3D coordPoint3D(int x, int y) {
@@ -141,12 +142,14 @@ public class NurbsSurface extends ParametrizedSurface {
     }
 
     public int coefficients(int type_coord, double t) {
+        if(t<=intervalle.get(type_coord, 0))
+            return 0;
         for (int i = 0; i < intervalle.m; i++) {
             if ((t >= intervalle.get(type_coord, i)) && (t <intervalle.get(type_coord, i + 1) )) {
                 return i;
             }
         }
-        return 0;
+        return 1;
     }
 
     public void setMaillage(Point3D[][] points, double[][] poids) {
@@ -158,18 +161,22 @@ public class NurbsSurface extends ParametrizedSurface {
         this.T = T;
     }
 
-    public double N(int type_coord, int place, int deg, double t) {
-        if (place >= intervalle.m) {
+    public double N(int type_coord, int i, int deg, double t) {
+        if (i >= intervalle.m || i<0) {
             return 0;
         }
-        if (deg <= 0) {
-            return 1;
-
+        if (deg <=0) {
+            if(coefficients(type_coord, t)==i)
+            {
+                return 1;
+            }
+            else
+                return 0;
         }
-        return N(type_coord, place, deg - 1, t)
-                * f0sur0egal0(intervalle.get(type_coord, place + 1) - t, t - intervalle.get(type_coord, place))
-                + N(type_coord, place + 1, deg - 1, t)
-                * f0sur0egal0(intervalle.get(type_coord, place + deg + 1) - t, t - intervalle.get(type_coord, place + 1));
+        return N(type_coord, i, deg - 1, t)
+                * f0sur0egal0(t-intervalle.get(type_coord, i) , intervalle.get(type_coord, i+deg-1) - intervalle.get(type_coord, i))
+                + N(type_coord, i + 1, deg - 1, t)
+                * f0sur0egal0(intervalle.get(type_coord, i + deg) - t, intervalle.get(type_coord, i+deg) - intervalle.get(type_coord, i + 1));
 
     }
 
@@ -185,20 +192,20 @@ public class NurbsSurface extends ParametrizedSurface {
         return sum;
     }
 
-    public void setDegre(int deg) {
-        this.degree = deg;
+    public void setDegreU(int deg) {
+        this.degreeU = deg;
+    }
+    public void setDegreV(int deg) {
+        this.degreeV = deg;
     }
 
     public Point3D calculerNurbs(double u, double v) {
-        int M = intervalle.m + degree - 1;
-        int N = intervalle.n + degree - 1;
-        //System.out.println("Fact = " + M);
         double sum = 0;
         Point3D ret = Point3D.O0;
         for (int i = 0; i < forme.m; i++) {
             for (int j = 0; j < forme.n; j++) {
-                double sumP = (double) (C(i, forme.m) * C(j, forme.n)) * N(type_coordX, i, degree, u) * N(type_coordY, j, degree, v);
-                ret = ret.plus(points[j][i].mult(sumP));
+                double sumP = (double) (C(i, forme.m) * C(j, forme.n)) * N(type_coordU, i, degreeU, u) * N(type_coordV, j, degreeV, v);
+                ret = ret.plus(forme.getPoint3D(j,i).mult(sumP));
                 sum += sumP;
             }
         }
@@ -221,8 +228,8 @@ public class NurbsSurface extends ParametrizedSurface {
         return s + "\n\n)";
     }
 
-    public static final int type_coordX = 0;
-    public static final int type_coordY = 1;
+    public static final int type_coordU = 0;
+    public static final int type_coordV = 1;
 
     private Point3D[][] points;
     private double[][] poids;

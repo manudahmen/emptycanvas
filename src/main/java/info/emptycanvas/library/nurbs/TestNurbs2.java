@@ -13,6 +13,7 @@ import info.emptycanvas.library.object.Point3D;
 import info.emptycanvas.library.nurbs.NurbsSurface;
 import info.emptycanvas.library.object.ColorTexture;
 import info.emptycanvas.library.testing.TestObjet;
+import static info.emptycanvas.library.testing.TestObjet.GENERATE_MODEL;
 import java.awt.Color;
 //import nurbs.Axes;
 
@@ -20,36 +21,44 @@ import java.awt.Color;
  *
  * @author Manuel Dahmen <ibiiztera.it@gmail.com>
  */
-public class TestNurbs1 extends TestObjet {
-
+public class TestNurbs2 extends TestObjet {
+    public double mr()
+    {
+        return Math.random();
+            
+    }
+    
     @Override
     public void testScene() throws Exception {
+        scene().clear();
+        
+        
         NurbsSurface n = new NurbsSurface();
         n.setMaillage(new Point3D[][]{
             {
-                new Point3D(0, 1, 2),
-                new Point3D(2, 3, 0),
-                new Point3D(4, 4, -2)},
+                new Point3D(mr(), mr(), mr()),
+                new Point3D(mr(), mr(), mr()),
+                new Point3D(mr(), mr(), mr())},
             {
-                new Point3D(3, 2, 5),
-                new Point3D(8, 4, 4),
-                new Point3D(5, 4, 4)},
+                new Point3D(mr(), mr(), mr()),
+                new Point3D(mr(), mr(), mr()),
+                new Point3D(mr(), mr(), mr())},
             {
-                new Point3D(1, 2, 1),
-                new Point3D(4, 7, 4),
-                new Point3D(5, 7, 5)}
+                new Point3D(mr(), mr(), mr()),
+                new Point3D(mr(), mr(), mr()),
+                new Point3D(mr(), mr(), mr())}
         }, new double[][]{
             {1, 1, 1},
             {1, 1, 1},
             {1, 1, 1}
         });
 
-        n.setDegreU(3);
-        n.setDegreV(3);
+        n.setDegreU(2);
+        n.setDegreV(2);
 
         n.setReseauFonction(new double[][]{
-            {0, 0, 0, 1, 1, 1},
-            {0, 0, 0, 1, 1, 1}
+            {0, 0,0, 0,  1, 1, 1, 1},
+            {0, 0,0, 0, 1, 1, 1, 1}
         });
 
         n.texture(new ColorTexture(Color.WHITE));
@@ -68,13 +77,17 @@ public class TestNurbs1 extends TestObjet {
         //Axes axes = new Axes();
 
         //scene().add(axes);
-        scene().cameraActive(new Camera(Point3D.Z.mult(-10), Point3D.O0));
+        scene().cameraActive(new Camera(Point3D.Z.mult(-0.01), Point3D.O0));
     }
 
     public static void main(String[] args) {
-        TestNurbs1 n = new TestNurbs1();
-        n.loop(false);
+        
+        TestNurbs2 n = new TestNurbs2();
+        
+        
         n.setGenerate(GENERATE_MODEL|GENERATE_IMAGE);
+        
         new Thread(n).start();
+        
     }
 }
