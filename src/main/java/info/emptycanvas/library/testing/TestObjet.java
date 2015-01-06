@@ -869,6 +869,7 @@ public class TestObjet implements Test, Runnable{
     
     /**
      * Definir la scene scene().add(*)
+     * @throws java.lang.Exception
      */
     @Override
     public void testScene() throws Exception {
