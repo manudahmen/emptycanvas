@@ -10,7 +10,6 @@ package info.emptycanvas.library.nurbs;
 
 import info.emptycanvas.library.object.Camera;
 import info.emptycanvas.library.object.Point3D;
-import info.emptycanvas.library.nurbs.NurbsSurface;
 import info.emptycanvas.library.object.ColorTexture;
 import info.emptycanvas.library.testing.TestObjet;
 import static info.emptycanvas.library.testing.TestObjet.GENERATE_MODEL;
@@ -56,8 +55,8 @@ public class TestNurbs2 extends TestObjet {
         n.setDegreV(3);
 
         n.setReseauFonction(new double[][]{
-            {1, 1, 1, 1, 1, 1},
-            {1, 1, 1, 1, 1, 1}
+            {0, 0, 0, 0.5, 1, 1, 1},
+            {0, 0, 0, 0.5, 1, 1, 1}
         });
 
         n.texture(new ColorTexture(Color.WHITE));
@@ -73,9 +72,7 @@ public class TestNurbs2 extends TestObjet {
 
         scene().add(n);
         System.out.println(n);
-        //Axes axes = new Axes();
-
-        //scene().add(axes);
+        
         scene().cameraActive(new Camera(Point3D.Z.mult(-0.01), Point3D.O0));
     }
 

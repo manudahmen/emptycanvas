@@ -48,6 +48,7 @@ import org.monte.media.math.Rational;
  */
 public class TestObjet implements Test, Runnable{
 
+
     public class ImageContainer {
 
         private BufferedImage biic;
@@ -900,5 +901,8 @@ public class TestObjet implements Test, Runnable{
     }
 
     public void writeOnPictureBeforeZ(BufferedImage bi) {
+    }
+    public String getFolder() {
+        return dir.getAbsolutePath();
     }
 }

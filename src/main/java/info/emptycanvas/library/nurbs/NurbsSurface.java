@@ -210,7 +210,7 @@ public class NurbsSurface extends ParametrizedSurface {
         Point3D ret = Point3D.O0;
         for (int i = 0; i < intervalle.m-degreeU; i++) {
             for (int j = 0; j < intervalle.m-degreeV; j++) {
-                double sumP = (double) (C(i, forme.m) * C(j, forme.n)) * N(type_coordU, (int) placeGaucheU, degreeU, u) * N(type_coordV, (int) placeGaucheV, degreeV, v);
+                double sumP = (double) (C(i, forme.m) * C(j, forme.n)) * N(type_coordU, coefficients(type_coordU, u), degreeU, u) * N(type_coordV, coefficients(type_coordV, v), degreeV, v);
                 ret = ret.plus(forme.getPoint3D(j,i).mult(sumP));
                 sum += sumP;
             }
