@@ -594,10 +594,10 @@ public class TestObjet implements Test, Runnable{
         
         Logger.getLogger(getClass().getCanonicalName()).info(getClass().getCanonicalName());
         Logger.getLogger(getClass().getCanonicalName()).info(directory().getAbsolutePath());
-        Logger.getLogger(getClass().getCanonicalName()).info("Generate (0 NOTHING  1 IMAGE  2 MODEL  4 OPENGL) " +getGenerate());
+        Logger.getLogger(getClass().getCanonicalName()).log(Level.INFO, "Generate (0 NOTHING  1 IMAGE  2 MODEL  4 OPENGL) {0}", getGenerate());
 
         
-        Logger.getLogger(getClass().getCanonicalName()).info("Starting movie  " +System.currentTimeMillis());
+        Logger.getLogger(getClass().getCanonicalName()).log(Level.INFO, "Starting movie  {0}", System.currentTimeMillis());
         while (nextFrame() && !stop) {
 
             pauseActive = true;
