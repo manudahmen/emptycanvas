@@ -174,9 +174,11 @@ public class NurbsSurface extends ParametrizedSurface {
                 return 0;
         }
         return N(type_coord, i, deg - 1, t)
-                * f0sur0egal0(t-intervalle.get(type_coord, i) , intervalle.get(type_coord, i+deg-1) - intervalle.get(type_coord, i))
+                * f0sur0egal0(t-intervalle.get(type_coord, i) , 
+                  intervalle.get(type_coord, i+deg-1) - intervalle.get(type_coord, i))
                 + N(type_coord, i + 1, deg - 1, t)
-                * f0sur0egal0(intervalle.get(type_coord, i + deg) - t, intervalle.get(type_coord, i+deg) - intervalle.get(type_coord, i + 1));
+                * f0sur0egal0(intervalle.get(type_coord, i + deg+1) - t, 
+                  intervalle.get(type_coord, i+deg+1) - intervalle.get(type_coord, i + 1));
 
     }
 
